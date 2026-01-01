@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" href="../css/common.css">
+		 
+		<style>
+			html,body {
+				background-color: #eee;
+			}
+			.title{
+				margin-top: 30px;
+				margin-bottom: 20px;
+				color: #6d6d72;
+				font-size: 18px;
+				text-align: center;
+				font-weight: 600;
+			}
+			.mui-table-view{
+				color: #6d6d6d;
+			}
+			.mui-table-view:before{ background-color: #ccc;}
+			.mui-table-view:after{ background-color: #ccc;}
+			 
+		</style>
+	</head>
+
+	<body>
+		<div style="background-color:#F23038; height: 48px;">
+			<div class="nvbt iback" onclick="mui.back()"></div>
+			<div style="color: #eee;padding-top: 15px;text-align: center;margin-right: 50px;font-size: 18px;" 
+			onclick="mui.back()"> 账户 </div>
+		</div>
+		<div class="mui-content">
+
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" style="font-size: 16px;">
+					<a style="width: 40%;float: left;line-height: 26px;">版本</a>
+					<a id="user_bb" style="width: 60%;float: left;line-height: 30px;">金风向9 钻石版</a>
+						
+				</li>
+				<li class="mui-table-view-cell" style="font-size: 16px;">
+					<a style="width: 40%;float: left;line-height: 26px;">账户</a>
+					<a id="user_name" style="width:60%;float: left;line-height: 30px;"></a>
+				</li>
+				<li class="mui-table-view-cell" style="font-size: 16px;">
+					<a style="width: 40%;float: left;line-height: 26px;">到期时间</a>
+					<a id="user_todat" style="width: 60%;float: left;font-size: 15px; line-height: 30px;">2022-12-01</a>
+				</li>
+				
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 25px;">
+				<li class="mui-table-view-cell">
+					<a style="width: 50%;float: left;line-height: 26px;">版本号</a>
+					<a id="banben_i" style="width: 50%;float: left;line-height: 30px;"> </a>
+				</li>
+			</ul>
+			<ul class="mui-table-view" style="margin-top: 25px;">
+				<li class="mui-table-view-cell">
+					<a id="tuichu" style="text-align: center;color: #FF3B30;">
+						退出登录
+					</a>
+				</li>
+			</ul>
+			
+			
+			
+		</div>
+		 
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+		});
+		mui.plusReady(function() {
+			var local_item = localStorage.getItem("jfx9_account");
+			 
+			document.getElementById("user_name").innerText = local_item;
+			
+			local_item = localStorage.getItem("jfx9_todate");
+			document.getElementById("user_todat").innerText = local_item;
+		 
+			local_item = localStorage.getItem("jfx9_bb_name");
+			document.getElementById("user_bb").innerText = local_item;
+	 
+			plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) {
+			     document.getElementById("banben_i").innerText = (widgetInfo.version);
+			})
+			
+		})
+		
+		
+		document.getElementById("tuichu").addEventListener('tap',function () {
+			//获得主页面的webview
+			//var main = plus.webview.currentWebview().parent();
+			//触发主页面的gohome事件
+			//mui.fire(main,'gohome');
+			var btn = ["确定", "取消"];
+			mui.confirm('确认退出金风向9吗？', '确认退出', btn, function(e) {
+				if(e.index == 0) {
+					plus.runtime.quit();
+				}
+			});
+			 
+		});
+	</script>
+</html>

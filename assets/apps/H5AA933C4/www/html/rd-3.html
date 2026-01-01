@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>波段王</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/rd.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js"></script>
+
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/rd.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+
+	</head>
+
+	<body class="body_bg">
+
+
+		<div class="panel_qjt_top body_bg_white">
+			<div style="float: left;">
+				<button id="btn-go" type="button" class="btn1">
+					启动
+				</button>
+			</div>
+
+ 
+			<div style="float: right;">
+				<button id="btn-set" type="button" class="btn3">
+					设置
+				</button>
+
+			</div>
+		</div>
+
+
+		<div class="mui-content body_bg_white" style="padding-top: 4px;">
+
+			<!-- 功能模块 -->
+
+			<div class="panel_bdw_hang" style="margin-top:2px;">
+				<div id="container1" class="panel_bdw_1"></div>
+				<div id="container2" class="panel_bdw_2"></div>
+				<div id="container3" class="panel_bdw_1"></div>
+
+			</div>
+			<div class="panel_bdw_hang">
+				<div id="container4" class="panel_bdw_2"></div>
+				<div id="container5" class="panel_bdw_1"></div>
+				<div id="container6" class="panel_bdw_2"></div>
+
+			</div>
+
+			<div class="panel_bdw_hang">
+				<div id="container7" class="panel_bdw_1"></div>
+				<div id="container8" class="panel_bdw_2"></div>
+				<div id="container9" class="panel_bdw_1"></div>
+			</div>
+
+			<div class="panel_bdw_hang">
+				<div id="container10" class="panel_bdw_2"></div>
+				<div id="container11" class="panel_bdw_1"></div>
+				<div id="container12" class="panel_bdw_2"></div>
+			</div>
+			<div class="panel_bdw_hang">
+				<div id="container13" class="panel_bdw_1"></div>
+				<div id="container14" class="panel_bdw_2"></div>
+				<div id="container15" class="panel_bdw_1"></div>
+
+			</div>
+			<div class="panel_bdw_hang">
+				<div id="container16" class="panel_bdw_2"></div>
+				<div id="container17" class="panel_bdw_1"></div>
+				<div id="container18" class="panel_bdw_2"></div>
+
+			</div>
+			<div class="panel_bdw_hang">
+				<div id="container19" class="panel_bdw_1"></div>
+				<div id="container20" class="panel_bdw_2"></div>
+				<div id="container21" class="panel_bdw_1"></div>
+			</div>
+
+			<div class="panel_bdw_hang">
+				<div id="container22" class="panel_bdw_2"></div>
+				<div id="container23" class="panel_bdw_1"></div>
+				<div id="container24" class="panel_bdw_2"></div>
+			</div>
+			<div class="panel_bdw_hang">
+				<div id="container25" class="panel_bdw_1"></div>
+				<div id="container26" class="panel_bdw_2"></div>
+				<div id="container27" class="panel_bdw_1"></div>
+
+			</div>
+			
+			
+			<div class="btn_fdsx">
+				<span id="btn_sx" class="mui-icon iconfont icon-minus-circle sp"></span>
+				<span id="btn_fd" class="mui-icon iconfont icon-plus-circle sp"></span>
+			</div>
+
+
+
+
+		</div>
+
+
+
+		<script>
+			var self = null;
+			//定义全局变量
+			var isWin;
+			var run_count;
+			run_count = 0;
+			var zoomStart = 63;
+			var zoomEnd = 100;
+			
+			var qjt_type = "bdw9";
+			var timer_qjt;
+			var Form_loaded_flag = false;
+			
+			var code_all = "";
+			
+			
+			var dom = [];
+			var myChart = [];
+			var option = [];
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					return false;
+				}
+
+			});
+
+
+			mui.plusReady(function() {
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+
+				var fxbpz = localStorage.getItem("jfx9_bdw_pz");
+				if (  fxbpz !=null  ){
+					code_all =  fxbpz;
+				}
+				//、$('#container').width(parseInt(inw));
+				//$('#container').height(parseInt(inh) -125-24); //-90
+				for (var i = 0; i < 27; i++) {
+					 //document.getElementById("container"+(i+1)).addEventListener('tap',dbl_chart);
+					 document.getElementById("container"+(i+1)).style.width=window.innerWidth*0.33+"px";
+				}		 
+				
+				for (var i = 0; i < 27; i++) {
+					 document.getElementById("container"+(i+1)).ondblclick = function () { 						 
+						 // alert(this.style.width);
+						 var winw = window.innerWidth;
+						 var now_wid=this.style.width;
+						 now_wid.replace("px","");
+
+						 if (parseInt(now_wid) < winw*0.8){
+							 this.style.width=winw+'px';
+						     this.style.height='300px'; 
+						 } else {
+							 this.style.width=winw*0.33+'px';
+							 this.style.height='120px';
+						 }  						 
+						 var domx = document.getElementById(this.id);
+						 var myChartx = echarts.init(domx);
+						 myChartx.resize();
+						  
+						 
+					 }; 
+				}
+				
+				
+				document.getElementById("btn-set").addEventListener("tap",function(){
+					
+				 
+					
+					var wc;	
+					wc = plus.webview.create("set.html", "side", {
+									left:0,
+									top:0,
+									bottom: 0,
+									width: "100%",
+									popGesture: "none", 			 
+					},{iwin: "bdw",ipara:""});
+					wc.show("zoom-out", 50);
+				})
+				
+				
+				
+			});
+			
+ 
+
+			function BC_QJT() {
+			 
+			}
+
+			document.getElementById("btn-go").addEventListener("tap", function() {
+				mui.alert("非此版本功能", "提示", "关闭");
+				
+			})
+ 
+
+			//放大缩小
+			document.getElementById("btn_fd").addEventListener("tap", function() {
+				if (zoomStart < 85) {
+					zoomStart = zoomStart + 10;
+				}
+				Load_QJT();
+			})
+			document.getElementById("btn_sx").addEventListener("tap", function() {
+				if (zoomStart > 0) {
+					zoomStart = zoomStart - 10;
+				}
+
+				if (zoomStart < 0) zoomStart = 0;
+				Load_QJT();
+			})
+
+
+
+
+			function Load_QJT() {
+
+			 
+
+
+			}
+ 		 
+			 
+			 
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,317 @@
+.mui-bar-tab
+{
+    background-color: #333;
+}
+.mui-bar-tab .mui-tab-item .mui-icon
+{
+    top: 2px;
+	font-size: 22px;
+    padding-top: 3px;
+    padding-bottom: 0;
+}
+
+.mui-bar-tab .mui-tab-item 
+{
+    color: #7f7f7f;
+}
+
+
+.mui-bar-tab .mui-tab-item.mui-active
+{
+    color: #F23038;
+}
+ 
+.body_bg {
+	 
+	background-color: #151515;
+}
+
+.body_bg_white{
+	background-color: #000;
+}
+
+/* home  页面 */
+.mui-table-view
+{
+	background-color: #000;
+	border: 2px solid #3a3a3a; 
+} 
+ 
+
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body
+{ 
+    color: #ddd; 
+}
+
+.mui-segmented-control .mui-control-item
+{
+     color: #ccc;
+}
+
+/* 单品种 
+dpz-1 */
+.tablex tr {
+	border-bottom: 1px solid #3a3a3a; 
+}
+
+.tablex th {
+	color: #b9b9b9;
+}
+
+.tablex .tablex-firstcol td {
+	color: #b9b9b9;
+}
+
+/* dpz-2 */
+
+.panel_tab3 .mui-segmented-control
+{
+	 border: 1px solid #444;
+} 
+
+.panel_tab3 .mui-segmented-control .mui-control-item.mui-active
+{    
+	background-color: #141414;
+}
+
+.panel_tab3 .mui-segmented-control .mui-control-item
+{
+    color: #d8d8d8;	
+	background-color: #141414;
+}
+
+/* dpz-3 K线 */
+.panel_2_k .panel_2_right .labss{
+	color:#aaa;
+}
+
+.panel_2_k .panel_2_right .labss2{
+	color:#aaa; 
+}
+
+.panel_2_k .panel_2_right ul li{
+	color: #F2F2F2;
+}
+
+.panel_zb .mui-segmented-control
+{
+     border: 1px solid #222;
+}
+
+.panel_zb .mui-segmented-control .mui-control-item
+{
+     color: #ccc; 
+}
+
+.panel_zb .mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: rgba(255,255,255,0.1);
+	  color: #fff;
+	  border: 2px solid #555; 
+} 
+
+
+/* dpz-4  主力图 */
+.panel_1 .panel_1_left{
+	color: #ccc;
+}
+.panel_1 .panel_1_mid1{
+
+	color: #ccc;
+}
+
+.panel_1 .panel_1_mid2{
+	color: #ccc;
+}
+
+.panel_1 .panel_1_mid3{
+	color: #ccc;
+}
+
+.panel_1 .panel_1_right{
+	color: #ccc;
+}
+
+
+.panel_2_zlt .panel_2_right .labss{
+	color:#aaa;
+}
+
+.panel_2_zlt .panel_2_right .labss2{
+	color:#aaa; 
+}
+
+.panel_2_zlt .panel_2_right ul li{
+	color: #aaa;
+}
+
+/* dpz-5 风向标 */
+ 
+.panel_2_fxb .panel_2_right .labss{
+	color:#aaa;
+}
+
+.panel_2_fxb .panel_2_right .labss2{
+	color:#aaa; 
+}
+
+.panel_2_fxb .panel_2_right ul li{
+	color: #aaa;	
+}
+
+ 
+/* top-1 深度持仓*/
+.panel_tc_tab1 .mui-segmented-control
+{
+	 border: 1px solid #222;
+	 background-color: #000000;
+}  
+
+.panel_tc_tab1 .mui-segmented-control .mui-control-item.mui-active
+{    
+	background-color: #000000;
+	color: #fff; 
+}
+
+.panel_tc_tab1 .mui-segmented-control .mui-control-item
+{
+    color: #aaa; 
+}
+
+/* top-3 深度全景图*/
+.panel_ccqj_top .btn1{
+	 border-color: #F23038;  
+	 background-color: #8c1b20; 
+	 color:#ccc;
+}
+
+.panel_ccqj_top .btn3{
+	 border-color: #F23038; 
+	background-color: #8c1b20; 
+	color:#ccc;
+}
+
+
+
+  
+/* top-4 席位全景图 */
+
+
+/* 热点  
+rd-1 */
+
+.panel_qjt_2{
+	background-color: #141413; 
+} 
+
+.btn_fdsx .sp{
+	color: rgba(255,255,255,0.3);
+}
+
+.panel_qjt_top .btn1{
+	 border-color: #F23038;
+	 background-color: #8c1b20; 
+	 color:#ccc;
+}
+
+.panel_qjt_top .btn2{
+	 border-color: #F23038;
+	 background-color: #8c1b20; 
+	 color:#ccc;
+}
+
+.panel_qjt_top .btn3{
+	 border-color: #F23038;
+	 background-color: #8c1b20; 
+	 color:#ccc;
+}
+
+/* 短线王 rd-2 */
+.panel_dxw_2{
+	background-color: #141413; 
+} 
+
+/* 波段王 rd-3 */
+.panel_bdw_2{
+	background-color: #141413;
+} 
+
+
+/* 智能 
+zn-1 */
+
+.panel_xhq_1{
+  	background-color: #000;
+} 
+
+.panel_xhq_2{
+  	background-color: #141413;
+} 
+
+.text_gary{
+	color: #ccc;
+}
+
+/* zn-2 AI */
+.panel_ai_2{
+  	background-color: #141413;
+} 
+
+.panel_zn4_top .btn1{
+  	 border-color: #F23038;
+  	 background-color: #8c1b20; 
+  	 color:#ccc;
+}
+
+
+
+
+/* zn-3 量化 */
+.panel_lh_2{
+  	background-color: #141413; 
+} 
+
+.panel_tab1 .mui-segmented-control
+{
+	 border: 1px solid #222;	  
+}
+
+.panel_tab1 .mui-segmented-control .mui-control-item.mui-active
+{
+      color: #ffffff;
+	  background-color: #383838;
+} 
+
+/* zn-4 量化展示 */
+.panel_zx_tab1 .mui-segmented-control
+{
+	 border: 1px solid #222;
+} 
+
+.panel_zx_tab1 .mui-segmented-control .mui-control-item
+{
+    color: #aaa;	
+}
+
+.panel_zx_tab1 .mui-segmented-control .mui-control-item.mui-active
+{    
+	 color: #ffffff;
+	 background-color: #222;
+}
+
+/* zn-5  资讯内参 */
+.mui-badge{
+	background-color: #222;
+	color: #ccc;
+}
+
+.rig{
+	background-color: #FD482C;
+	color: #fff;
+}
+
+.mui-table-view .mui-table-view-cell {
+	color: #ccc;
+}
+
+

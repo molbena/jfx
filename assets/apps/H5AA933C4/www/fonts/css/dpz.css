@@ -1,0 +1,549 @@
+/* home页面的tab */
+.mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #fff;
+	 /* border-top: 1px solid #f2d1d2; */
+	/* background-color: #fff; */
+	 padding-bottom: 0px;
+	  
+}
+
+.mui-segmented-control .mui-control-item
+{
+     line-height: 22px;
+     color: #555;
+	 border-right: 0px;  
+	 border-left: 0px; 
+	 padding-top: 3px;
+	 font-size: 14px;
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      /* background-color: #fff; */
+	  color: #ff2407;
+	  /* font-size: 16px; */
+	  font-weight: 600;
+} 
+ 
+.mui-segmented-control .mui-control-item.mui-active::after
+{
+    content: '';
+    width:30%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+}
+/* .mui-segmented-control
+{
+     border: 0px;  
+}
+
+.mui-segmented-control .mui-control-item
+{
+    line-height: 28px;
+     color: #444444;
+     border: 0px;  
+	background-color: #f5f5f5;
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: #f5f5f5;
+	color: #ff2407;
+	 font-weight: 600;
+	font-size: 16px; 
+	border-bottom: 0.01rem solid rgba(239,239,239,1);  
+	
+} 
+
+.mui-segmented-control .mui-control-item.mui-active::after
+{
+      content: '';
+    width:60%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+} */
+
+.mainbg{
+	background-color: #d1d1d1;
+}
+
+/*===================================================================================================*/
+/* K线技术分析  dpz-3.html*/
+/*===================================================================================================*/
+
+
+/* 品种最上栏目 */
+.panel_1 {
+	position:fixed;
+	top:0px; 
+    right: 0px;
+    left: 0px;
+    height: 43px;
+	padding-top: 9px;
+	/* background-color: #ffffff; */
+	z-index: 100;  
+ 
+}
+
+.panel_1 .panel_1_left{
+	float: left;
+	width:10%;
+	padding-left: 15px;
+	text-align: left;
+	/* color: #555; */
+}
+
+.panel_1 .panel_1_left:active{
+	color: #ff2407;
+}
+
+.panel_1 .panel_1_mid1{
+	width:15%;
+	float: left;
+	text-align: right;
+	padding-top: 3px;
+	/* color: #5a5a5a; */
+}
+
+.panel_1 .panel_1_mid2{
+	width:50%;
+	float: left;
+	text-align: center;
+	padding-top: 2px;
+	font-size: 18px;
+}
+
+.panel_1 .panel_1_mid3{
+	width:15%;
+	float: left;
+	text-align: left;
+	padding-top: 3px;
+	/* color: #5a5a5a; */
+}
+
+.panel_1 .panel_1_right{
+	width:10%;
+	float: right;
+	padding-right: 20px;
+	text-align: right;
+	color: #555;
+}
+.panel_1 .panel_1_right:active{
+	color: #ff2407;
+}
+
+/* 实时报价 */
+.panel_2_k {
+    height: 70px;
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-top: 3px;
+    border-bottom: 0;
+	/* background-color: #ffffff; */
+}
+
+.panel_2_k .panel_2_left {
+    float: left;
+    width: 25%;
+    /* height: 70px; */
+    color: #ff3333;
+    font-family: tahoma;
+}
+
+.panel_2_k .panel_2_left .panel_2_left_1{
+	font-size: 24px;
+	padding-top: 7px;
+	padding-left: 0px;
+	text-align: center;
+	height: 33px;
+}
+
+.panel_2_k .panel_2_left .panel_2_left_2{
+	font-size: 14px;
+	text-align: center;
+	padding-top: 2px;
+	padding-left: 0px;
+	height: 16px;
+	color: #ff3333;
+}
+
+.panel_2_k .panel_2_right {
+    float: left;
+    padding-top: 0px;
+    /* height: 72px; */
+	width: 75%;
+}
+
+.panel_2_k .panel_2_right .labss{
+	color:#4c4c4c;
+	width:10%;
+	font-size: 13px;
+	text-align: center;
+}
+
+.panel_2_k .panel_2_right .labss2{
+	color:#4c4c4c; 
+	text-align: right;
+}
+
+.panel_2_k .panel_2_right ul {
+	list-style-type: none;
+	height: 18px;
+	line-height: 18px;
+	padding: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 13px;
+}
+
+.panel_2_k .panel_2_right ul li{
+	display: block;
+	width: 20%;
+	color: #F2F2F2;
+	font-size: 13px;
+	float: left;
+	text-indent: 2px;
+	margin-left: 3px;
+	text-align: right;
+	
+}
+	
+/* 周期切换 */
+.panel_tab1{
+	padding-left: 0px;
+	padding-right: 0px; 
+	/* background-color: #ffffff; */
+	margin-top: 3px;
+	padding-bottom: 4px;
+}	
+	
+/* K线主图	 */
+.chart_container_k{
+	/* background-color: #ffffff; */
+}
+	
+/* 功能模块 - 指标组 */	
+.panel_zb{
+	height: 32px;
+	/* background-color: #fff; */
+	/* padding-bottom: 2px; */
+	 /* padding-left: 15px;
+	 padding-right: 15px;  */
+	 /* margin-bottom: 5px; */
+}
+
+
+.panel_zb .mui-segmented-control
+{
+     border-top: 1px solid #dfdfdf;
+	 /* border-bottom: 1px solid #dfdfdf; */
+	 
+}
+
+.panel_zb .mui-segmented-control .mui-control-item
+{
+    line-height: 18px;
+     color: #555;
+	 /* border-right: 1px solid #dfdfdf; */ 
+	 border-left: 0px; 
+	 font-size: 12px;
+	 /* font-family: 'Microsoft YaHei'; */
+	  
+}
+
+.panel_zb .mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: rgba(255,0,0,0.2);
+	  color: #000000;
+	  border-radius: 32px;
+	  font-weight: 600;
+	  font-size: 12px;
+	  border: 2px solid #fff; 
+	  /* font-family: 'Microsoft YaHei'; */
+} 
+.panel_zb .mui-segmented-control .mui-control-item.mui-active::after
+{
+	content: '';
+	width:30%;
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 2px;
+	border-bottom: 0px;  
+}
+
+
+.panel_tab2 .mui-segmented-control
+{
+     border:0px; 
+} 
+.panel_tab2 .mui-segmented-control .mui-control-item
+{
+    line-height: 22px;
+	font-size: 13px;
+	padding-top: 0px;
+ 
+}
+	
+.panel_tab2 .mui-segmented-control .mui-control-item.mui-active
+{
+	font-weight: 500;
+	border: 1px solid #ff5b4c;
+	border-radius: 0px; 
+
+}
+	
+.panel_tab2 .mui-segmented-control .mui-control-item.mui-active::after
+{
+	border-bottom: 0px;  
+}
+
+/* 底部tab样式  功能模块 */
+.panel_tab3{
+	margin-top: 46px;
+	/* background-color: #fff; */
+}	
+ 
+.panel_tab3 .mui-segmented-control
+{
+     /* border:0px; */
+	 /* border: 1px solid #ffffff; */
+	 padding-bottom: 3px;
+ 
+} 
+.panel_tab3 .mui-segmented-control .mui-control-item
+{
+    line-height: 28px;
+    /* color: #1f1f1f; */
+	font-size: 15px;
+    border-color: #007aff;
+    border-bottom: 0px solid #d1d1d1;
+	
+	
+}
+	
+.panel_tab3 .mui-segmented-control .mui-control-item.mui-active
+{    
+	font-weight: 800;
+	font-size: 17px;
+	  
+}
+
+.panel_tab3 .mui-segmented-control .mui-control-item.mui-active::after
+{
+	content: '';
+	width:40%;
+	display: block;
+	margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+} 
+
+/* 漂浮的放大缩小按钮 */ 
+.btn_fdsx{
+	 position: fixed; 
+	 top: 380px;
+	 left: 30px; 
+	 height: 20px;
+	 width: 140px; 
+	 font-size: 20px;  
+	 z-index: 100; 
+	 text-align: center;
+}
+
+.btn_fdsx .sp{
+	font-size: 20px;
+	width: 30px;
+	color: rgba(255,0,0,0.15);
+}
+
+.btn_fdsx .sp:active{
+ 
+	color: #ff0000;
+}
+
+/*===================================================================================================*/
+/* 主力图功能 dpz-4.html*/
+/*===================================================================================================*/
+
+
+/* 主力图	 */
+.chart_container_zlt{
+	/* background-color: #ffffff; */
+	width: 100%;
+	height: 550px;
+	margin-top: 2px;
+} 
+
+/* 实时报价 */
+.panel_2_zlt {
+    height: 70px;
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-top: 3px;
+    border-bottom: 0;
+	/* background-color: #ffffff; */
+	margin-top: 45px;
+}
+
+.panel_2_zlt .panel_2_left {
+    float: left;
+    width: 25%;
+    /* height: 70px; */
+    color: #ff3333;
+    font-family: tahoma;
+}
+
+.panel_2_zlt .panel_2_left .panel_2_left_1{
+	font-size: 26px;
+	padding-top: 7px;
+	padding-left: 0px;
+	text-align: center;
+	height: 33px;
+}
+
+.panel_2_zlt .panel_2_left .panel_2_left_2{
+	font-size: 14px;
+	text-align: center;
+	padding-top: 2px;
+	padding-left: 0px;
+	height: 18px;
+	color: #ff3333;
+}
+
+.panel_2_zlt .panel_2_right {
+    float: left;
+    padding-top: 0px;
+    /* height: 72px; */
+	width: 75%;
+}
+
+.panel_2_zlt .panel_2_right .labss{
+	/* color:#4c4c4c; */
+	font-size: 13px;
+	width:10%;
+	/* text-align: center; */
+}
+
+.panel_2_zlt .panel_2_right .labss2{
+	/* color:#4c4c4c; */
+	text-align: right;
+}
+
+.panel_2_zlt .panel_2_right ul {
+	list-style-type: none;
+	height: 18px;
+	line-height: 18px;
+	padding: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 13px;
+}
+
+.panel_2_zlt .panel_2_right ul li{
+	display: block;
+	width: 20%;
+	/* color: #000000; */
+	font-size: 13px;
+	float: left;
+	text-indent: 2px;
+	margin-left: 3px;
+	text-align: right;
+	
+}
+
+
+/*===================================================================================================*/
+/* 风向标功能 dpz-5.html*/
+/*===================================================================================================*/
+/* 风向标	 */
+.chart_container_fxb{
+	/* background-color: #ffffff; */
+	width: 100%;
+	height: 550px;
+	margin-top: 2px;
+} 
+
+/* 实时报价 */
+.panel_2_fxb {
+    height: 70px;
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-top: 3px;
+    border-bottom: 0;
+	/* background-color: #ffffff; */
+	margin-top: 45px;
+}
+
+.panel_2_fxb .panel_2_left {
+    float: left;
+    width: 25%;
+    /* height: 70px; */
+    color: #ff3333;
+    /* font-family: tahoma; */
+}
+
+.panel_2_fxb .panel_2_left .panel_2_left_1{
+	font-size: 26px;
+	padding-top: 7px;
+	padding-left: 0px;
+	text-align: center;
+	height: 33px;
+}
+
+.panel_2_fxb .panel_2_left .panel_2_left_2{
+	font-size: 14px;
+	text-align: center;
+	padding-top: 2px;
+	padding-left: 0px;
+	height: 18px;
+	color: #ff3333;
+}
+
+.panel_2_fxb .panel_2_right {
+    float: left;
+    padding-top: 0px;
+    /* height: 72px; */
+	width: 75%;
+}
+
+.panel_2_fxb .panel_2_right .labss{
+	/* color:#4c4c4c; */
+	font-size: 13px;
+	width:10%;
+	/* text-align: center; */
+}
+
+.panel_2_fxb .panel_2_right .labss2{
+	/* color:#4c4c4c; */
+	text-align: right;
+}
+
+.panel_2_fxb .panel_2_right ul {
+	list-style-type: none;
+	height: 18px;
+	line-height: 18px;
+	padding: 0px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 13px;
+}
+
+.panel_2_fxb .panel_2_right ul li{
+	display: block;
+	width: 20%;
+	/* color: #000000; */
+	font-size: 13px;
+	float: left;
+	text-indent: 2px;
+	margin-left: 3px;
+	text-align: right;
+	
+}
+
+
+
+
+

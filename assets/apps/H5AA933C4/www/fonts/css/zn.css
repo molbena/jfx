@@ -1,0 +1,625 @@
+.top_panel_lh {
+    position:fixed;
+	width: 100%;
+    top: 0px;
+    height: 36px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+
+.chart_container_lh {
+    position: fixed;
+    width: 100%;
+    top: 32px;
+    height: 1600px;
+    background-color: #000000;
+}
+
+.top_panel_lh .lh_p01
+{   
+	background-image: url('../images/shuaxin.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	float: left;
+	width: 30%;
+	text-align: right; 
+	margin-top: 4px;
+	margin-left: 3%;
+	height: 100%;
+	color: #F8C301;
+	font-size: 15px;
+}
+
+.top_panel_name {
+    position:fixed; 
+	width: 100%;
+    top: 0px;
+	color: #999;
+	text-align: center;
+	padding-top: 9px;
+    height: 36px;
+    border-bottom: 0;
+    background-color: #0F140E;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+.top_panel {
+    position:fixed;
+     
+	width: 100%;
+    top: 33px;
+ 
+    height: 48px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+
+.top_panel .top_p00{   
+	
+	position:fixed;
+	width: 30%;
+	text-align: right;
+	left: 0%;
+	top: 41px;
+	height: 100%;
+	font-size: 19px;
+	color: #EEEEEE;
+	letter-spacing: 3px;
+	
+}
+
+.top_panel .top_p01{   
+	position:fixed;
+	width: 20%;
+	 
+	left: 30%;
+	top: 46px;
+	text-align: left;
+	padding-right: 0px;
+	height: 100%;
+	color: #666;
+	font-size: 13px;
+}
+
+.top_panel .top_p02{  
+	position:fixed;
+	width: 20%;
+	left: 50%;
+	top: 46px;
+	text-align: right;
+	padding-right: 0px;
+	height: 100%;
+	color: #666;
+	font-size: 13px;
+}
+
+
+.top_panel .top_p03{   
+	position:fixed;
+	width: 30%;
+	left: 70%;
+	top: 41px;
+	text-align: right;
+	height: 100%;
+	color: #EEEEEE;
+	 
+}
+
+.table_panel {
+    position:fixed;
+	width: 100%;
+    top: 82px;
+    height: 514px;
+    border-bottom: 0;
+    background-color: #0F140E;
+	overflow-x: auto;
+	overflow-y: auto;
+	scrollbar-face-color: #20a774;
+	/*移动滑块颜色*/
+	scrollbar-shadow-color: #20a774;
+	/*移动滑块边框颜色*/
+	scrollbar-track-color: #ccc;
+	/*背景颜色*/
+	scrollbar-arrow-color: #ddd;
+	/*箭头颜色*/
+}
+
+#hqtable {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    width: 100%;
+	background-color: #0F140E;
+ 
+}
+
+#hqtable td {
+    font-size: 15px;
+    text-align: left;
+    border-right: 1px solid #222;
+    padding: 6px 7px 6px 7px;
+    border-bottom: 1px solid #333;
+    color: #cccc00;
+    background-color: #0F140E;
+
+    font-family: tahoma;
+    height: 28px;
+}
+
+#hqtable th {
+    font-size: 15px;
+    text-align: left;
+    color: #ccc;
+    border-right: 0px solid #FF3333;
+    padding: 6px 7px 6px 7px;
+    border-bottom: 0px dashed #555;
+    font-family: tahoma;
+    background-color: #444;
+    font-weight: normal;
+}
+
+#hqtable tr:hover td {
+    color: #FFFF00;
+    background-color: #CF2D28;
+    border-bottom: 1px solid #660000;
+    cursor: pointer;
+}
+
+/*===================================================================================================*/
+/* 标准tab*/
+/*===================================================================================================*/
+.mui-segmented-control
+{
+     /* border:0px; */
+	 /* border: 1px solid #fff; */
+	 /* border-top: 1px solid #f2d1d2; */
+	 /* background-color: #fff; */
+	 padding-bottom: 0px;
+	  
+}
+
+.mui-segmented-control .mui-control-item
+{
+     line-height: 32px;
+     color: #555;
+	 border-right: 0px;  
+	 border-left: 0px; 
+	 padding-top: 3px;
+	 font-size: 14px;
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      /* background-color: #fff; */
+	  /* color: #ff2407; */
+	  /* font-size: 16px; */
+	  font-weight: 600;
+} 
+ 
+.mui-segmented-control .mui-control-item.mui-active::after
+{
+    content: '';
+    width:30%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+}
+
+/*===================================================================================================*/
+/* 底部tab样式  功能模块 */
+.panel_zx_tab1{
+	margin-top: 3px;
+	/* background-color: #fff; */
+}	
+ 
+.panel_zx_tab1 .mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #ffffff;
+	 padding-bottom: 3px;
+ 
+} 
+.panel_zx_tab1 .mui-segmented-control .mui-control-item
+{
+    line-height: 33px;
+    color: #1f1f1f;
+	font-size: 15px;
+    border-color: #007aff;
+    border-bottom: 0px solid #d1d1d1;
+	
+}
+	
+.panel_zx_tab1 .mui-segmented-control .mui-control-item.mui-active
+{    
+	font-weight: 600;
+}
+
+.panel_zx_tab1 .mui-segmented-control .mui-control-item.mui-active::after
+{
+	content: '';
+	width:40%;
+	display: block;
+	margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+} 
+
+/*===================================================================================================*/
+/*  zn-5.html  内参  */
+/*===================================================================================================*/
+
+.mui-table-view{
+	top:2px;
+	
+}
+.mui-table-view .mui-table-view-cell {
+	padding-top:6px;
+	margin-bottom: 6px;
+	padding-left: 10px;
+	margin-left: 18px;
+	padding-right: 15px;
+	font-size:13px;
+	color: #333;
+	line-height: 25px;
+	border-left: 1px dashed #868686;  
+	
+	/* font-family: "microsoft yahei"; */
+}
+
+
+.mui-badge{
+	margin-top: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	font-size: 14px;
+	/* background-color: #f5f5f5; */
+	/* font-family: "microsoft yahei"; */
+}
+.lef{
+	float: right;
+}
+.rig{
+	float: left; 
+	margin-right: 10px;
+	/* background-color: #FD482C;
+	color: #fff; */
+	border-radius: 42px;
+}
+.zx-content{
+	margin-top: 0px; 
+}
+
+
+/*===================================================================================================*/
+/* 题材发现 zn-4.html*/
+/*===================================================================================================*/
+/* 底部tab样式  功能模块 */
+.panel_zn4_top{
+	margin-top: 2px;
+	height: 38px;
+	background-color: #ffffff;
+}	
+
+.panel_zn4_top .pleft1{
+	width: 80px;
+	height: 30px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 6px;
+}	
+
+.panel_zn4_top .pleft2{
+	width: 80px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 9px;
+	font-size: 14px;
+}	
+
+.panel_zn4_top .pright1{
+	width: 80px;
+	height: 30px;
+	float: right;
+	padding-top: 6px;
+}	
+.panel_zn4_top .pright2{
+	width: 80px;
+	float: right;
+	padding-top: 9px;
+	font-size: 14px;
+	text-align: right;
+	padding-right: 20px;
+}	
+
+
+.panel_zn4_cc{
+	margin-top: 3px;
+	width: 100%;
+	height: 260px; 
+}	
+.panel_zn4_mid{
+	margin-top: 3px;
+	width: 100%;
+	background-color: #eeeeee;
+	height: 36px; 
+}	
+
+.panel_zn4_mid .pleft1{
+	width: 80px;
+	height: 30px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 6px;
+}	
+
+.panel_zn4_mid .pleft2{
+	width: 80px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 9px;
+	font-size: 14px;
+}	
+
+.panel_zn4_wt{
+	margin-top: 3px;
+	width: 100%;
+	/* background-color: #007aff; */
+	height: 400px; 
+}	
+
+/*===================================================================================================*/
+/* 量化交易 zn-3.html*/
+/*===================================================================================================*/
+
+.panel_1 {
+    right: 0;
+    left: 0;
+    height: 38px;
+ 	padding-top: 4px;
+ 	background-color: #ffffff;
+ 	position:fixed;
+ 	top:0px; 
+	z-index: 100;  
+ }
+ 
+ .panel_1 .panel_1_left{
+ 	float: left;
+ 	width:10%;
+ 	padding-left: 15px;
+ 	text-align: left;
+ 	color: #555;
+	padding-top: 5px;
+ }
+ 
+ .panel_1 .panel_1_left:active{
+ 	color: #ff2407;
+ }
+ 
+ .panel_1 .panel_1_mid1{
+ 	width:15%;
+ 	float: left;
+ 	text-align: right;
+ 	padding-top: 8px;
+ 	color: #5a5a5a;
+ }
+ 
+ /* 代码和最新时间 */
+ .panel_1 .panel_1_mid2{
+  	width:50%;
+  	float: left;
+  	text-align: center;
+  	padding-top: 5px;
+  	font-size: 18px;
+  }
+ .panel_1 .panel_1_mid2 .panel_1_mid2_t{
+   	font-size: 18px;
+ 	padding-bottom: 0px;
+ }
+ .panel_1 .panel_1_mid2 .panel_1_mid2_b{
+   	font-size: 12px;
+ 	color: #888;
+ }
+   
+  
+  .panel_1 .panel_1_mid3{
+  	width:15%;
+  	float: left;
+  	text-align: left;
+  	padding-top: 8px;
+  	color: #5a5a5a;
+  }
+  
+  .panel_1 .panel_1_right{
+  	width:10%;
+  	float: right;
+  	padding-right: 20px;
+  	text-align: right;
+  	color: #555;
+ 	padding-top: 5px;
+  }
+  .panel_1 .panel_1_right:active{
+  	color: #ff2407;
+  }
+  
+  
+  
+  
+  .panel_lh_hang{
+      width: 100%;
+  	  height: 260px; 
+  	  margin-top:3px;
+  }
+  
+  .panel_lh_1{
+  	float: left; 
+  	height:260px;
+  	width: 100%;
+  	/* background-color: #fff; */
+  	margin-left: 0%;
+  	 
+  } 
+  
+  .panel_lh_2{
+  	float: left;
+  	height:260px;
+  	width: 100%;
+  	/* background-color: #f9f9f8; */
+  	margin-left:0%;
+  } 
+  
+  
+/* 周期切换 */
+.panel_tab1{
+	padding-left: 0px;
+	padding-right: 0px; 
+	/* background-color: #ffffff; */
+	margin-top: 40px;
+	margin-bottom:2px;
+}	  
+  
+
+/* AI功能 */
+ .panel_ai_hang{
+      width: 100%;
+  	  height: 180px; 
+  	  margin-top:3px;
+  }
+  
+  .panel_ai_1{
+  	float: left; 
+  	height:180px;
+  	width: 50%;
+  	/* background-color: #fff; */
+  	margin-left: 0%;
+  	 
+  } 
+  
+  .panel_ai_2{
+  	float: left;
+  	height:180px;
+  	width: 50%;
+  	/* background-color: #f7f7f6; */
+  	margin-left:0%;
+  } 
+  
+  
+  .panel_ai_top{
+  	 height: 36px;
+  	 background-color: #ffffff;
+  	 width: 100%;
+  	 padding-top: 1px;
+  	  margin-top: 0px;
+   
+  }
+  
+  .panel_zn4_top .btn1{
+  	 height: 28px;
+  	 width: 80px;
+  	 padding-top: 3px;
+  	 font-size: 15px;
+  	 margin-top: 3px;
+  	 margin-left: 4px;
+  	 float: left;
+  	 /* background-color: #F23038; */
+  }
+  
+  .panel_zn4_top .btn1:active{
+  	background-color: #ffaa00;
+  	border-color: #ffaa00;
+  }
+  
+  
+
+
+/* zn-1.html  主力图信号旗 */
+
+.panel_zn1_cc{
+	margin-top: 3px;
+	width: 100%;
+	height: 215px; 
+}	
+.panel_zn1_mid{
+	margin-top: 3px;
+	width: 100%;
+	background-color: #f5f5f5;
+	height: 36px; 
+}	
+
+.panel_zn1_mid .pleft1{
+	width: 40%;
+	height: 30px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 9px;
+	font-size: 16px;
+	text-align: right;
+	color: #999;
+}	
+
+.panel_zn1_mid .pleft2{
+	width: 60%;
+	float: left;
+	padding-left: 10px;
+	padding-top: 9px;
+	font-size: 16px;
+	text-align: left;
+}	
+
+.panel_zn1_bot{
+	margin-top: 0px;
+	width: 100%;
+	/* background-color: #007aff; 
+	height: 400px; */
+}	
+
+
+ .panel_xhq_hang{
+      width: 100%;
+  	  /* height: 180px; */ 
+  	  margin-top:3px;
+  }
+  
+  .panel_xhq_1{
+  	float: left; 
+  	height:380px;
+  	width: 100%;
+  	/* background-color: #fff; */
+  	margin-left: 0%;
+  	 
+  } 
+  
+  .panel_xhq_2{
+  	margin-top: 10px;
+	float: left;
+  	height:380px;
+  	width: 100%;
+  	/* background-color: #f9f9f8; */
+  	margin-left:0%;
+  } 
+
+
+/* 漂浮的放大缩小按钮 */ 
+.btn_fdsx{
+	 position: fixed; 
+	 top: 250px;
+	 left: 30%; 
+	 height: 20px;
+	 width: 150px; 
+	 font-size: 20px;  
+	 z-index: 100; 
+	 text-align: center;
+}
+
+.btn_fdsx .sp{
+	font-size: 25px;
+	width:32px;
+	color: rgba(255,0,0,0.15);
+}
+
+.btn_fdsx .sp:active{
+ 
+	color: #ff0000;
+}
+ 
+ 

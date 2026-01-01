@@ -1,0 +1,431 @@
+.chart_container_qjt {
+    position: fixed;
+    width: 100%;
+    top: 35px;
+    height: 500px;
+    background-color: #000000;
+}
+
+.kline-head-bar0 {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    top: 0px;
+    height: 34px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+
+.kline-head-bar0 .linehead-left1{
+	float: left;
+	width:25%;
+	/* font-family: "microsoft yahei"; */
+	text-align: left;
+	font-size: 15px;
+	padding-left: 8px;
+	padding-top: 8px;
+	cursor: pointer;
+}
+.kline-head-bar0 .linehead-left1 span{
+	 
+	color: #ddd;
+}
+
+.kline-head-bar0 .linehead-left1 span:hover{
+	color: #FFff00;	
+	 
+}
+
+.kline-head-bar0 .linehead-left2{
+	float: left;
+	color: #FFEBCD;
+	width:30%;
+	/* font-family: "microsoft yahei"; */
+	text-align: left;
+	font-size: 15px;
+	padding-left: 8px;
+	padding-top: 8px;
+	cursor: pointer;
+}
+
+
+.chart_container_rd_gv {
+    position: fixed;
+    width: 100%;
+    top: 32px;
+    height: 1600px;
+    background-color: #000000;
+}
+
+.top_panel_gv {
+    position:fixed;
+	width: 100%;
+    top: 0px;
+    height: 36px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+.top_panel_gv .gv_p01
+{   
+	background-image: url('../images/shuaxin.png');
+	background-repeat: no-repeat;
+	background-position-x: right;
+	float: left;
+	width: 10%;
+	margin-top: 4px;
+	padding-left: 3%;
+	height: 100%;
+}
+.top_panel_gv .gv_p02
+{   
+	float: left;
+	width: 30%;
+	padding-top: 5px;
+	padding-left: 3%;
+	text-align: left;  
+	
+    height: 100%;
+	color: #F8C301;
+	font-size: 15px;
+}
+.top_panel_gv .gv_px
+{   
+	float: left;
+	width: 20%;
+	padding-top: 5px;
+	padding-right: 3%;
+	text-align: center;  
+	height: 100%;
+	color: #ccc;
+	font-size: 15px; 
+}
+.top_panel_gv .gv_p03
+{   
+	background-image: url('../images/shuaxin.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	float: right;
+	width: 10%;
+	margin-top: 4px;
+	padding-left: 3%;
+	height: 100%;
+}
+.top_panel_gv .gv_p04
+{   
+	float: left;
+	width: 30%;
+	padding-top: 5px;
+	padding-right: 3%;
+	text-align: right;  
+    height: 100%;
+	color: #F8C301;
+	font-size: 15px; 
+}
+
+
+.chart_container_rd_cc {
+    position: fixed;
+    width: 100%;
+    top: 32px;
+    height: 1600px;
+    background-color: #000000;
+}
+
+
+.top_panel_dxw {
+    position:fixed;
+	width: 100%;
+    top: 0px;
+    height: 36px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+
+.chart_container_dxw {
+    position: fixed;
+    width: 100%;
+    top: 36px;
+    height: 1600px;
+    background-color: #000000;
+}
+
+.top_panel_dxw .dxw_p01
+{   
+	background-image: url('../images/shuaxin.png');
+	background-repeat: no-repeat;
+	background-position-x: left;
+	margin-left: 5%;
+	float: left;
+	width: 30%;
+	margin-top: 4px;
+	height: 100%;
+	text-align: left;
+	padding-left: 10%;
+	padding-top: 2px;
+	color: #F8C301;
+	font-size: 15px;
+}
+.top_panel_dxw .dxw_p02
+{   
+	float: left;
+	width: 30%;
+	padding-top: 6px;
+	text-align: center;  
+    height: 100%;
+	color: #ccc;
+	font-size: 19px;
+	letter-spacing: 2px;
+}
+
+
+
+.top_panel_dxw .dxw_p03
+{   
+	background-image: url('../images/set.png');
+	background-repeat: no-repeat;
+	background-position-x: right;
+	margin-top: 4px;
+	float: left;
+	width: 30%;
+	padding-top: 2px;
+	padding-right: 10%;
+	text-align: right;  
+    height: 100%;
+	color: #F8C301;
+	font-size: 15px;
+}
+
+/*===================================================================================================*/
+/* 标准tab*/
+/*===================================================================================================*/
+.mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #fff;
+	 /* border-top: 1px solid #f2d1d2; */
+	 background-color: #fff;
+	 padding-bottom: 0px;
+	  
+}
+
+.mui-segmented-control .mui-control-item
+{
+     line-height: 22px;
+     color: #555;
+	 border-right: 0px;  
+	 border-left: 0px; 
+	 padding-top: 3px;
+	 font-size: 14px;
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: #fff;
+	  color: #ff2407;
+	  /* font-size: 16px; */
+	  font-weight: 600;
+} 
+ 
+.mui-segmented-control .mui-control-item.mui-active::after
+{
+    content: '';
+    width:30%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+}
+
+/*===================================================================================================*/
+/* 题材发现 rd-4.html*/
+/*===================================================================================================*/
+/* 底部tab样式  功能模块 */
+.panel_tc_tab1{
+	margin-top: 3px;
+	background-color: #fff;
+}	
+ 
+.panel_tc_tab1 .mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #ffffff;
+	 padding-bottom: 3px;
+ 
+} 
+.panel_tc_tab1 .mui-segmented-control .mui-control-item
+{
+    line-height: 33px;
+    color: #1f1f1f;
+	font-size: 15px;
+    border-color: #007aff;
+    border-bottom: 0px solid #d1d1d1;
+	
+}
+	
+.panel_tc_tab1 .mui-segmented-control .mui-control-item.mui-active
+{    
+	font-weight: 600;
+}
+
+.panel_tc_tab1 .mui-segmented-control .mui-control-item.mui-active::after
+{
+	content: '';
+	width:40%;
+	display: block;
+	margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+} 
+
+/*===================================================================================================*/
+/* 全景图 rd-1.html*/
+/*===================================================================================================*/
+.panel_qjt_top{
+	 height: 36px;
+	 background-color: #ffffff;
+	 width: 100%;
+	 padding-top: 1px;
+	  margin-top: 0px;
+ 
+}
+
+.panel_qjt_top .btn1{
+	 height: 28px;
+	 width: 80px;
+	 padding-top: 3px;
+	 font-size: 15px;
+	 margin-top: 4px;
+	 margin-left: 4px;
+	 float: left;
+	 /* background-color: #F23038; */
+}
+.panel_qjt_top .btn1:active{
+	background-color: #ffaa00;
+	border-color: #ffaa00;
+}
+
+
+.panel_qjt_top .btn2{
+	 height: 28px;
+	 width: 38px;
+	 padding-top: 5px;
+	 padding-left: 10px;
+	 font-size: 14px;
+	 margin-top: 4px;
+	 margin-left: 10px;
+	 color: #1f1f1f;
+	 float: left;
+	 border-color: #fff;
+}
+
+.panel_qjt_top .btn3{
+	 height: 28px;
+	 width: 45px;
+	 padding-top: 4px;
+	 font-size: 14px;
+	 margin-top: 4px;
+	 padding-left: 8px;
+	 float: left;
+	 margin-right: 4px;
+	 /* background-color: #F23038; */
+}
+
+ 
+.panel_qjt_hang{
+      width: 100%;
+	  height: 110px; 
+	  margin-top:7px;
+}
+
+.panel_qjt_1{
+	float: left; 
+	height:110px;
+	width: 25%;
+	/* background-color: #fff; */
+	margin-left: 0%;
+	 
+} 
+
+.panel_qjt_2{
+	float: left;
+	height:110px;
+	width: 25%;
+	/* background-color: #f4f4ef; */
+	margin-left:0%;
+} 
+
+/*===================================================================================================*/
+/* 短线王 rd-2.html*/
+/*===================================================================================================*/
+
+.panel_dxw_hang{
+      width: 100%;
+	  height: 150px; 
+	  margin-top:7px;
+}
+
+.panel_dxw_1{
+	float: left; 
+	height:150px;
+	width: 33%;
+	/* background-color: #fff; */
+	margin-left: 0%;
+	 
+} 
+
+.panel_dxw_2{
+	float: left;
+	height:150px;
+	width: 33%;
+	/* background-color: #f5f5f3; */
+	margin-left:0%;
+} 
+/*===================================================================================================*/
+/* 波段王 rd-3.html*/
+/*===================================================================================================*/
+
+.panel_bdw_hang{
+      width: 100%;
+	  height: 120px; 
+	  margin-top:7px;
+}
+
+.panel_bdw_1{
+	float: left; 
+	height:120px;
+	width: 33%;
+	/* background-color: #fff; */
+	margin-left: 0%;
+	 
+} 
+
+.panel_bdw_2{
+	float: left;
+	height:120px;
+	width: 33%;
+	/* background-color: #f5f5f3; */
+	margin-left:0%;
+} 
+
+
+/* 漂浮的放大缩小按钮 */ 
+.btn_fdsx{
+	 position: fixed; 
+	 top: 250px;
+	 left: 30%; 
+	 height: 20px;
+	 width: 150px; 
+	 font-size: 20px;  
+	 z-index: 100; 
+	 text-align: center;
+}
+
+.btn_fdsx .sp{
+	font-size: 25px;
+	width:32px;
+	color: rgba(255,0,0,0.15);
+}
+
+.btn_fdsx .sp:active{
+ 
+	color: #ff0000;
+}

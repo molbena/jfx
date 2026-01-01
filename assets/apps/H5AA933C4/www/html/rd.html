@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>热点</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+		<link href="../css/page.css" rel="stylesheet" />
+	</head>
+	
+	<body id="main_bg" class="body_bg">
+		<div class="dpz_head">
+			<div class="mui-segmented-control" id="segmentedControl">
+				<a class="mui-control-item mui-active" id="tab1" data-wid="rd-1.html">全景图</a>
+				<a class="mui-control-item" id="tab2" data-wid="rd-2.html">短线王</a>
+				<a class="mui-control-item" id="tab3" data-wid="rd-3.html">波段王</a>
+				<a class="mui-control-item" id="tab4" data-wid="rd-4.html">发现题材</a>
+				<!-- <a class="mui-control-item" id="tab5" data-wid="rd-5.html">GV全景</a> -->
+
+			</div>
+
+		</div>
+
+		<script>
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				keyEventBind: {
+					backbutton: true, //Boolean(默认true)关闭back按键监听
+					swipe: true //默认为true
+					//menubutton: false //Boolean(默认true)关闭menu按键监听
+				}
+			});
+			var subwin = ['rd-1.html', 'rd-2.html', 'rd-3.html', 'rd-4.html'];
+			var activeTab = subwin[0];
+			
+			mui.plusReady(function() {
+			
+				var _self = plus.webview.currentWebview();
+				inh = _self.innerH;
+				inw = _self.innerW;
+				//alert(inh); 				
+				for (var i = 0; i < 4; i++) {
+					var sub = plus.webview.create(subwin[i], subwin[i], {
+						top: "33px",
+						width: "100%",
+						//height: inh - 107,
+						bottom: "51px",
+						popGesture: "none"
+					},{
+						innerH: inh,
+						innerW: inw
+					});
+					//wc.show("fade-in", 200);
+					if (i > 0) {
+						sub.hide();
+					}
+				}
+			
+			
+				mui(".mui-segmented-control").on("tap", ".mui-control-item", function(e) {
+					var targetTab = this.getAttribute("data-wid");
+					if (targetTab == activeTab) {
+						return;
+					} else {
+						if ( targetTab == "rd-1.html" ){
+							//全景图
+							plus.webview.hide(activeTab);
+							plus.webview.show(targetTab, "fade-in", 300);
+							activeTab = targetTab;
+						} else if ( targetTab == "rd-2.html" ){
+							//短线王 专业版  至尊版
+							mui.alert("非此版本功能", "提示", "关闭");
+							
+						} else if ( targetTab == "rd-3.html" ){
+							//波段王 专业版  至尊版
+							mui.alert("非此版本功能", "提示", "关闭");
+							
+						} else if ( targetTab == "rd-4.html" ){
+							//发现题材
+							plus.webview.hide(activeTab);
+							plus.webview.show(targetTab, "fade-in", 300);
+							activeTab = targetTab;
+							
+							var ac_page = plus.webview.getWebviewById(activeTab);
+							mui.fire(ac_page, 'begin_i');
+							
+						}   
+							
+						 
+					}
+			
+					//plus.webview.show(wid, "fade-in", 300);
+					//alert(wid);
+				});
+			
+				document.addEventListener('showactive', function(event) {
+					// alert("2");
+					plus.webview.show(activeTab, "fade-in", 100);
+					if ( activeTab == "rd-4.html" ){
+						  var ac_page = plus.webview.getWebviewById(activeTab); 
+						  mui.fire(ac_page, 'begin_i');
+					}
+			
+				});
+				document.addEventListener('hideactive', function(event) {
+					// alert("2");
+					plus.webview.hide(activeTab);
+				});
+				
+				document.addEventListener('showactive_i', function(event) {
+					 
+					var newTab; 
+					var current = document.querySelector(".mui-segmented-control>.mui-control-item.mui-active");
+					
+					var x_i = event.detail.ii;
+					if (x_i=="1"){
+						activeTab="rd-1.html";
+						newTab=document.getElementById("tab1");
+					} else if (x_i=="2"){
+						activeTab="rd-2.html";
+						newTab=document.getElementById("tab2");
+					} else if (x_i=="3"){
+						activeTab="rd-3.html";
+						newTab=document.getElementById("tab3");
+					} else if (x_i=="4"){
+						activeTab="rd-4.html";
+						newTab=document.getElementById("tab4");
+					}  
+					if (newTab !== current) {
+						current.classList.remove('mui-active');
+						newTab.classList.add('mui-active');
+					}
+					 plus.webview.show(activeTab, "fade-in", 100);
+					 
+					 if ( (activeTab == "rd-4.html")  ){
+							 var ac_page = plus.webview.getWebviewById(activeTab); 
+							 mui.fire(ac_page, 'begin_i');
+					 }
+				
+				});
+			
+			});
+		</script>
+	</body>
+</html>

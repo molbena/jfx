@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>设置</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/md5.js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/common.css" rel="stylesheet">
+		<link href="../css/home.css" rel="stylesheet" />
+ 
+
+	</head>
+
+	<body id="main_bg" style="background-color: #fff;">
+
+		<!-- 标题头 - 名称 切换品种等 -->
+		<div style="background-color:#F23038; height: 48px;">
+			<div class="nvbt iback" onclick="mui.back()"></div>
+			<div style="color: #eee;padding-top: 14px;text-align: center;margin-right: 50px;font-size: 20px;" 
+			onclick="mui.back()"> 设置 </div>
+		
+		</div>
+
+		<!-- 功能模块 -->
+		<div class="panel_tc_tab1" style="margin-top: 5px;padding: 1px 10px;">
+			<div id="segmentedControl_Set" class="mui-segmented-control">
+				<a id="Page_1" class="mui-control-item" href="#item1">全景图</a>
+				<a id="Page_2" class="mui-control-item" href="#item2">短线王</a>
+				<a id="Page_3" class="mui-control-item" href="#item3">波段王</a>
+				<a id="Page_4" class="mui-control-item" href="#item4">设置</a> 
+			</div>
+		</div>
+
+		<div style="padding: 5px 10px;">
+			<div id="item1" class="mui-control-content mui-active" style="height: 500px;">
+				 
+			    <div class="row mui-input-row">
+			    	<textarea id='code_qjt' rows="15"  placeholder="全景图代码..."></textarea>
+			    </div>
+				
+				<div>
+					<button id="btn_set1" type="button" class="mui-btn mui-btn-danger mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						更新全景图品种
+					</button>
+				</div>
+				
+				<div>
+					<button id="btn_set_mr1" type="button" class="mui-btn mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						恢复默认全景图布局
+					</button>
+				</div>
+			</div>
+
+			<div id="item2" class="mui-control-content" style="height: 500px;">
+				<div class="row mui-input-row">
+					<textarea id='code_dxw' rows="15"  placeholder="短线王代码..."></textarea>
+				</div>
+				
+				<div>
+					<button id="btn_set2" type="button" class="mui-btn mui-btn-danger mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						更新短线王品种
+					</button>
+				</div>	 
+				<div>
+					<button id="btn_set_mr2" type="button" class="mui-btn mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						恢复默认全景图布局
+					</button>
+				</div>
+			</div>
+
+			<div id="item3" class="mui-control-content" style="height: 500px;">
+				 
+				<div class="row mui-input-row">
+					<textarea id='code_bdw' rows="15"  placeholder="波段王代码..."></textarea>
+				</div>
+				
+				<div>
+					<button id="btn_set3" type="button" class="mui-btn mui-btn-danger mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						更新波段王品种
+					</button>
+				</div>	
+				<div>
+					<button id="btn_set_mr3" type="button" class="mui-btn mui-btn-block" 
+					style="height: 38px;width: 96%;margin-left: 2%;padding-top: 7px;font-size: 16px;">
+						恢复默认全景图布局
+					</button>
+				</div>
+			</div>
+			
+			<div id="item4" class="mui-control-content" style="height: 500px;">
+				 
+				 	<ul class="mui-table-view" style="line-height: 30px;">
+				 		<li class="mui-table-view-cell text_black">
+				 			屏幕长亮
+				 			<div id="on_wake" class="mui-switch mui-active">
+				 				<div class="mui-switch-handle"></div>
+				 			</div>
+				 		</li>
+				 		<li class="mui-table-view-cell text_black">
+				 			手动更新代码表
+				 			<button id="btn_gx" type="button" class="mui-btn">
+				 				更新
+				 			</button>
+				 		</li>
+						<li class="mui-table-view-cell text_black">
+							清空自选品种列表
+							<button id="btn_del_zx" type="button" class="mui-btn">
+								清空自选
+							</button>
+						</li>
+						 
+				 		<li class="mui-table-view-cell text_black">
+				 			关闭软件
+				 			<button id="btn_tc" type="button" class="mui-btn">
+				 				退出
+				 			</button>
+				 		</li> 
+				 		 
+				 		
+				 		
+				 	</ul>
+				 
+			</div>	
+
+		</div>
+
+
+		<script>
+			//定义全局变量
+			var self = null;
+			var iweb = "";
+			var ipar = "";
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				gestureConfig: {
+					swipe: true, //默认为true
+					tap: true, //默认为true
+					release: false //默认为false，不监听
+				},
+				 
+			});
+
+
+			mui.plusReady(function() {
+
+				self = plus.webview.currentWebview();
+				var self = plus.webview.currentWebview();
+				iweb = self.iwin;
+				//ipar = self.ipara;
+				
+				
+				if (iweb=="qjt"){
+					//var vpara = ipar.split(",");	 
+					//for (var i=0; i<=vpara.length-1; i++){
+                    ipar = localStorage.getItem('jfx9_qjt_pz');
+					document.getElementById("Page_1").classList.add('mui-active');
+					var vpara = ipar.replace(/,/g,"\r\n");
+					document.getElementById("code_qjt").value = vpara;
+					 
+				} else if (iweb=="dxw"){
+					ipar = localStorage.getItem('jfx9_dxw_pz');
+					var vpara = ipar.replace(/,/g,"\r\n");
+					document.getElementById("code_dxw").value = vpara;
+					
+					//document.getElementById("Page_1").classList.remove('mui-active');
+					document.getElementById("Page_2").classList.add('mui-active');	
+					document.getElementById("item1").classList.remove('mui-active');
+					document.getElementById("item2").classList.add('mui-active');
+					
+				} else if (iweb=="bdw"){
+					ipar = localStorage.getItem('jfx9_bdw_pz');
+					var vpara = ipar.replace(/,/g,"\r\n");
+					document.getElementById("code_bdw").value = vpara;
+					//document.getElementById("Page_1").classList.remove('mui-active');
+					document.getElementById("Page_3").classList.add('mui-active');
+					document.getElementById("item1").classList.remove('mui-active');
+					document.getElementById("item3").classList.add('mui-active');
+				} else if (iweb=="home"){ 	
+					
+					document.getElementById("Page_4").classList.add('mui-active');
+					document.getElementById("item1").classList.remove('mui-active');
+					document.getElementById("item4").classList.add('mui-active');
+
+				}	
+				 
+
+				//设置页面
+				//设置唤醒
+				var tjx_wakelock = localStorage.getItem('jfx9_wake');
+				if ((typeof(tjx_wakelock)!='undefined')&&(tjx_wakelock!=null)&&(tjx_wakelock!="")){
+					var cur_switch;
+					cur_switch=document.getElementById("on_wake");
+					if (tjx_wakelock=="true"){
+						 if (!cur_switch.classList.contains("mui-active"))    cur_switch.classList.add('mui-active');
+					} else {
+						 if (cur_switch.classList.contains("mui-active"))  cur_switch.classList.remove('mui-active');
+					}
+				} else {
+					if (cur_switch.classList.contains("mui-active"))  cur_switch.classList.remove('mui-active');
+				} 
+				
+				//改变唤醒
+				document.getElementById("on_wake").addEventListener('toggle',function (event) {
+					
+					if(event.detail.isActive){
+						 localStorage.setItem("jfx9_wake", "true");
+						 plus.device.setWakelock(true);
+					}else{
+						 localStorage.setItem("jfx9_wake", "false");
+						 plus.device.setWakelock(false); 
+					} 
+					
+					//alert( localStorage.getItem("jfx9_wake")  );
+					 
+				});	
+				
+				//手动更新代码表
+				
+				document.getElementById("btn_gx").addEventListener('tap',function () {
+			
+					mui.ajax({
+						url: "http://app.jfxqh.com/index.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: "scode",
+							type: "codelist"
+						},
+						type: "GET",
+						dataType: "TEXT",
+						success: function(rawData) {
+							if (rawData!=""){
+								localStorage.setItem("jfx9_codelist", rawData);
+								alert("更新成功!");
+								 
+							} else {
+								alert("抱歉，未成功，请重试一次！");
+							}	
+							
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});	
+					 
+				});	
+				
+				
+				//退出软件
+				document.getElementById("btn_tc").addEventListener('tap',function () {
+					var btn = ["确定", "取消"];
+					mui.confirm('确认退出金风向9吗？', '确认退出', btn, function(e) {
+						if(e.index == 0) {
+							plus.runtime.quit();
+						}
+					});
+					 
+				});	
+				 
+				 
+			});
+
+            //全景图
+			document.getElementById("btn_set1").addEventListener("tap", function() {
+			    var orgtext;
+				orgtext = document.getElementById("code_qjt").value;
+				//alert( orgtext);
+				var vcode = orgtext.split("\n");
+				var res = "";
+				for (var i=0; i<=vcode.length-1; i++){
+				    res = res  +","+ vcode[i];
+				}
+				if (res.length>0){
+					res = res.substr(1,res.length-1);
+				}
+				 
+				localStorage.setItem("jfx9_qjt_pz", res);
+				mui.back();
+				
+				mui.alert("全景图品种列表已设置完成，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+            //短线王
+            document.getElementById("btn_set2").addEventListener("tap", function() {
+                var orgtext;
+            	orgtext = document.getElementById("code_dxw").value;
+            	var vcode = orgtext.split("\n");
+            	var res = "";
+            	for (var i=0; i<=vcode.length-1; i++){
+            	    res = res  +","+ vcode[i];
+            	}
+            	if (res.length>0){
+            		res = res.substr(1,res.length-1);
+            	}
+            	
+            	localStorage.setItem("jfx9_dxw_pz", res);
+				mui.back();
+				mui.alert("短线王品种列表已设置完成，请刷新数据", "提醒", "关闭");
+            	
+            }) 
+			
+			
+			//波段王
+			document.getElementById("btn_set3").addEventListener("tap", function() {
+			    var orgtext;
+				orgtext = document.getElementById("code_bdw").value;
+				var vcode = orgtext.split("\n");
+				var res = "";
+				for (var i=0; i<=vcode.length-1; i++){
+				    res = res  +","+ vcode[i];
+				}
+				if (res.length>0){
+					res = res.substr(1,res.length-1);
+				}
+				
+				localStorage.setItem("jfx9_bdw_pz", res);
+				mui.back();
+				mui.alert("波段王品种列表已设置完成，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+			
+			// 
+			document.getElementById("btn_set_mr1").addEventListener("tap", function() {
+				 
+				var tmp = "rb,sc,l,p,hc,fu,v,y,i,pg,pp,OI,j,bu,SA,ni,jm,MA,FG,m,SF,eg,TA,RM,SM,eb,ru,cu";
+				localStorage.setItem("jfx9_qjt_pz", tmp);
+				mui.back();
+				mui.alert("全景图品种布局已恢复默认，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+			document.getElementById("btn_set_mr2").addEventListener("tap", function() {
+				 
+				var tmp = "rb,sc,FG,hc,fu,SA,i,pg,l,j,bu,v,jm,MA,p,SF,eg,y,SM,eb,OI,ru,TA,m,ni,pp,RM";
+				localStorage.setItem("jfx9_dxw_pz", tmp);
+				mui.back();
+				mui.alert("短线王品种布局已恢复默认，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+			document.getElementById("btn_set_mr3").addEventListener("tap", function() {
+				 
+				var tmp = "rb,sc,FG,hc,fu,SA,i,pg,l,j,bu,v,jm,MA,p,SF,eg,y,SM,eb,OI,ru,TA,m,ni,pp,RM";
+				localStorage.setItem("jfx9_bdw_pz", tmp);
+				mui.back();
+				mui.alert("波段王品种布局已恢复默认，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+			document.getElementById("btn_del_zx").addEventListener("tap", function() {
+				 
+				localStorage.setItem("jfx9_zx","");
+				mui.alert("自选列表已清空，请刷新数据", "提醒", "关闭");
+				
+			}) 
+			
+			
+			
+			mui('#segmentedControl_Set').on('tap', '.mui-control-item', function() {
+				var tyid = this.getAttribute('id');
+				var vpara
+				if (tyid == "Page_1") {
+					 ipar = localStorage.getItem('jfx9_qjt_pz');
+					 vpara = ipar.replace(/,/g,"\r\n");
+					 document.getElementById("code_qjt").value = vpara;
+					 
+				} else if (tyid == "Page_2") {
+					ipar = localStorage.getItem('jfx9_dxw_pz');
+					vpara = ipar.replace(/,/g,"\r\n");
+					document.getElementById("code_dxw").value = vpara;
+				} else if (tyid == "Page_3") {
+					ipar = localStorage.getItem('jfx9_bdw_pz');
+					vpara = ipar.replace(/,/g,"\r\n");
+					document.getElementById("code_bdw").value = vpara;
+				}  
+			
+				// alert(tyid);
+			})
+ 
+			 
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,161 @@
+.mui-content{
+	/* background-color: #fff; */
+	margin-top: 15px;
+}
+
+.mui-bar-nav
+{
+     -webkit-box-shadow: 0 0px 0px #fff;
+            box-shadow: 0 0px 0px #fff; 
+}
+ 
+.mui-slider-item span {
+	font-size: 27px;
+	color: #ff0000;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px;
+	font-weight: 500;
+}
+.mui-slider-item span:active{
+	font-size: 27px;
+	color: #ffaa00;
+}
+
+.mui-slider-item .item_color2 {
+	font-size: 27px;
+	color: #0000ff;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+
+.mui-slider-item .item_color3 {
+	font-size: 27px;
+	color: #f100f1;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+
+.mui-slider-item .item_color4 {
+	font-size: 27px;
+	color: #ff0000;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+
+.mui-slider-item .item_color5 {
+	font-size: 27px;
+	color: #ffaa00;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	margin: 0px;
+}
+
+.mui-col-5
+{
+	width: 20%;
+}
+.mui-table-view.mui-grid-view
+{
+	padding: 0;
+	/* background-color: #fff; */
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell
+{
+    padding: 6px 0 0 14px;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body
+{ 
+    margin-top: 6px;
+	margin-bottom: 12px;
+	/* color: #333; */
+}
+ 
+
+.mui-slider-indicator.mui-segmented-control {
+	/* background-color: #efeff4; */
+}
+
+.mui-slider-indicator .mui-active.mui-indicator
+{
+    background: #ff3613;
+	border: 2px solid #ff3613;
+	box-shadow: 0 0 0px 0px #ff3613;
+}
+
+ 
+
+.mui-control-content {
+	
+}
+
+.mui-control-item {
+	font-size: 15px;
+	color: black;
+   
+}
+
+.mui-scroll .mui-active {
+	font-size: 15px;
+	font-weight: 600;
+	color: black;
+ 
+}
+
+/* home页面的tab */
+.mui-segmented-control
+{
+     border: 1px solid #F23038;
+}
+
+.mui-segmented-control .mui-control-item
+{
+    line-height: 30px;
+     color: #555;
+	 border-right: 1px solid #F23038;  
+	 border-left: 0px; 
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: #F23038;
+} 
+
+ 
+.hxx {
+	font-size:13px;
+	color: #333;
+}
+
+.mui-badge{
+	margin-top: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: 5px;
+	font-size: 13px;
+	background-color: #fdfdfd;
+	/* font-family: "microsoft yahei"; */
+}
+.lef{
+	float: right;
+}
+.rig{
+	float: left; 
+	margin-right: 10px;
+	background-color: #FD482C;
+	color: #fff;
+	border-radius: 42px;
+}
+
+
+.mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body
+{
+    font-size: 12px;
+}
+
+.text_black{
+	color: #222;
+}

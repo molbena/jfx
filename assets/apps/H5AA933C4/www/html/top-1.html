@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>深度持仓</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/top.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/table.css" rel="stylesheet" />
+		<link href="../css/top.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+
+	</head>
+
+	<body id="main_bg" class="body_bg">
+
+		<!-- 标题头 - 名称 切换品种等 -->
+		<div class="panel_1 body_bg_white" id="panel_id1">
+
+			<div id="Add_ZX" class="panel_1_left">
+				<span class="mui-icon iconfont icon-zengjia" style="font-size: 22px;"></span>
+			</div>
+			<div id="go_last" class="panel_1_mid1">
+				<!-- 上一个 -->
+				<span class="mui-icon iconfont icon-zuo" style="font-size: 22px;"></span>
+			</div>
+			<div class="panel_1_mid2">
+				<div id="pz_code" class="panel_1_mid2_t">
+					螺纹钢 (rb2405)
+				</div>
+				<div id="topdat" class="panel_1_mid2_b">
+					2022-10-18
+				</div>
+
+			</div>
+			<div id="go_next" class="panel_1_mid3">
+				<!-- 下一个 -->
+				<span class="mui-icon iconfont icon-you" style="font-size: 22px;"></span>
+			</div>
+			<div id="btn_code" class="panel_1_right">
+				<span class="mui-icon iconfont icon-sousuo" style="font-size: 25px;"></span>
+			</div>
+
+		</div>
+
+		<!-- 功能模块 -->
+		<div class="panel_tc_tab1">
+			<div id="segmentedControl_CC" class="mui-segmented-control">
+				<a id="Type_CC" class="mui-control-item mui-active" href="#item1">持仓曲线</a>
+				<a id="Type_YL" class="mui-control-item" href="#item2">盈利曲线</a>
+				<a id="Type_DR" class="mui-control-item" href="#item3">当日详情</a>
+				<a id="Type_XG" class="mui-control-item" href="#item4">品种选择</a> 
+			</div>
+		</div>
+
+		<div class="body_bg_white">
+			<div id="item1" class="mui-control-content mui-active" style="height: 900px;">
+				<!-- 持仓曲线 -->
+			 
+				<div id="container" class="chart_mcc"></div>
+				<div class="btn_fdsx">
+					<span id="btn_left" class="mui-icon iconfont icon-left-circle sp"></span>
+					<span id="btn_right" class="mui-icon iconfont icon-right-circle sp"></span>
+					
+					<span id="btn_sx" class="mui-icon iconfont icon-minus-circle sp"></span>
+					<span id="btn_fd" class="mui-icon iconfont icon-plus-circle sp"></span>
+				</div>
+
+
+			</div>
+
+			<div id="item2" class="mui-control-content" style="height: 900px;">
+				<!-- 收益曲线 -->
+ 
+				<div id="container_2" class="chart_mcc"></div>
+				<div class="btn_fdsx">
+					
+					<span id="btn_left2" class="mui-icon iconfont icon-left-circle sp"></span>
+					<span id="btn_right2" class="mui-icon iconfont icon-right-circle sp"></span>
+					
+					<span id="btn_sx2" class="mui-icon iconfont icon-minus-circle sp"></span>
+					<span id="btn_fd2" class="mui-icon iconfont icon-plus-circle sp"></span>
+				</div>
+			</div>
+
+
+			<div id="item3" class="mui-control-content" style="height: 1020px;">
+				<!-- 当日详情 -->
+				<div id="bot_cc_dr" style="width:100%;height: 350px;">
+
+				</div>
+				<div id="bot_cc_dr_bd" style="width:100%;height: 350px;">
+
+				</div>
+				<div id="bot_cc_dr_bd2" style="width:100%;height: 320px;">
+
+				</div>
+			</div>
+			
+			<div id="item4" class="mui-control-content">
+				<!--选股 -->
+				<div class="wrap-tablex">
+					<div class="tablex">
+						<div class="tablex-firstcol shadow-tablex-firstcol">
+							<table>
+								<thead>
+									<tr>
+										<th id="cap_mc" class="col1">名称</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr id="br0"><td id="r0c0" class="col1"></td></tr>
+									<tr id="br1"><td id="r1c0" class="col1"></td></tr>
+									<tr id="br2"><td id="r2c0" class="col1"></td></tr>
+									<tr id="br3"><td id="r3c0" class="col1"></td></tr>
+									<tr id="br4"><td id="r4c0" class="col1"></td></tr>
+									<tr id="br5"><td id="r5c0" class="col1"></td></tr>
+									<tr id="br6"><td id="r6c0" class="col1"></td></tr>
+									<tr id="br7"><td id="r7c0" class="col1"></td></tr>
+									<tr id="br8"><td id="r8c0" class="col1"></td></tr>
+									<tr id="br9"><td id="r9c0" class="col1"></td></tr>
+									<tr id="br10"><td id="r10c0" class="col1"></td></tr>
+									<tr id="br11"><td id="r11c0" class="col1"></td></tr>
+									<tr id="br12"><td id="r12c0" class="col1"></td></tr>
+									<tr id="br13"><td id="r13c0" class="col1"></td></tr>
+									<tr id="br14"><td id="r14c0" class="col1"></td></tr>
+									<tr id="br15"><td id="r15c0" class="col1"></td></tr>
+									<tr id="br16"><td id="r16c0" class="col1"></td></tr>
+									<tr id="br17"><td id="r17c0" class="col1"></td></tr>
+									<tr id="br18"><td id="r18c0" class="col1"></td></tr>
+									<tr id="br19"><td id="r19c0" class="col1"></td></tr>
+									<tr id="br20"><td id="r20c0" class="col1"></td></tr>
+									<tr id="br21"><td id="r21c0" class="col1"></td></tr>
+									<tr id="br22"><td id="r22c0" class="col1"></td></tr>
+									<tr id="br23"><td id="r23c0" class="col1"></td></tr>
+									<tr id="br24"><td id="r24c0" class="col1"></td></tr>
+									<tr id="br25"><td id="r25c0" class="col1"></td></tr>
+									<tr id="br26"><td id="r26c0" class="col1"></td></tr>
+									<tr id="br27"><td id="r27c0" class="col1"></td></tr>
+									<tr id="br28"><td id="r28c0" class="col1"></td></tr>
+									<tr id="br29"><td id="r29c0" class="col1"></td></tr>
+									<tr id="br30"><td id="r30c0" class="col1"></td></tr>
+									<tr id="br31"><td id="r31c0" class="col1"></td></tr>
+									<tr id="br32"><td id="r32c0" class="col1"></td></tr>
+									<tr id="br33"><td id="r33c0" class="col1"></td></tr>
+									<tr id="br34"><td id="r34c0" class="col1"></td></tr>
+									<tr id="br35"><td id="r35c0" class="col1"></td></tr>
+									<tr id="br36"><td id="r36c0" class="col1"></td></tr>
+									<tr id="br37"><td id="r37c0" class="col1"></td></tr>
+									<tr id="br38"><td id="r38c0" class="col1"></td></tr>
+									<tr id="br39"><td id="r39c0" class="col1"></td></tr>
+									<tr id="br40"><td id="r40c0" class="col1"></td></tr>
+									<tr id="br41"><td id="r41c0" class="col1"></td></tr>
+									<tr id="br42"><td id="r42c0" class="col1"></td></tr>
+									<tr id="br43"><td id="r43c0" class="col1"></td></tr>
+									<tr id="br44"><td id="r44c0" class="col1"></td></tr>
+									<tr id="br45"><td id="r45c0" class="col1"></td></tr>
+									<tr id="br46"><td id="r46c0" class="col1"></td></tr>
+									<tr id="br47"><td id="r47c0" class="col1"></td></tr>
+									 <tr id="br48"><td id="r48c0" class="col1"></td></tr>
+									 <tr id="br49"><td id="r49c0" class="col1"></td></tr>
+									 <tr id="br50"><td id="r50c0" class="col1"></td></tr>
+									 <tr id="br51"><td id="r51c0" class="col1"></td></tr>
+									 <tr id="br52"><td id="r52c0" class="col1"></td></tr>
+									 <tr id="br53"><td id="r53c0" class="col1"></td></tr>
+									 <tr id="br54"><td id="r54c0" class="col1"></td></tr>
+									 <tr id="br55"><td id="r55c0" class="col1"></td></tr>
+				
+								</tbody>
+							</table>
+						</div>
+						<div class="wrap-tablex-nextcols">
+							<div class="tablex-nextcols">
+				
+				
+								<table>
+									<thead>
+										<tr>
+											<th class="col2">前十-1<span id="rnew" class="mui-icon iconfont"></span></th>
+											<th class="col3">前十-3<span id="rzf" class="mui-icon iconfont"></span></th>
+											<th class="col4">前十-5<span id="rzhenfu" class="mui-icon iconfont"></span></th>
+											<th class="col5">前十-10<span id="rtdh1" class="mui-icon iconfont"></span></th>
+											<th class="col6">前五-1<span id="rtdh2" class="mui-icon iconfont"></span></th>
+											<th class="col7">前五-3<span id="rtdh3" class="mui-icon iconfont"></span></th>
+											<th class="col8">前五-5<span id="rdh1" class="mui-icon iconfont"></span></th>
+											<th class="col9">前五-10<span id="rdh2" class="mui-icon iconfont"></span></th>
+											<th class="col10">前三-1<span id="rdh3" class="mui-icon iconfont"></span></th>
+											<th class="col11">前三-3<span id="rsh1" class="mui-icon iconfont"></span></th>
+											<th class="col12">前三-5<span id="rsh2" class="mui-icon iconfont"></span></th>
+											<th class="col13">前三-10<span id="rsh3" class="mui-icon iconfont"></span></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr  id="r0">
+											<td id="r0c1" class="col2"></td> <td id="r0c2" class="col3"></td>
+											<td id="r0c3" class="col4"></td> <td id="r0c4" class="col5"></td>
+											<td id="r0c5" class="col6"></td> <td id="r0c6" class="col7"></td>
+											<td id="r0c7" class="col8"></td> <td id="r0c8" class="col9"></td>
+											 <td id="r0c9" class="col10"></td>  <td id="r0c10" class="col11"></td>
+											  <td id="r0c11" class="col12"></td>  <td id="r0c12" class="col13"></td>
+										</tr>
+										<tr  id="r1">
+											<td id="r1c1" class="col2"></td> <td id="r1c2" class="col3"></td>
+											<td id="r1c3" class="col4"></td> <td id="r1c4" class="col5"></td>
+											<td id="r1c5" class="col6"></td> <td id="r1c6" class="col7"></td>
+											<td id="r1c7" class="col8"></td> <td id="r1c8" class="col9"></td>
+											 <td id="r1c9" class="col10"></td>  <td id="r1c10" class="col11"></td>
+											  <td id="r1c11" class="col12"></td>  <td id="r1c12" class="col13"></td>
+										</tr>
+										<tr  id="r2">
+											<td id="r2c1" class="col2"></td> <td id="r2c2" class="col3"></td>
+											<td id="r2c3" class="col4"></td> <td id="r2c4" class="col5"></td>
+											<td id="r2c5" class="col6"></td> <td id="r2c6" class="col7"></td>
+											<td id="r2c7" class="col8"></td> <td id="r2c8" class="col9"></td>
+											 <td id="r2c9" class="col10"></td>  <td id="r2c10" class="col11"></td>
+											  <td id="r2c11" class="col12"></td>  <td id="r2c12" class="col13"></td>
+										</tr>
+										<tr  id="r3">
+											<td id="r3c1" class="col2"></td> <td id="r3c2" class="col3"></td>
+											<td id="r3c3" class="col4"></td> <td id="r3c4" class="col5"></td>
+											<td id="r3c5" class="col6"></td> <td id="r3c6" class="col7"></td>
+											<td id="r3c7" class="col8"></td> <td id="r3c8" class="col9"></td>
+											 <td id="r3c9" class="col10"></td>  <td id="r3c10" class="col11"></td>
+											  <td id="r3c11" class="col12"></td>  <td id="r3c12" class="col13"></td>
+										</tr>
+										<tr  id="r4">
+											<td id="r4c1" class="col2"></td><td id="r4c2" class="col3"></td>
+											<td id="r4c3" class="col4"></td><td id="r4c4" class="col5"></td>
+											<td id="r4c5" class="col6"></td><td id="r4c6" class="col7"></td>
+											<td id="r4c7" class="col8"></td> <td id="r4c8" class="col9"></td>
+											 <td id="r4c9" class="col10"></td>  <td id="r4c10" class="col11"></td>
+											  <td id="r4c11" class="col12"></td>  <td id="r4c12" class="col13"></td>
+										</tr>
+										<tr  id="r5">
+											<td id="r5c1" class="col2"></td><td id="r5c2" class="col3"></td>
+											<td id="r5c3" class="col4"></td><td id="r5c4" class="col5"></td>
+											<td id="r5c5" class="col6"></td><td id="r5c6" class="col7"></td>
+											<td id="r5c7" class="col8"></td> <td id="r5c8" class="col9"></td>
+											 <td id="r5c9" class="col10"></td>  <td id="r5c10" class="col11"></td>
+											  <td id="r5c11" class="col12"></td>  <td id="r5c12" class="col13"></td>
+										</tr>
+										<tr  id="r6">
+											<td id="r6c1" class="col2"></td><td id="r6c2" class="col3"></td>
+											<td id="r6c3" class="col4"></td><td id="r6c4" class="col5"></td>
+											<td id="r6c5" class="col6"></td><td id="r6c6" class="col7"></td>
+											<td id="r6c7" class="col8"></td> <td id="r6c8" class="col9"></td>
+											 <td id="r6c9" class="col10"></td>  <td id="r6c10" class="col11"></td>
+											  <td id="r6c11" class="col12"></td>  <td id="r6c12" class="col13"></td>
+										</tr>
+										<tr  id="r7">
+											<td id="r7c1" class="col2"></td><td id="r7c2" class="col3"></td>
+											<td id="r7c3" class="col4"></td><td id="r7c4" class="col5"></td>
+											<td id="r7c5" class="col6"></td><td id="r7c6" class="col7"></td>
+											<td id="r7c7" class="col8"></td> <td id="r7c8" class="col9"></td>
+											 <td id="r7c9" class="col10"></td>  <td id="r7c10" class="col11"></td>
+											  <td id="r7c11" class="col12"></td>  <td id="r7c12" class="col13"></td>
+										</tr>
+										<tr  id="r8">
+											<td id="r8c1" class="col2"></td><td id="r8c2" class="col3"></td>
+											<td id="r8c3" class="col4"></td><td id="r8c4" class="col5"></td>
+											<td id="r8c5" class="col6"></td><td id="r8c6" class="col7"></td>
+											<td id="r8c7" class="col8"></td> <td id="r8c8" class="col9"></td>
+											 <td id="r8c9" class="col10"></td>  <td id="r8c10" class="col11"></td>
+											  <td id="r8c11" class="col12"></td>  <td id="r8c12" class="col13"></td>
+										</tr>
+										<tr  id="r9">
+											<td id="r9c1" class="col2"></td><td id="r9c2" class="col3"></td>
+											<td id="r9c3" class="col4"></td><td id="r9c4" class="col5"></td>
+											<td id="r9c5" class="col6"></td><td id="r9c6" class="col7"></td>
+											<td id="r9c7" class="col8"></td> <td id="r9c8" class="col9"></td>
+											 <td id="r9c9" class="col10"></td>  <td id="r9c10" class="col11"></td>
+											  <td id="r9c11" class="col12"></td>  <td id="r9c12" class="col13"></td>
+										</tr>
+										<tr  id="r10">
+											<td id="r10c1" class="col2"></td><td id="r10c2" class="col3"></td>
+											<td id="r10c3" class="col4"></td><td id="r10c4" class="col5"></td>
+											<td id="r10c5" class="col6"></td><td id="r10c6" class="col7"></td>
+											<td id="r10c7" class="col8"></td> <td id="r10c8" class="col9"></td>
+											 <td id="r10c9" class="col10"></td>  <td id="r10c10" class="col11"></td>
+											  <td id="r10c11" class="col12"></td>  <td id="r10c12" class="col13"></td>
+										</tr>
+										<tr  id="r11">
+											<td id="r11c1" class="col2"></td><td id="r11c2" class="col3"></td>
+											<td id="r11c3" class="col4"></td><td id="r11c4" class="col5"></td>
+											<td id="r11c5" class="col6"></td><td id="r11c6" class="col7"></td>
+											<td id="r11c7" class="col8"></td>  <td id="r11c8" class="col9"></td>
+											 <td id="r11c9" class="col10"></td>  <td id="r11c10" class="col11"></td>
+											  <td id="r11c11" class="col12"></td>  <td id="r11c12" class="col13"></td>
+										</tr>
+										<tr  id="r12">
+											<td id="r12c1" class="col2"></td><td id="r12c2" class="col3"></td>
+											<td id="r12c3" class="col4"></td><td id="r12c4" class="col5"></td>
+											<td id="r12c5" class="col6"></td><td id="r12c6" class="col7"></td>
+											<td id="r12c7" class="col8"></td>  <td id="r12c8" class="col9"></td>
+											 <td id="r12c9" class="col10"></td>  <td id="r12c10" class="col11"></td>
+											  <td id="r12c11" class="col12"></td>  <td id="r12c12" class="col13"></td>
+										</tr>
+										<tr  id="r13">
+											<td id="r13c1" class="col2"></td><td id="r13c2" class="col3"></td>
+											<td id="r13c3" class="col4"></td><td id="r13c4" class="col5"></td>
+											<td id="r13c5" class="col6"></td><td id="r13c6" class="col7"></td>
+											<td id="r13c7" class="col8"></td> <td id="r13c8" class="col9"></td>
+											 <td id="r13c9" class="col10"></td>  <td id="r13c10" class="col11"></td>
+											  <td id="r13c11" class="col12"></td>  <td id="r13c12" class="col13"></td>
+										</tr>
+										<tr  id="r14">
+											<td id="r14c1" class="col2"></td><td id="r14c2" class="col3"></td>
+											<td id="r14c3" class="col4"></td><td id="r14c4" class="col5"></td>
+											<td id="r14c5" class="col6"></td><td id="r14c6" class="col7"></td>
+											<td id="r14c7" class="col8"></td> <td id="r14c8" class="col9"></td>
+											 <td id="r14c9" class="col10"></td>  <td id="r14c10" class="col11"></td>
+											  <td id="r14c11" class="col12"></td>  <td id="r14c12" class="col13"></td>
+										</tr>
+										<tr  id="r15">
+											<td id="r15c1" class="col2"></td><td id="r15c2" class="col3"></td>
+											<td id="r15c3" class="col4"></td><td id="r15c4" class="col5"></td>
+											<td id="r15c5" class="col6"></td><td id="r15c6" class="col7"></td>
+											<td id="r15c7" class="col8"></td>  <td id="r15c8" class="col9"></td>
+											 <td id="r15c9" class="col10"></td>  <td id="r15c10" class="col11"></td>
+											  <td id="r15c11" class="col12"></td>  <td id="r15c12" class="col13"></td>
+										</tr>
+										<tr  id="r16">
+											<td id="r16c1" class="col2"></td><td id="r16c2" class="col3"></td>
+											<td id="r16c3" class="col4"></td><td id="r16c4" class="col5"></td>
+											<td id="r16c5" class="col6"></td><td id="r16c6" class="col7"></td>
+											<td id="r16c7" class="col8"></td>  <td id="r16c8" class="col9"></td>
+											 <td id="r16c9" class="col10"></td>  <td id="r16c10" class="col11"></td>
+											  <td id="r16c11" class="col12"></td>  <td id="r16c12" class="col13"></td>
+										</tr>
+										<tr  id="r17">
+											<td id="r17c1" class="col2"></td><td id="r17c2" class="col3"></td>
+											<td id="r17c3" class="col4"></td><td id="r17c4" class="col5"></td>
+											<td id="r17c5" class="col6"></td><td id="r17c6" class="col7"></td>
+											<td id="r17c7" class="col8"></td>  <td id="r17c8" class="col9"></td>
+											 <td id="r17c9" class="col10"></td>  <td id="r17c10" class="col11"></td>
+											  <td id="r17c11" class="col12"></td>  <td id="r17c12" class="col13"></td>
+										</tr>
+										<tr  id="r18">
+											<td id="r18c1" class="col2"></td><td id="r18c2" class="col3"></td>
+											<td id="r18c3" class="col4"></td><td id="r18c4" class="col5"></td>
+											<td id="r18c5" class="col6"></td><td id="r18c6" class="col7"></td>
+											<td id="r18c7" class="col8"></td> <td id="r18c8" class="col9"></td>
+											 <td id="r18c9" class="col10"></td>  <td id="r18c10" class="col11"></td>
+											  <td id="r18c11" class="col12"></td>  <td id="r18c12" class="col13"></td>
+										</tr>
+										<tr  id="r19">
+											<td id="r19c1" class="col2"></td> <td id="r19c2" class="col3"></td>
+											<td id="r19c3" class="col4"></td> <td id="r19c4" class="col5"></td>
+											<td id="r19c5" class="col6"></td> <td id="r19c6" class="col7"></td>
+											<td id="r19c7" class="col8"></td> <td id="r19c8" class="col9"></td>
+											 <td id="r19c9" class="col10"></td>  <td id="r19c10" class="col11"></td>
+											  <td id="r19c11" class="col12"></td>  <td id="r19c12" class="col13"></td>
+										</tr>
+										<tr  id="r20">
+											<td id="r20c1" class="col2"></td> <td id="r20c2" class="col3"></td>
+											<td id="r20c3" class="col4"></td> <td id="r20c4" class="col5"></td>
+											<td id="r20c5" class="col6"></td> <td id="r20c6" class="col7"></td>
+											<td id="r20c7" class="col8"></td>  <td id="r20c8" class="col9"></td>
+											 <td id="r20c9" class="col10"></td>  <td id="r20c10" class="col11"></td>
+											  <td id="r20c11" class="col12"></td>  <td id="r20c12" class="col13"></td>
+										</tr>
+										<tr  id="r21">
+											<td id="r21c1" class="col2"></td> <td id="r21c2" class="col3"></td>
+											<td id="r21c3" class="col4"></td> <td id="r21c4" class="col5"></td>
+											<td id="r21c5" class="col6"></td> <td id="r21c6" class="col7"></td>
+											<td id="r21c7" class="col8"></td>  <td id="r21c8" class="col9"></td>
+											 <td id="r21c9" class="col10"></td>  <td id="r21c10" class="col11"></td>
+											  <td id="r21c11" class="col12"></td>  <td id="r21c12" class="col13"></td>
+										</tr>
+										<tr  id="r22">
+											<td id="r22c1" class="col2"></td> <td id="r22c2" class="col3"></td>
+											<td id="r22c3" class="col4"></td> <td id="r22c4" class="col5"></td>
+											<td id="r22c5" class="col6"></td> <td id="r22c6" class="col7"></td>
+											<td id="r22c7" class="col8"></td>  <td id="r22c8" class="col9"></td>
+											 <td id="r22c9" class="col10"></td>  <td id="r22c10" class="col11"></td>
+											  <td id="r22c11" class="col12"></td>  <td id="r22c12" class="col13"></td>
+										</tr>
+										<tr  id="r23">
+											<td id="r23c1" class="col2"></td> <td id="r23c2" class="col3"></td>
+											<td id="r23c3" class="col4"></td> <td id="r23c4" class="col5"></td>
+											<td id="r23c5" class="col6"></td> <td id="r23c6" class="col7"></td>
+											<td id="r23c7" class="col8"></td>  <td id="r23c8" class="col9"></td>
+											 <td id="r23c9" class="col10"></td>  <td id="r23c10" class="col11"></td>
+											  <td id="r23c11" class="col12"></td>  <td id="r23c12" class="col13"></td>
+										</tr>
+										<tr  id="r24">
+											<td id="r24c1" class="col2"></td> <td id="r24c2" class="col3"></td>
+											<td id="r24c3" class="col4"></td> <td id="r24c4" class="col5"></td>
+											<td id="r24c5" class="col6"></td> <td id="r24c6" class="col7"></td>
+											<td id="r24c7" class="col8"></td>   <td id="r24c8" class="col9"></td>
+											 <td id="r24c9" class="col10"></td>  <td id="r24c10" class="col11"></td>
+											  <td id="r24c11" class="col12"></td>  <td id="r24c12" class="col13"></td>
+										</tr>
+										<tr  id="r25">
+											<td id="r25c1" class="col2"></td> <td id="r25c2" class="col3"></td>
+											<td id="r25c3" class="col4"></td> <td id="r25c4" class="col5"></td>
+											<td id="r25c5" class="col6"></td> <td id="r25c6" class="col7"></td>
+											<td id="r25c7" class="col8"></td> <td id="r25c8" class="col9"></td>
+											 <td id="r25c9" class="col10"></td>  <td id="r25c10" class="col11"></td>
+											  <td id="r25c11" class="col12"></td>  <td id="r25c12" class="col13"></td>
+										</tr>
+										<tr  id="r26">
+											<td id="r26c1" class="col2"></td> <td id="r26c2" class="col3"></td>
+											<td id="r26c3" class="col4"></td> <td id="r26c4" class="col5"></td>
+											<td id="r26c5" class="col6"></td> <td id="r26c6" class="col7"></td>
+											<td id="r26c7" class="col8"></td> <td id="r26c8" class="col9"></td>
+											 <td id="r26c9" class="col10"></td>  <td id="r26c10" class="col11"></td>
+											  <td id="r26c11" class="col12"></td>  <td id="r26c12" class="col13"></td>
+										</tr>
+										<tr  id="r27">
+											<td id="r27c1" class="col2"></td> <td id="r27c2" class="col3"></td>
+											<td id="r27c3" class="col4"></td> <td id="r27c4" class="col5"></td>
+											<td id="r27c5" class="col6"></td> <td id="r27c6" class="col7"></td>
+											<td id="r27c7" class="col8"></td> <td id="r27c8" class="col9"></td>
+											 <td id="r27c9" class="col10"></td>  <td id="r27c10" class="col11"></td>
+											  <td id="r27c11" class="col12"></td>  <td id="r27c12" class="col13"></td>
+										</tr>
+										<tr  id="r28">
+											<td id="r28c1" class="col2"></td> <td id="r28c2" class="col3"></td>
+											<td id="r28c3" class="col4"></td> <td id="r28c4" class="col5"></td>
+											<td id="r28c5" class="col6"></td> <td id="r28c6" class="col7"></td>
+											<td id="r28c7" class="col8"></td> <td id="r28c8" class="col9"></td>
+											 <td id="r28c9" class="col10"></td>  <td id="r28c10" class="col11"></td>
+											  <td id="r28c11" class="col12"></td>  <td id="r28c12" class="col13"></td>
+										</tr>
+										<tr  id="r29">
+											<td id="r29c1" class="col2"></td> <td id="r29c2" class="col3"></td>
+											<td id="r29c3" class="col4"></td> <td id="r29c4" class="col5"></td>
+											<td id="r29c5" class="col6"></td> <td id="r29c6" class="col7"></td>
+											<td id="r29c7" class="col8"></td> <td id="r29c8" class="col9"></td>
+											 <td id="r29c9" class="col10"></td>  <td id="r29c10" class="col11"></td>
+											  <td id="r29c11" class="col12"></td>  <td id="r29c12" class="col13"></td>
+										</tr>
+										<tr  id="r30">
+											<td id="r30c1" class="col2"></td> <td id="r30c2" class="col3"></td>
+											<td id="r30c3" class="col4"></td> <td id="r30c4" class="col5"></td>
+											<td id="r30c5" class="col6"></td> <td id="r30c6" class="col7"></td>
+											<td id="r30c7" class="col8"></td>  <td id="r30c8" class="col9"></td>
+											 <td id="r30c9" class="col10"></td>  <td id="r30c10" class="col11"></td>
+											  <td id="r30c11" class="col12"></td>  <td id="r30c12" class="col13"></td>
+										</tr>
+										<tr  id="r31">
+											<td id="r31c1" class="col2"></td> <td id="r31c2" class="col3"></td>
+											<td id="r31c3" class="col4"></td> <td id="r31c4" class="col5"></td>
+											<td id="r31c5" class="col6"></td> <td id="r31c6" class="col7"></td>
+											<td id="r31c7" class="col8"></td>  <td id="r31c8" class="col9"></td>
+											 <td id="r31c9" class="col10"></td>  <td id="r31c10" class="col11"></td>
+											  <td id="r31c11" class="col12"></td>  <td id="r31c12" class="col13"></td>
+										</tr>
+										<tr  id="r32">
+											<td id="r32c1" class="col2"></td> <td id="r32c2" class="col3"></td>
+											<td id="r32c3" class="col4"></td> <td id="r32c4" class="col5"></td>
+											<td id="r32c5" class="col6"></td> <td id="r32c6" class="col7"></td>
+											<td id="r32c7" class="col8"></td> <td id="r32c8" class="col9"></td>
+											 <td id="r32c9" class="col10"></td>  <td id="r32c10" class="col11"></td>
+											  <td id="r32c11" class="col12"></td>  <td id="r32c12" class="col13"></td>
+										</tr>
+										<tr  id="r33">
+											<td id="r33c1" class="col2"></td> <td id="r33c2" class="col3"></td>
+											<td id="r33c3" class="col4"></td> <td id="r33c4" class="col5"></td>
+											<td id="r33c5" class="col6"></td> <td id="r33c6" class="col7"></td>
+											<td id="r33c7" class="col8"></td> <td id="r33c8" class="col9"></td>
+											 <td id="r33c9" class="col10"></td>  <td id="r33c10" class="col11"></td>
+											  <td id="r33c11" class="col12"></td>  <td id="r33c12" class="col13"></td>
+										</tr>
+										<tr  id="r34">
+											<td id="r34c1" class="col2"></td> <td id="r34c2" class="col3"></td>
+											<td id="r34c3" class="col4"></td> <td id="r34c4" class="col5"></td>
+											<td id="r34c5" class="col6"></td> <td id="r34c6" class="col7"></td>
+											<td id="r34c7" class="col8"></td> <td id="r34c8" class="col9"></td>
+											 <td id="r34c9" class="col10"></td>  <td id="r34c10" class="col11"></td>
+											  <td id="r34c11" class="col12"></td>  <td id="r34c12" class="col13"></td>
+										</tr>
+										<tr  id="r35">
+											<td id="r35c1" class="col2"></td> <td id="r35c2" class="col3"></td>
+											<td id="r35c3" class="col4"></td> <td id="r35c4" class="col5"></td>
+											<td id="r35c5" class="col6"></td> <td id="r35c6" class="col7"></td>
+											<td id="r35c7" class="col8"></td> <td id="r35c8" class="col9"></td>
+											 <td id="r35c9" class="col10"></td>  <td id="r35c10" class="col11"></td>
+											  <td id="r35c11" class="col12"></td>  <td id="r35c12" class="col13"></td>
+										</tr>
+										<tr  id="r36">
+											<td id="r36c1" class="col2"></td> <td id="r36c2" class="col3"></td>
+											<td id="r36c3" class="col4"></td> <td id="r36c4" class="col5"></td>
+											<td id="r36c5" class="col6"></td> <td id="r36c6" class="col7"></td>
+											<td id="r36c7" class="col8"></td> <td id="r36c8" class="col9"></td>
+											 <td id="r36c9" class="col10"></td>  <td id="r36c10" class="col11"></td>
+											  <td id="r36c11" class="col12"></td>  <td id="r36c12" class="col13"></td>
+										</tr>
+										<tr  id="r37">
+											<td id="r37c1" class="col2"></td> <td id="r37c2" class="col3"></td>
+											<td id="r37c3" class="col4"></td> <td id="r37c4" class="col5"></td>
+											<td id="r37c5" class="col6"></td> <td id="r37c6" class="col7"></td>
+											<td id="r37c7" class="col8"></td> <td id="r37c8" class="col9"></td>
+											 <td id="r37c9" class="col10"></td>  <td id="r37c10" class="col11"></td>
+											  <td id="r37c11" class="col12"></td>  <td id="r37c12" class="col13"></td>
+										</tr>
+										<tr  id="r38">
+											<td id="r38c1" class="col2"></td> <td id="r38c2" class="col3"></td>
+											<td id="r38c3" class="col4"></td> <td id="r38c4" class="col5"></td>
+											<td id="r38c5" class="col6"></td> <td id="r38c6" class="col7"></td>
+											<td id="r38c7" class="col8"></td> <td id="r38c8" class="col9"></td>
+											 <td id="r38c9" class="col10"></td>  <td id="r38c10" class="col11"></td>
+											  <td id="r38c11" class="col12"></td>  <td id="r38c12" class="col13"></td>
+										</tr>
+										<tr  id="r39">
+											<td id="r39c1" class="col2"></td> <td id="r39c2" class="col3"></td>
+											<td id="r39c3" class="col4"></td> <td id="r39c4" class="col5"></td>
+											<td id="r39c5" class="col6"></td> <td id="r39c6" class="col7"></td>
+											<td id="r39c7" class="col8"></td> <td id="r39c8" class="col9"></td>
+											 <td id="r39c9" class="col10"></td>  <td id="r39c10" class="col11"></td>
+											  <td id="r39c11" class="col12"></td>  <td id="r39c12" class="col13"></td>
+										</tr>
+										<tr  id="r40">
+											<td id="r40c1" class="col2"></td> <td id="r40c2" class="col3"></td>
+											<td id="r40c3" class="col4"></td> <td id="r40c4" class="col5"></td>
+											<td id="r40c5" class="col6"></td> <td id="r40c6" class="col7"></td>
+											<td id="r40c7" class="col8"></td>  <td id="r40c8" class="col9"></td>
+											 <td id="r40c9" class="col10"></td>  <td id="r40c10" class="col11"></td>
+											  <td id="r40c11" class="col12"></td>  <td id="r40c12" class="col13"></td>
+										</tr>
+										<tr  id="r41">
+											<td id="r41c1" class="col2"></td> <td id="r41c2" class="col3"></td>
+											<td id="r41c3" class="col4"></td> <td id="r41c4" class="col5"></td>
+											<td id="r41c5" class="col6"></td> <td id="r41c6" class="col7"></td>
+											<td id="r41c7" class="col8"></td>  <td id="r41c8" class="col9"></td>
+											 <td id="r41c9" class="col10"></td>  <td id="r41c10" class="col11"></td>
+											  <td id="r41c11" class="col12"></td>  <td id="r41c12" class="col13"></td>
+										</tr>
+										<tr  id="r42">
+											<td id="r42c1" class="col2"></td> <td id="r42c2" class="col3"></td>
+											<td id="r42c3" class="col4"></td> <td id="r42c4" class="col5"></td>
+											<td id="r42c5" class="col6"></td> <td id="r42c6" class="col7"></td>
+											<td id="r42c7" class="col8"></td> <td id="r42c8" class="col9"></td>
+											 <td id="r42c9" class="col10"></td>  <td id="r42c10" class="col11"></td>
+											  <td id="r42c11" class="col12"></td>  <td id="r42c12" class="col13"></td> 
+										</tr>
+										<tr  id="r43">
+											<td id="r43c1" class="col2"></td> <td id="r43c2" class="col3"></td>
+											<td id="r43c3" class="col4"></td> <td id="r43c4" class="col5"></td>
+											<td id="r43c5" class="col6"></td> <td id="r43c6" class="col7"></td>
+											<td id="r43c7" class="col8"></td>  <td id="r43c8" class="col9"></td>
+											 <td id="r43c9" class="col10"></td>  <td id="r43c10" class="col11"></td>
+											  <td id="r43c11" class="col12"></td>  <td id="r43c12" class="col13"></td>
+										</tr>
+										<tr  id="r44">
+											<td id="r44c1" class="col2"></td> <td id="r44c2" class="col3"></td>
+											<td id="r44c3" class="col4"></td> <td id="r44c4" class="col5"></td>
+											<td id="r44c5" class="col6"></td> <td id="r44c6" class="col7"></td>
+											<td id="r44c7" class="col8"></td>  <td id="r44c8" class="col9"></td>
+											 <td id="r44c9" class="col10"></td>  <td id="r44c10" class="col11"></td>
+											  <td id="r44c11" class="col12"></td>  <td id="r44c12" class="col13"></td>
+										</tr>
+										<tr  id="r45">
+											<td id="r45c1" class="col2"></td> <td id="r45c2" class="col3"></td>
+											<td id="r45c3" class="col4"></td> <td id="r45c4" class="col5"></td>
+											<td id="r45c5" class="col6"></td> <td id="r45c6" class="col7"></td>
+											<td id="r45c7" class="col8"></td>  <td id="r45c8" class="col9"></td>
+											 <td id="r45c9" class="col10"></td>  <td id="r45c10" class="col11"></td>
+											  <td id="r45c11" class="col12"></td>  <td id="r45c12" class="col13"></td>
+										</tr>
+										<tr  id="r46">
+											<td id="r46c1" class="col2"></td> <td id="r46c2" class="col3"></td>
+											<td id="r46c3" class="col4"></td> <td id="r46c4" class="col5"></td>
+											<td id="r46c5" class="col6"></td> <td id="r46c6" class="col7"></td>
+											<td id="r46c7" class="col8"></td>  <td id="r46c8" class="col9"></td>
+											 <td id="r46c9" class="col10"></td>  <td id="r46c10" class="col11"></td>
+											  <td id="r46c11" class="col12"></td>  <td id="r46c12" class="col13"></td>
+										</tr>
+										<tr  id="r47">
+											<td id="r47c1" class="col2"></td> <td id="r47c2" class="col3"></td>
+											<td id="r47c3" class="col4"></td> <td id="r47c4" class="col5"></td>
+											<td id="r47c5" class="col6"></td> <td id="r47c6" class="col7"></td>
+											<td id="r47c7" class="col8"></td>  <td id="r47c8" class="col9"></td>
+											 <td id="r47c9" class="col10"></td>  <td id="r47c10" class="col11"></td>
+											  <td id="r47c11" class="col12"></td>  <td id="r47c12" class="col13"></td>
+										</tr>
+										
+										<tr  id="r48">
+											<td id="r48c1" class="col2"></td> <td id="r48c2" class="col3"></td>
+											<td id="r48c3" class="col4"></td> <td id="r48c4" class="col5"></td>
+											<td id="r48c5" class="col6"></td> <td id="r48c6" class="col7"></td>
+											<td id="r48c7" class="col8"></td>  <td id="r48c8" class="col9"></td>
+											 <td id="r48c9" class="col10"></td>  <td id="r48c10" class="col11"></td>
+											  <td id="r48c11" class="col12"></td>  <td id="r48c12" class="col13"></td>
+										</tr>
+										<tr  id="r49">
+											<td id="r49c1" class="col2"></td> <td id="r49c2" class="col3"></td>
+											<td id="r49c3" class="col4"></td> <td id="r49c4" class="col5"></td>
+											<td id="r49c5" class="col6"></td> <td id="r49c6" class="col7"></td>
+											<td id="r49c7" class="col8"></td> <td id="r49c8" class="col9"></td>
+											 <td id="r49c9" class="col10"></td>  <td id="r49c10" class="col11"></td>
+											  <td id="r49c11" class="col12"></td>  <td id="r49c12" class="col13"></td>
+										</tr>
+										<tr  id="r50">
+											<td id="r50c1" class="col2"></td> <td id="r50c2" class="col3"></td>
+											<td id="r50c3" class="col4"></td> <td id="r50c4" class="col5"></td>
+											<td id="r50c5" class="col6"></td> <td id="r50c6" class="col7"></td>
+											<td id="r50c7" class="col8"></td> <td id="r50c8" class="col9"></td>
+											 <td id="r50c9" class="col10"></td>  <td id="r50c10" class="col11"></td>
+											  <td id="r50c11" class="col12"></td>  <td id="r50c12" class="col13"></td>
+										</tr>
+										<tr  id="r51">
+											<td id="r51c1" class="col2"></td> <td id="r51c2" class="col3"></td>
+											<td id="r51c3" class="col4"></td> <td id="r51c4" class="col5"></td>
+											<td id="r51c5" class="col6"></td> <td id="r51c6" class="col7"></td>
+											<td id="r51c7" class="col8"></td> <td id="r51c8" class="col9"></td>
+											 <td id="r51c9" class="col10"></td>  <td id="r51c10" class="col11"></td>
+											  <td id="r51c11" class="col12"></td>  <td id="r51c12" class="col13"></td>
+										</tr>
+										<tr  id="r52">
+											<td id="r52c1" class="col2"></td> <td id="r52c2" class="col3"></td>
+											<td id="r52c3" class="col4"></td> <td id="r52c4" class="col5"></td>
+											<td id="r52c5" class="col6"></td> <td id="r52c6" class="col7"></td>
+											<td id="r52c7" class="col8"></td> <td id="r52c8" class="col9"></td>
+											 <td id="r52c9" class="col10"></td>  <td id="r52c10" class="col11"></td>
+											  <td id="r52c11" class="col12"></td>  <td id="r52c12" class="col13"></td>
+										</tr>
+										<tr  id="r53">
+											<td id="r53c1" class="col2"></td> <td id="r53c2" class="col3"></td>
+											<td id="r53c3" class="col4"></td> <td id="r53c4" class="col5"></td>
+											<td id="r53c5" class="col6"></td> <td id="r53c6" class="col7"></td>
+											<td id="r53c7" class="col8"></td> <td id="r53c8" class="col9"></td>
+											 <td id="r53c9" class="col10"></td>  <td id="r53c10" class="col11"></td>
+											  <td id="r53c11" class="col12"></td>  <td id="r53c12" class="col13"></td>
+										</tr>
+										<tr id="r54">
+											<td id="r54c1" class="col2"></td> <td id="r54c2" class="col3"></td>
+											<td id="r54c3" class="col4"></td> <td id="r54c4" class="col5"></td>
+											<td id="r54c5" class="col6"></td> <td id="r54c6" class="col7"></td>
+											<td id="r54c7" class="col8"></td> <td id="r54c8" class="col9"></td>
+											 <td id="r54c9" class="col10"></td>  <td id="r54c10" class="col11"></td>
+											  <td id="r54c11" class="col12"></td>  <td id="r54c12" class="col13"></td>
+										</tr>
+										<tr id="r55">
+											<td id="r55c1" class="col2"></td> <td id="r55c2" class="col3"></td>
+											<td id="r55c3" class="col4"></td> <td id="r55c4" class="col5"></td>
+											<td id="r55c5" class="col6"></td> <td id="r55c6" class="col7"></td>
+											<td id="r55c7" class="col8"></td> <td id="r55c8" class="col9"></td>
+											 <td id="r55c9" class="col10"></td>  <td id="r55c10" class="col11"></td>
+											  <td id="r55c11" class="col12"></td>  <td id="r55c12" class="col13"></td>
+										</tr>
+										 
+										 
+				
+									</tbody>
+								</table>
+				
+				
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+
+		</div>
+
+
+		<script>
+			//定义全局变量
+			var self = null;
+
+			var option_CC;  // 持仓曲线  盈利曲线   共用
+			var myChart_CC_1; // 持仓曲线   
+			var dom_CC_1;
+			var myChart_CC_2; //   盈利曲线
+			var dom_CC_2;
+
+			var myChart_DR1; //当日变动 - 1
+			var option_DR1;
+			var dom_DR1;
+
+			var myChart_DR2; //当日变动 - 2
+			var option_DR2;
+			var dom_DR2;
+
+			var myChart_DR3; //当日变动 - 3
+			var option_DR3;
+			var dom_DR3;
+			var Form_loaded_flag = false;
+
+
+			var Tab_CC = "Type_CC";
+			var lay;
+
+			var cc_code = "rb2501";
+			var cc_text = "";
+			var zoomStart = 60;
+			var zoomEnd = 100;
+			 
+			var rig_off = 28;
+			var mar_r = 40;
+
+			var timer_cc;
+			var timer_dr;
+			var timer_xg;
+			var i_run = 0;
+
+			//弹窗
+			var menu, mask;
+			var showMenu = false;
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				gestureConfig: {
+					swipe: true, //默认为true
+					tap: true, //默认为true
+					release: false //默认为false，不监听
+				},
+				beforeback: function() {
+					return false;
+				}
+			});
+			
+
+			mui.plusReady(function() {
+
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+				
+				var codetext = localStorage.getItem("jfx9_codelist") ;
+				var clist = JHCode_To_Code(cc_code,codetext);
+				if (clist.fullcode.length>0){
+					cc_code = clist.fullcode;
+					document.getElementById("pz_code").innerHTML = clist.nam + "(" + clist.fullcode + ")";
+				}
+				
+				 
+				//弹窗
+				// 弹窗切换品种
+				mask = mui.createMask(_closeMenu);
+				function openMenu() {
+					if (!showMenu) {
+						//侧滑菜单处于隐藏状态，则立即显示出来；显示完毕后，根据不同动画效果移动窗体；
+						menu = plus.webview.create('mpop.html', 'mpop.html', {
+							left: "0px",
+							width: "140px",
+							height: "100%",
+							opacity: "0.85"
+						}, {
+							iwin: "top_cc"
+						});
+				
+						menu.show('slide-in-left', 0, function() {});
+						mask.show(); //显示遮罩
+						showMenu = true;
+					}
+				}
+				
+				
+				function closeMenu() {
+					_closeMenu();
+					mask.close(); //关闭遮罩
+				}
+				
+				
+				function _closeMenu() {
+					if (showMenu) {
+						//关闭遮罩； //等窗体动画结束后，隐藏菜单webview，节省资源；
+						setTimeout(function() {
+							menu.hide();
+						}, 200);
+						//改变标志位
+						showMenu = false;
+					}
+				}
+				
+				//点击左上角图标，打开侧滑菜单；
+				document.getElementById("btn_code").addEventListener('tap', function() {
+					openMenu();
+				});
+				
+				
+				//主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+				window.addEventListener("swipeleft", closeMenu); //menu页面向左滑动，关闭菜单； 
+				window.addEventListener("menu:swipeleft", closeMenu);
+				
+
+			});
+			
+			document.addEventListener('begin_i', function(event) {	
+				
+				if (!Form_loaded_flag){
+					
+					if (typeof(timer_cc) != 'undefined') {
+						clearInterval(timer_cc); 
+					} 
+					LoadHQ();  
+					timer_cc = setInterval('LoadHQ()', 1200000); //20分钟 
+					
+					if (typeof(timer_dr) != 'undefined') {
+						clearInterval(timer_dr); 
+					} 
+					timer_dr = setInterval('Load_CCDR()', 1300000); //
+					
+					if (typeof(timer_xg) != 'undefined') {
+						clearInterval(timer_xg); 
+					} 
+					timer_xg = setInterval('Load_XG()', 1400000); //
+					 
+					Form_loaded_flag = true;
+				}
+				
+			});	
+			
+
+			document.getElementById("btn_fd").addEventListener("tap", function() {
+				if (zoomStart < 85) {
+					zoomStart = zoomStart + 10;
+				}
+				Draw_CC();
+
+			})
+
+			document.getElementById("btn_sx").addEventListener("tap", function() {
+				if (zoomStart > 0) {
+					zoomStart = zoomStart - 10;
+				}
+				Draw_CC();
+			})
+			
+			document.getElementById("btn_left").addEventListener("tap", function() {
+			
+				if (zoomStart > 15) {
+					zoomStart = zoomStart - 5;
+				}
+				if (zoomEnd > 15) {
+					zoomEnd = zoomEnd - 5;
+				}
+				Draw_CC();
+			})
+			
+			document.getElementById("btn_right").addEventListener("tap", function() {
+			
+				if (zoomEnd < 90) {
+					zoomStart = zoomStart + 5;
+					zoomEnd = zoomEnd + 5;
+				} else {
+					zoomEnd = 100;
+				}
+				Draw_CC();
+			})
+			
+			document.getElementById("btn_fd2").addEventListener("tap", function() {
+				if (zoomStart < 85) {
+					zoomStart = zoomStart + 10;
+				}
+				//LoadHQ();
+				Draw_CC();
+			})
+
+			document.getElementById("btn_sx2").addEventListener("tap", function() {
+				if (zoomStart > 0) {
+					zoomStart = zoomStart - 10;
+				}
+				//LoadHQ();
+				Draw_CC();
+			})
+			
+			document.getElementById("btn_left2").addEventListener("tap", function() {
+			
+				if (zoomStart > 15) {
+					zoomStart = zoomStart - 5;
+				}
+				if (zoomEnd > 15) {
+					zoomEnd = zoomEnd - 5;
+				}
+				Draw_CC();
+			})
+			
+			document.getElementById("btn_right2").addEventListener("tap", function() {
+			
+				if (zoomEnd < 90) {
+					zoomStart = zoomStart + 5;
+					zoomEnd = zoomEnd + 5;
+				} else {
+					zoomEnd = 100;
+				}
+				Draw_CC();
+			})
+			
+			document.getElementById("Add_ZX").addEventListener("tap", function() {
+				//alert(cc_code);
+				var zxcode;
+				zxcode = cc_code;
+				 
+				var savezx = localStorage.getItem("jfx9_zx");
+				var zxdata = Add_ZX(savezx ,zxcode);
+				
+				//alert(zxdata.res);
+				if (zxdata.is_con){
+					 mui.alert("提醒！自选中已存在该品种。", "金风向9提示", "关闭");
+				} else {
+					 
+					 localStorage.setItem("jfx9_zx", zxdata.res); //
+					 mui.alert("自选添加成功！", "金风向9提示", "关闭");
+				}
+			})
+			
+			document.getElementById("go_next").addEventListener("tap", function() {
+				
+				var savezx = localStorage.getItem("jfx9_codelist");
+				//alert(savezx);
+				var data2 = Go_Next(savezx ,cc_code);
+				//alert(data2.res_code); 
+				cc_code = data2.res_code.substr(0, 2);
+				document.getElementById("pz_code").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+				
+				Change_Data(); 
+			})
+			
+			document.getElementById("go_last").addEventListener("tap", function() {
+				
+				var savezx = localStorage.getItem("jfx9_codelist");
+				 
+				var data2 = Go_Last(savezx ,cc_code);
+				cc_code = data2.res_code.substr(0, 2);
+				document.getElementById("pz_code").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+				Change_Data(); 
+				 
+				 
+			})
+
+			mui('#segmentedControl_CC').on('tap', '.mui-control-item', function() {
+				var tyid = this.getAttribute('id');
+				//tab_fl = zbid;
+
+				Tab_CC = tyid;
+				if ( Tab_CC == "Type_XG" ){
+					Load_XG();
+				} else {
+					Change_Data(); 
+				}
+
+				// alert(tyid);
+			})
+
+			document.addEventListener('btn_ghcode', function(event) {
+				var gh_code = event.detail.code;
+				var gh_name = event.detail.name;
+
+				cc_code = gh_code.substr(0, 2);
+				cc_code = cc_code.replace("2", "1");
+
+				document.getElementById("pz_code").innerText = gh_name + "(" + gh_code + ")";
+
+				Change_Data(); 
+
+			});
+			
+			//自定义事件，模拟点击“其他页面转向”
+			document.addEventListener('go_other_cc', function (event) {
+				var gh_code = event.detail.code;
+				var gh_name = event.detail.name;
+				document.getElementById("pz_code").innerText = gh_name +"("+gh_code+")";
+				cc_code=gh_code;
+				
+				var dom_x = document.getElementById("container");
+				var Chart_x = echarts.getInstanceByDom(dom_x);
+				if (Chart_x === undefined) 
+				{  
+					Chart_x = echarts.init(dom_x);
+				}
+				
+				Chart_x.clear();
+				 
+				Change_Data();
+			
+				
+			});
+			
+			
+			function Change_Data(){
+				if (Tab_CC == "Type_CC") {
+					document.getElementById("container").style.width = window.innerWidth + 'px';
+							 
+					LoadHQ();
+				} else if (Tab_CC == "Type_YL") {
+					document.getElementById("container_2").style.width = window.innerWidth + 'px';
+					 
+					LoadHQ();
+				} else if (Tab_CC == "Type_DR") {
+					document.getElementById("bot_cc_dr").style.width = window.innerWidth + 'px';
+					document.getElementById("bot_cc_dr_bd").style.width = window.innerWidth + 'px';
+					document.getElementById("bot_cc_dr_bd2").style.width = window.innerWidth + 'px';
+					Load_CCDR();
+				} else if (Tab_CC == "Type_XG") {
+					Load_XG();
+				}	
+			}
+			
+			
+			//获取主要chart数据
+			function LoadHQ() {
+			 
+				
+			}
+			
+					
+			//画持仓图形 
+			function Draw_CC(){
+				 
+			}
+		
+			
+			function Load_CCDR() {
+
+			 
+			}
+
+
+			function Load_XG(){
+				 
+				 
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,218 @@
+
+ 
+.wrap-tablex {
+	width: 100%;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+.tablex {
+	/* background-color: #fff; */
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+	text-align: left;
+	padding-right: 0px;
+}
+
+td {
+	font-weight: unset;
+	padding-right: 0px;
+}
+
+.col1 {
+	width: 100%;
+	padding-left: 10px;
+}
+
+.col2 {
+	width: 100px;
+	padding-left: 10px;  
+	text-align: right;
+}
+
+.col3 {
+	width: 80px;
+	text-align: right;
+}
+
+.col4 {
+	width: 80px;
+	text-align: right;
+}
+
+.col5 {
+	width: 100px;
+	text-align: right;
+}
+
+.col6 {
+	width: 100px;
+	text-align: right;
+}
+
+.col7 {
+	width: 100px;
+	text-align: right;
+}
+.col8 {
+	width: 100px;
+	text-align: right;
+	padding-right: 10px;
+}
+.col9 {
+	width: 100px;
+	text-align: right;
+}
+.col10 {
+	width: 100px;
+	text-align: right;
+}
+.col11 {
+	width: 100px;
+	text-align: right;
+}
+.col12 {
+	width: 100px;
+	text-align: right;
+}
+
+.col13 {
+	width: 100px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+
+.tablex {
+	width: 100%;
+	position: relative;
+}
+
+.tablex th {
+	padding-top: 12px;
+	padding-bottom: 10px;
+}
+
+.tablex td {
+	/* padding-top: 8px;
+	padding-bottom: 8px; */
+}
+.tablex th {
+	/* font-family:microsoft yahei; */
+	font-size: 16px;
+	color: #222;
+	/* line-height: 1.2; */
+	text-transform: uppercase;
+}
+
+.tablex tr {
+	/* border-bottom: 1px solid #e5e5e5; */
+	 height: 38px;
+}
+
+.tablex td {
+	/* font-family:microsoft yahei; */
+	font-size: 16px;
+	/* line-height: 30px; */
+}
+
+/*==================================================================
+[ Fix col ]*/
+
+
+.tablex-firstcol {
+	/* background-color: #fff; */
+	position: absolute;
+	z-index: 1000;
+	width: 140px;
+	top: 0;
+	left: 0;
+}
+
+.tablex-firstcol table {
+	/* background-color: #fff; */
+}
+
+.wrap-tablex-nextcols {
+	width: 100%;
+	overflow: auto;
+	padding-left: 140px;
+	padding-bottom: 10px;
+	/* background-color: #fff; */
+}
+
+.tablex-nextcols table {
+	table-layout: fixed;
+}
+
+.shadow-tablex-firstcol {
+	/* box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.04);
+	 -moz-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.04);
+	-webkit-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.04);
+	-o-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.04);
+	-ms-box-shadow: 4px 0px 10px 0px rgba(0, 0, 0, 0.04);  */
+}
+
+.tablex-firstcol table {
+	background-color: transparent;
+}
+
+/*==================================================================
+[ Ver1 ]*/
+
+.tablex .tablex-firstcol td {
+	color: #333;
+}
+
+.tablex .tablex-nextcols td {
+	color: #333;
+}
+
+
+.tablex-nextcols thead span
+{
+     font-size: 12px;
+	 padding-left: 1px;
+}
+
+.tablex-nextcols tbody td:active{
+	background-color: #ffaa00;
+} 
+
+/* .tablex-nextcols tbody tr:active{
+	background-color: #ffaa00;
+} */
+
+/* .tablex-firstcol tbody tr:active{
+	background-color: #ffaa00;
+} */
+
+/* dpz-1.html */
+#popdiv{
+	position: fixed;
+	width: 0px;
+	height: 0px; 
+	/* background: red; */
+	z-index: 101; 
+	top: 400px;
+	left: 220px;
+	
+}
+
+/*移除底部或顶部三角,需要在删除此代码*/
+.mui-popover .mui-popover-arrow:after {
+	width: 0px;
+	 
+}
+
+.mui-table-view-cell
+{
+    color: #222;
+}

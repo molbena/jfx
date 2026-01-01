@@ -1,0 +1,46 @@
+.dpz_head 
+{
+    position:fixed;     
+    top: 0px;
+    height: 33px;
+	background-color:#F23038;
+	padding-top: 2px;
+}
+
+
+
+.mui-segmented-control
+{
+     border: 0px;  
+	 background-color: #F23038;
+}
+
+.mui-segmented-control .mui-control-item
+{
+    line-height: 25px;
+    color: #ffa1a3;
+    border: 0px;  
+	font-size: 15px; 
+	background-color: #F23038;
+	 
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+    background-color: #F23038;
+	color: #fff;
+	font-weight: 600;
+	font-size: 16px; 
+	/* border-bottom: 0.01rem solid rgba(239,239,239,1);  
+	 */
+} 
+
+/* .mui-segmented-control .mui-control-item.mui-active::after
+{
+    content: '';
+    width:25%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #fff;  
+ 
+} */

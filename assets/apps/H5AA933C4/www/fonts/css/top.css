@@ -1,0 +1,509 @@
+.top_panel {
+    position:fixed;
+	width: 100%;
+    top: 0px;
+    height: 37px;
+    border-bottom: 0;
+    background-color: #0F140E;
+}
+
+.top_panel .top_p01
+{   
+	float: right;
+	width: 10%;
+	padding-top: 4px;
+	 
+	padding-right: 3%;
+	text-align: left;  
+    height: 100%;
+	color: #ccc;
+	/* font-size: 14px; */
+}
+
+.top_panel .top_p02
+{  
+	float: left;
+	width: 20%;
+	text-align: right;
+    height: 100%;
+	font-size: 18px;
+	color: #EEEEEE;
+	padding-top: 6px;
+	letter-spacing: 1px;
+}
+.top_panel .top_p03
+{  
+	float: left;
+	/* background-image: url(../images/mingc.png); */
+	background-repeat: no-repeat;
+	background-position-x: center; 
+	width: 2%;
+	text-align: left;	 
+    height: 100%;
+	color: #EEEEEE;
+}
+.top_panel .top_p04
+{   
+	float: left;
+	width: 12%;
+	text-align: left;
+    height: 100%;
+	color: #EEEEEE;
+	font-size: 18px;
+	padding-top: 6px;
+	letter-spacing: 1px;
+}
+.top_panel .top_dat
+{  
+	float: left;
+	width: 30%;
+	text-align: center;
+	padding-top: 6px; 
+	height: 100%;
+	color: #ccc;
+}
+
+.top_panel .top_p06
+{   
+	float: left;
+	width: 13%;
+	text-align: right;
+	padding-right: 2%;
+    padding-top: 4px; 
+    height: 100%;
+	
+	color: #ccc;
+	
+}
+
+.top_panel .top_p07
+{   
+	float: left;
+	width: 13%;
+	text-align: right;
+	padding-right: 2%;
+    padding-top: 4px; 
+    height: 100%;
+	color: #ccc;
+	
+}
+
+.top_panel2 {
+    position: fixed;
+    z-index: 10;
+    right: 0;
+    left: 0;
+    top: 34px;
+    height: 50px;
+    background-color: #1C1F26;
+    text-align: left;
+    padding-top: 4px;
+    /* font-family: "microsoft yahei"; */
+    font-size: 18px;
+    color: peachpuff;
+}
+.top_panel2 li {
+    line-height: 20px;	
+}
+
+
+
+.chart_mgv {
+    position: fixed;
+    width: 100%;
+    top: 33px;
+    height: 500px;
+
+    background-color:#000000;
+}
+
+
+ #sshq ul {
+     list-style-type: none;
+     height: 18px;
+     line-height: 18px;
+     padding: 0px;
+     margin-top: 0px;
+     margin-bottom: 0px;
+	 margin-left: 5px;
+     font-size: 12px;
+ }
+ 
+ #sshq ul li {
+ 
+     display: block;
+     width: 88px;
+     color: #F2F2F2;
+     font-size: 11px;
+     font-family: tahoma;
+     float: left;
+     text-indent: 2px;
+     margin-left: 1px;
+ }
+ 
+ 
+ .tit{
+ 	height: 75px; 
+ 	background: url("../images/01.gif")   left top no-repeat; 
+ 	background-color: #680000; 
+ }
+ 
+ .maintxt{
+ 	height: 1200px; 
+ 	 
+ 	background-color: #1C1F26; 
+ 	line-height: 28px;
+ 	color: #FFFFFF;
+ 	font-size: 15px;
+ 	font-family: 'simsun';
+ }
+ 
+ 
+/* 设置颜色 */
+ 
+ .mainbg{
+ 	/* background-color: #f0f0f0; */
+ }
+ 
+ 
+ 
+ 
+ /* ------------------------------------------------------------------------- */
+ /* ----  深度持仓全景    --- */
+ /* ------------------------------------------------------------------------- */
+ .panel_1 {
+    
+	position:fixed;
+	top:0px; 
+	right: 0;
+    left: 0;
+    height: 51px;
+ 	padding-top: 4px;
+ 	/* background-color: #ffffff; */
+ 	z-index: 100;  
+ }
+ 
+ .panel_1 .panel_1_left{
+ 	float: left;
+ 	width:10%;
+ 	padding-left: 15px;
+ 	text-align: left;
+ 	color: #555;
+	padding-top: 10px;
+ }
+ 
+ .panel_1 .panel_1_left:active{
+ 	color: #ff2407;
+ }
+ 
+ .panel_1 .panel_1_mid1{
+ 	width:15%;
+ 	float: left;
+ 	text-align: right;
+ 	padding-top: 13px;
+ 	color: #5a5a5a;
+ }
+ 
+/* 漂浮的放大缩小按钮 */ 
+.btn_fdsx{
+	 position: fixed; 
+	 top: 250px;
+	 left: 10%; 
+	 height: 20px;
+	 width: 150px; 
+	 font-size: 20px;  
+	 z-index: 100; 
+	 text-align: center;
+}
+
+.btn_fdsx .sp{
+	font-size: 25px;
+	width:32px;
+	color: rgba(255,0,0,0.15);
+}
+
+.btn_fdsx .sp:active{
+ 
+	color: #ff0000;
+}
+ 
+ 
+/* 代码和最新时间 */
+.panel_1 .panel_1_mid2{
+ 	width:50%;
+ 	float: left;
+ 	text-align: center;
+ 	padding-top: 3px;
+ 	font-size: 18px;
+ }
+.panel_1 .panel_1_mid2 .panel_1_mid2_t{
+  	font-size: 18px;
+	padding-bottom: 0px;
+}
+.panel_1 .panel_1_mid2 .panel_1_mid2_b{
+  	font-size: 12px;
+	color: #888;
+}
+  
+ 
+ .panel_1 .panel_1_mid3{
+ 	width:15%;
+ 	float: left;
+ 	text-align: left;
+ 	padding-top: 13px;
+ 	color: #5a5a5a;
+ }
+ 
+ .panel_1 .panel_1_right{
+ 	width:10%;
+ 	float: right;
+ 	padding-right: 20px;
+ 	text-align: right;
+ 	color: #555;
+	padding-top: 10px;
+ }
+ .panel_1 .panel_1_right:active{
+ 	color: #ff2407;
+ }
+ 
+ 
+/* 深度持仓图 */
+.chart_mcc {
+    width: 100%;
+    height: 900px;
+    /* background-color:#fff; */
+	margin-top: 2px;
+}
+
+/* 获取chart Top */
+/* .chart_mcc1_top {
+    width: 100%;
+    height: 70px;
+    background-color:#fff;
+	margin-top: 2px;
+} */
+
+/*===================================================================================================*/
+/* top- 1 深度持仓的 tab选项*/
+/*===================================================================================================*/
+/* 底部tab样式  功能模块 */
+/*===================================================================================================*/
+/* 标准tab*/
+/*===================================================================================================*/
+.mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #fff;
+	 /* border-top: 1px solid #f2d1d2; */
+	 background-color: #fff;
+	 padding-bottom: 0px;
+	  
+}
+
+.mui-segmented-control .mui-control-item
+{
+     line-height: 22px;
+     color: #555;
+	 border-right: 0px;  
+	 border-left: 0px; 
+	 padding-top: 3px;
+	 font-size: 14px;
+}
+
+.mui-segmented-control .mui-control-item.mui-active
+{
+      background-color: #fff;
+	  color: #ff2407;
+	  /* font-size: 16px; */
+	  font-weight: 600;
+} 
+ 
+.mui-segmented-control .mui-control-item.mui-active::after
+{
+    content: '';
+    width:30%;
+    display: block;
+    margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+}
+/*===================================================================================================*/
+/*===================================================================================================*/
+/*===================================================================================================*/
+
+
+.panel_tc_tab1{
+	margin-top: 54px;
+	/* background-color: #fff; */
+}	
+ 
+.panel_tc_tab1 .mui-segmented-control
+{
+     /* border:0px; */
+	 border: 1px solid #ffffff;
+	 padding-bottom: 1px;
+
+} 
+.panel_tc_tab1 .mui-segmented-control .mui-control-item
+{
+    line-height: 38px;
+    /* color: #1f1f1f; */
+	font-size: 15px;
+    border-color: #007aff;
+    border-bottom: 0px solid #d1d1d1;
+	
+}
+	
+.panel_tc_tab1 .mui-segmented-control .mui-control-item.mui-active
+{    
+	font-weight: 600;
+}
+
+.panel_tc_tab1 .mui-segmented-control .mui-control-item.mui-active::after
+{
+	content: '';
+	width:40%;
+	display: block;
+	margin: 0 auto;
+	border-bottom: 2px solid #ff2407;  
+} 
+
+
+
+/* 富赢席位数据 */
+.chart_mxw {
+    width: 100%;
+    height: 700px;
+    /* background-color:#fff; */
+	margin-top: 2px;
+}
+
+/* 获取chart Top */
+.chart_mxw1_top {
+    width: 100%;
+    height: 170px;
+    /* background-color:#fff; */
+	margin-top: 2px;
+} 
+
+ 
+/*===================================================================================================*/
+/* 持仓全景图 top-3.html*/
+/*===================================================================================================*/
+.panel_ccqj_top{
+	height: 36px;
+	/* background-color: #ffffff; */
+	width: 100%;
+	padding-top: 1px;
+	margin-top: 0px;
+ 
+}
+
+.panel_ccqj_top .btn1{
+	 height: 29px;
+	 width: 80px;
+	 padding-top: 3px;
+	 font-size: 15px;
+	 margin-top: 3px;
+	 margin-left: 4px;
+	 float: left;
+	 /* border-color: #F23038; */
+	 /* background-color: #F23038; */
+}
+.panel_ccqj_top .btn1:active{
+	background-color: #ffaa00;
+	border-color: #ffaa00;
+}
+
+
+.panel_ccqj_top .btn3{
+	 height: 29px;
+	 width: 60px;
+	 padding-top: 3px;
+	 font-size: 15px;
+	 margin-top: 4px;
+	 padding-left: 8px;
+	 margin-right: 8px;
+	 /* border-color: #F23038; */
+	 /* background-color: #F23038; */
+}
+
+ 
+.panel_ccqj_hang{
+      width: 100%;
+	  height: 300px; 
+	  margin-top:10px;
+}
+
+.panel_ccqj_1{
+	float: left; 
+	height:300px;
+	width: 50%;
+	/* background-color: #ffffff; */
+	margin-left: 0%;
+	 
+} 
+
+.panel_ccqj_2{
+	float: left;
+	height:300px;
+	width: 50%;
+	/* background-color: #fffffe; */
+	margin-left:0%;
+} 
+
+/* 席位全景 */
+.panel_xwqj_hang{
+      width: 100%;
+	  height: 360px; 
+	  margin-top:10px;
+}
+
+.panel_xwqj_1{
+	float: left; 
+	height:360px;
+	width: 50%;
+	/* background-color: #ffffff; */
+	margin-left: 0%;
+	 
+} 
+
+.panel_xwqj_2{
+	float: left;
+	height:360px;
+	width: 50%;
+	/* background-color: #fffffe; */
+	margin-left:0%;
+} 
+
+/* 席位统计 选股   top-2 */
+
+.tablex-firstcol {
+	width: 70px;
+
+}
+
+.wrap-tablex-nextcols {
+	padding-left: 40px;
+}
+
+.col5 {
+	width: 80px;
+}	
+.col6 {
+	width: 80px;
+}	
+.col7 {
+	width: 80px;
+}	
+.col8 {
+	width: 80px;
+}	
+ 
+.col9 {
+	padding-right: 10px;
+}
+
+.tablex th {
+	font-size: 15px;
+	font-weight: 600;
+}

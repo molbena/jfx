@@ -1,0 +1,7286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kxian</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/kline.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js"  id="color_js"></script>
+		<script src="../js/md5.js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/dpz.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+
+	</head>
+
+	<body id="main_bg" class="body_bg" >
+
+		<!-- 标题头 - 名称 切换品种等 -->
+		<div class="panel_1 body_bg_white" id="panel_id1">
+
+			<div id="btn_add_zx" class="panel_1_left">
+				<span class="mui-icon iconfont icon-zengjia" style="font-size: 22px;"></span>
+			</div>
+			<div id="go_last"  class="panel_1_mid1">
+				<span class="mui-icon iconfont icon-zuo" style="font-size: 18px;"></span>
+			</div>
+			<div id="topcode" class="panel_1_mid2">螺纹钢 (rb2405)</div>
+			<div id="go_next" class="panel_1_mid3">
+				<span class="mui-icon iconfont icon-you" style="font-size: 18px;"></span>
+			</div>
+			<div id="btn_code" class="panel_1_right">
+				<span class="mui-icon iconfont icon-sousuo" style="font-size: 25px;"></span>
+			</div>
+
+		</div>
+
+		<!-- 功能模块 -->
+		<div class="panel_tab3">
+			<div id="segmentedControl_tab" class="mui-segmented-control">
+				<a id="tab_1" class="mui-control-item mui-active" href="#item1">技术</a>
+				<a id="tab_2" class="mui-control-item" href="#item2">Top10</a>
+				<a id="tab_3" class="mui-control-item" href="#item3">背离</a>
+				<a id="tab_4" class="mui-control-item" href="#item4">持仓</a>
+				<a id="tab_5" class="mui-control-item" href="#item5">席位</a>
+
+			</div>
+		</div>
+
+		<div class="body_bg_white">
+			<div id="item1" class="mui-control-content mui-active">
+				<!-- 技术分析 -->
+				<!-- 实时报价 -->
+				<div class="panel_2_k" id="sshq">
+					<div class="panel_2_left">
+						<div id="panel2_bj" class="panel_2_left_1">0</div>
+						<div id="panel2_zdzf" class="panel_2_left_2"> 0</div>
+
+					</div>
+					<div class="panel_2_right" id="ssbjbar">
+						<ul>
+							<li class="labss">开</li>
+							<li id="ss_jk">0</li>
+							<li class="labss">高</li>
+							<li id="ss_zg">0</li>
+							<li class="labss">量</li>
+							<li id="ss_cjl" class="labss2">0</li>
+						</ul>
+						<ul>
+							<li class="labss">昨</li>
+							<li id="ss_zj">0</li>
+							<li class="labss">低</li>
+							<li id="ss_zd">0</li>
+							<li class="labss">仓</li>
+							<li id="ss_cc" class="labss2">0</li>
+						</ul>
+
+						<ul>
+							<li class="labss">特</li>
+							<li id="ss_td">0</li>
+							<li class="labss">大</li>
+							<li id="ss_dh">0</li>
+							<li class="labss">散</li>
+							<li id="ss_sh" style="color:#FFFF00;">0</li>
+						</ul>
+
+
+					</div>
+				</div>
+
+				<!-- 放大缩小按钮 -->
+				<div class="btn_fdsx">
+					<span id="btn_left" class="mui-icon iconfont icon-left-circle sp"></span>
+					<span id="btn_right" class="mui-icon iconfont icon-right-circle sp"></span>
+
+					<span id="btn_sx" class="mui-icon iconfont icon-minus-circle sp"></span>
+					<span id="btn_fd" class="mui-icon iconfont icon-plus-circle sp"></span>
+				</div>
+
+				<!-- 周期切换 -->
+				<div class="panel_tab1 body_bg_white">
+					<div id="segmentedControl_zq" class="mui-segmented-control">
+						<a id="gozq_min1" class="mui-control-item" href="#item11">1分K</a>
+						<a id="gozq_min1_5" class="mui-control-item" href="#item12">90秒K</a>
+						<a id="gozq_min3" class="mui-control-item mui-active" href="#item13">3分K</a>
+						<a id="gozq_min5" class="mui-control-item" href="#item14">5分K</a>
+						<a id="gozq_min9" class="mui-control-item" href="#item15">9分K</a>
+						<a id="gozq_more" class="mui-control-item" href="#item16">更多
+							<span class="mui-icon iconfont icon-sanjiao1" style="font-size: 11px;"></span>
+						</a>
+					</div>
+				</div>
+				
+				
+				<div id="popover" class="mui-popover" style="width: 150px;">
+					 
+					<ul class="mui-table-view" style="width: 150px;">
+						
+						<li id="gozq_min13" class="mui-table-view-cell">
+							<a href="#">13分钟</a>
+						</li>
+						<li id="gozq_min15" class="mui-table-view-cell">
+							<a href="#">15分钟</a>
+						</li>
+						
+						<li id="gozq_min30" class="mui-table-view-cell">
+							<a href="#">30分钟</a>
+						</li>
+						<li id="gozq_min60" class="mui-table-view-cell">
+							<a href="#">60分钟</a>
+						</li>
+				
+						<li id="gozq_day" class="mui-table-view-cell">
+							<a href="#">日K</a>
+						</li>
+ 
+				
+					</ul>
+				</div>
+
+				<!-- K线和指标区域 -->
+				<div id="container" class="chart_container_k" style="width: 100%;height: 600px;"></div>
+
+				<!-- 选择各种指标模板 -->
+				<div class="panel_zb body_bg_white">
+
+					<div id="segmentedControl_mk" class="mui-segmented-control">
+						<a id="ym1" class="mui-control-item mui-active" href="#item21">龙虎战法</a>
+						<a id="ym2" class="mui-control-item" href="#item22">风云战法</a>
+						<a id="ym3" class="mui-control-item" href="#item23">资金跟庄</a>
+						<!-- <a id="ym4" class="mui-control-item" href="#item24">异动</a> -->
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+			<!-- top10页面 -->
+			<div id="item2" class="mui-control-content" style="height: 1020px;">
+				<!-- Top10分析 -->
+				<div id="container_bot2_cc1" style="width:100%;height: 350px;">
+
+				</div>
+				<div id="container_bot2_cc2" style="width:100%;height: 350px;">
+
+				</div>
+				<div id="container_bot2_cc3" style="width:100%;height: 320px;">
+
+				</div>
+			</div>
+
+			<!-- 背离图 -->
+			<div id="item3" class="mui-control-content">
+                 <!-- 背离图 -->
+                 <div id="container_bl1" style="width:100%;height: 390px;">
+                 
+                 </div>
+                 <div id="container_bl2" style="width:100%;height: 390px;margin-top: 10px;">
+                 
+                 </div>
+			</div>
+			<!-- 持仓历史 -->
+			<div id="item4" class="mui-control-content">
+				<!-- 背离图 -->
+				<div id="container_ls_cc" style="width:100%;height: 900px;">
+				
+				</div>
+			</div>
+
+            <!-- 席位数据历史 -->
+            <div id="item5" class="mui-control-content">
+                 <div id="container_ls_xw" style="width:100%;height: 700px;">
+                 
+                 </div>
+            </div>
+		</div>
+
+
+		<script>
+			var self = null;
+			var dom_k;
+			var option_k;
+			var myChart_k; //主图
+
+			//附图
+			var dom_21;
+			var myChart_21;
+			var option_21;
+			var dom_22;
+			var myChart_22;
+			var option_22;
+			var dom_23;
+			var myChart_23;
+			var option_23;
+			
+			//附图 持仓历史
+			var dom_cc;
+			var myChart_cc;
+			var option_cc;
+			//席位数据  历史
+			var dom_xw;
+			var myChart_xw;
+			var option_xw;
+			
+			//背离图
+			var dom_bl1;
+			var myChart_bl1;
+			var option_bl1;
+ 
+			var dom_bl2;
+			var myChart_bl2;
+			var option_bl2;
+
+			//定义全局变量
+			var run_count1 = 0;
+			var run_count2 = 0;
+			var zoomStart = 75;
+			var zoomEnd = 100;
+			var zoomStart_bl1 = 50;
+			var zoomEnd_bl1 = 100;
+			var gtype = 'min3';
+			var gcode = 'rb2501';
+			
+			var bztype = "";
+			var mar_l = 2;
+			var mar_r = 20;
+			var page_fl = "ym1";
+			var tab_i = "tab_1"; //技术 top10  背离  持仓
+			var rig_off = 28;
+
+			var Form_loaded_flag = false;
+			var timer_bj;
+			var timer_kx;
+			var timer_bl1;
+			var timer_bl2;
+			var timer_cc;
+			var timer_xw;
+			
+			
+			var  menu, mask;
+			var showMenu = false;
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					 return false;
+				}
+
+			});
+
+
+			mui.plusReady(function() {
+
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+				//初始化窗体大小
+				var dom = document.getElementById("container");
+				var myChart = echarts.init(dom);
+				myChart.resize();
+				
+				var codetext = localStorage.getItem("jfx9_codelist") ;
+				var clist = JHCode_To_Code(gcode,codetext);
+				if (clist.fullcode.length>0){
+					gcode = clist.fullcode;
+					document.getElementById("topcode").innerHTML = clist.nam + "(" + clist.fullcode + ")";
+				}
+				
+
+				// 弹窗切换品种
+				mask = mui.createMask(_closeMenu);
+				function openMenu() {
+					if (!showMenu) {
+						//侧滑菜单处于隐藏状态，则立即显示出来；显示完毕后，根据不同动画效果移动窗体；
+						menu = plus.webview.create('mpop.html', 'mpop.html', {
+							left: "0px",
+							width: "140px",
+							height: "100%",
+							opacity:"0.85"
+						},{
+							iwin: "dpz_kx"
+						});
+						menu.show('slide-in-left', 0, function() {}); 
+						mask.show();  //显示遮罩
+						showMenu = true;
+					}
+				}
+				
+				function closeMenu () {
+					_closeMenu();
+					mask.close(); //关闭遮罩
+				}
+				
+				function _closeMenu() {
+					if (showMenu) {
+						//关闭遮罩； //等窗体动画结束后，隐藏菜单webview，节省资源；
+						setTimeout(function() {  menu.hide();  }, 200);
+						//改变标志位
+						showMenu = false;
+					}
+				}
+				
+				//主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+				window.addEventListener("swipeleft", closeMenu); //menu页面向左滑动，关闭菜单； 
+				window.addEventListener("menu:swipeleft", closeMenu);
+
+				
+				document.getElementById("btn_code").addEventListener("tap", function() {
+					openMenu();
+				})
+				
+				
+
+			});
+			
+			document.addEventListener('begin_i', function(event) {
+				 
+				if (!Form_loaded_flag){
+					if (typeof(timer_bj) != 'undefined') {
+						clearInterval(timer_bj); 
+					} 
+					Load_BJ();
+					Timer_BJ = setInterval('Load_BJ()', 2000);
+					
+					
+					if (typeof(timer_kx) != 'undefined') {
+						clearInterval(timer_kx); 
+					} 
+					Load_K(gtype);
+					timer_kx = setInterval(function() {
+						Load_K(gtype);
+					}, 2400);
+					
+					Form_loaded_flag = true;
+				}
+			});	
+
+            
+			//localStorage.removeItem("jfx9_zx");
+			//alert(localStorage.getItem("jfx9_zx"));
+			document.getElementById("btn_add_zx").addEventListener("tap", function() {
+				var zxcode;
+				zxcode = gcode.substr(0,2);
+				zxcode = zxcode.replace("2","");
+				var savezx = localStorage.getItem("jfx9_zx");
+				var zxdata = Add_ZX(savezx ,zxcode);
+				
+				//alert(savezx);
+				 
+				//alert(zxdata.res);
+				if (zxdata.is_con){
+					 mui.alert("提醒！自选中已存在该品种。", "金风向9提示", "关闭");
+				} else {
+					 
+					 localStorage.setItem("jfx9_zx", zxdata.res); //
+					 mui.alert("自选添加成功！", "金风向9提示", "关闭");
+				}
+			})
+			 
+			
+			//更换代码后的返回事件
+			document.addEventListener('btn_ghcode', function (event) {
+				var gh_code = event.detail.code;
+				var gh_name = event.detail.name;
+				document.getElementById("topcode").innerText = gh_name +"("+gh_code+")";
+				gcode=gh_code;
+				
+				if (tab_i == "tab_1") {
+				     Load_K(gtype);
+					 Load_BJ();
+				} else if (tab_i == "tab_2") {
+					 Load_CCDR();
+					 //alert("dd");
+				} else if (tab_i == "tab_3") {
+				     Load_BL_1();
+					 Load_BL_2();
+				} else if (tab_i == "tab_4") {
+				     Load_CC_LS();  
+				} else if (tab_i == "tab_5") {
+					mui.alert("非此版本功能", "提示", "关闭");
+				      
+				}
+ 
+			});
+			
+			//自定义事件，模拟点击“其他页面转向”
+			document.addEventListener('go_other_kx', function (event) {
+				var gh_code = event.detail.code;
+				var gh_name = event.detail.name;
+				document.getElementById("topcode").innerText = gh_name +"("+gh_code+")";
+				gcode=gh_code;
+				
+				if (tab_i == "tab_1") {
+				     var dom_x = document.getElementById("container");
+				     var Chart_x = echarts.getInstanceByDom(dom_x);
+				     if (Chart_x === undefined) 
+				     {  
+				     	Chart_x = echarts.init(dom_x);
+				     }
+				     
+				     Chart_x.clear();
+					 
+					 Load_K(gtype);
+				     Load_BJ();
+ 
+					 
+				} else if (tab_i == "tab_2") {
+					 Load_CCDR();
+					  
+				} else if (tab_i == "tab_3") {
+				     //背离
+				     if (typeof(timer_bl1) != 'undefined') {
+				     	clearInterval(timer_bl1); 
+				     } 					
+				      Load_BL_1();
+				      timer_bl1 = setInterval('Load_BL_1()', 2000);
+				      
+				      if (typeof(timer_bl2) != 'undefined') {
+				      	clearInterval(timer_bl2); 
+				      } 		
+				      Load_BL_2();
+				      timer_bl2  = setInterval('Load_BL_2()', 2000);
+					  
+				} else if (tab_i == "tab_4") {
+				     Load_CC_LS();  
+				} else if (tab_i == "tab_5") {
+				     mui.alert("非此版本功能", "提示", "关闭");
+				}
+				
+			});
+			
+			/* 切换tab */
+			mui('#segmentedControl_tab').on('tap', '.mui-control-item', function() {
+				var id = this.getAttribute('id');
+				tab_i = id;
+				if (id == "tab_1") {
+                      
+				} else if (id == "tab_2") {
+					 Load_CCDR();
+					 //alert("dd");
+				} else if (id == "tab_3") {
+					//背离   
+					if (typeof(timer_bl1) != 'undefined') {
+						clearInterval(timer_bl1); 
+					} 					
+                     Load_BL_1();
+					 timer_bl1 = setInterval('Load_BL_1()', 2000);
+					 
+					 if (typeof(timer_bl2) != 'undefined') {
+					 	clearInterval(timer_bl2); 
+					 } 		
+					 Load_BL_2();
+					 timer_bl2  = setInterval('Load_BL_2()', 2000);
+					 
+				} else if (id == "tab_4") {
+                     Load_CC_LS();  
+				} else if (id == "tab_5") {
+                     mui.alert("非此版本功能", "提示", "关闭");
+				}
+
+			})
+
+			/* 切换周期 */
+			mui('#segmentedControl_zq').on('tap', '.mui-control-item', function() {
+				var zqid = this.getAttribute('id');
+				var zq;
+				zq = zqid.replace("gozq_", "");
+				Load_K(zq);
+				
+				//alert(zq);
+			})
+			
+			document.getElementById("gozq_more").addEventListener("tap", function(){
+			      mui('.mui-popover').popover('toggle');      
+				 //  mui('.mui-popover').popover('toggle', document.getElementById("gozq_min5"));
+				   
+			});
+			
+			document.getElementById("gozq_min13").addEventListener("tap", function(){
+			    Load_K("min13");   
+					mui('.mui-popover').popover('toggle');   
+			});
+			document.getElementById("gozq_min15").addEventListener("tap", function(){
+			    Load_K("min15");   
+				mui('.mui-popover').popover('toggle');   
+			});
+			document.getElementById("gozq_min30").addEventListener("tap", function(){
+			    Load_K("min30");      
+				 mui('.mui-popover').popover('toggle');   
+			});
+			document.getElementById("gozq_min60").addEventListener("tap", function(){
+			    Load_K("min60");   
+					mui('.mui-popover').popover('toggle');   
+			});
+			document.getElementById("gozq_day").addEventListener("tap", function(){
+			    Load_K("day");     
+				  mui('.mui-popover').popover('toggle');   
+			});
+
+			/* 切换指标组 */
+			mui('#segmentedControl_mk').on('tap', '.mui-control-item', function() {
+				var zbid = this.getAttribute('id');
+				page_fl = zbid;
+				Load_K("");
+				//alert(zq);
+			})
+
+			//处理报表转向k线过程
+			document.addEventListener('reporttoK', function(event) {
+				var reportcode = event.detail.code;
+				var reportname = event.detail.name;
+				//alert(reportname+' '+reportcode);
+				document.getElementById("topcode").innerText = reportname + ' ' + reportcode;
+
+				gcode = reportcode;
+				Load_BJ();
+				Load_K(gtype);
+
+			});
+
+			document.getElementById("btn_fd").addEventListener("tap", function() {
+				if (zoomStart < 91) {
+					zoomStart = zoomStart + 5;
+				}
+				Load_K(gtype);
+			})
+
+			document.getElementById("btn_sx").addEventListener("tap", function() {
+				if (zoomStart > 0) {
+					zoomStart = zoomStart - 5;
+				}
+				Load_K(gtype);
+			});
+
+			document.getElementById("btn_left").addEventListener("tap", function() {
+
+				if (zoomStart > 15) {
+					zoomStart = zoomStart - 5;
+				}
+				if (zoomEnd > 15) {
+					zoomEnd = zoomEnd - 5;
+				}
+				Load_K(gtype);
+			})
+
+			document.getElementById("btn_right").addEventListener("tap", function() {
+
+				if (zoomEnd < 90) {
+					zoomStart = zoomStart + 5;
+					zoomEnd = zoomEnd + 5;
+				} else {
+					zoomEnd = 100;
+				}
+				Load_K(gtype);
+			})
+			
+			
+			document.getElementById("go_next").addEventListener("tap", function() {
+				
+				var savezx = localStorage.getItem("jfx9_codelist");
+				var data2 = Go_Next(savezx ,gcode);
+				gcode = data2.res_code;
+				document.getElementById("topcode").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+				
+				if (tab_i == "tab_1") {
+				     Load_K(gtype);
+					 Load_BJ();
+				} else if (tab_i == "tab_2") {
+					 Load_CCDR();
+					 //alert("dd");
+				} else if (tab_i == "tab_3") {
+				     Load_BL_1();
+					 Load_BL_2();
+				} else if (tab_i == "tab_4") {
+				     Load_CC_LS();  
+				} else if (tab_i == "tab_5") {
+					mui.alert("非此版本功能", "提示", "关闭");
+				      
+				}
+			})
+			
+			document.getElementById("go_last").addEventListener("tap", function() {
+				
+				var savezx = localStorage.getItem("jfx9_codelist");
+				var data2 = Go_Last(savezx ,gcode);
+				gcode = data2.res_code;
+				document.getElementById("topcode").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+				
+				if (tab_i == "tab_1") {
+				     Load_K(gtype);
+					 Load_BJ();
+				} else if (tab_i == "tab_2") {
+					 Load_CCDR();
+					 //alert("dd");
+				} else if (tab_i == "tab_3") {
+				     Load_BL_1();
+					 Load_BL_2();
+				} else if (tab_i == "tab_4") {
+				     Load_CC_LS();  
+				} else if (tab_i == "tab_5") {
+					mui.alert("非此版本功能", "提示", "关闭");
+				      
+				}
+				 
+			})
+				
+			 
+			
+			function Load_K(type) {
+				var is_self;
+				
+				if ((typeof(self) != 'undefined') && (self != null)) {	
+					if (self.isVisible()) {
+						is_self = true;
+					} else {
+						is_self = false;
+					}
+				} else {
+					is_self = false;
+				} 
+				
+				if ( is_self ) {
+				//if ( 1 ) {	
+                    document.getElementById("container").style.width =  window.innerWidth +"px"; 
+					if (type.length > 0) gtype = type;
+					
+					if (gtype == 'min1_5') {
+						bztype = "90秒";
+					} else if (gtype == 'min1') {
+						bztype = "1分";
+					} else if (gtype == 'min3') {
+						bztype = "3分";
+					} else if (gtype == 'min5') {
+						bztype = "5分";
+					} else if (gtype == 'min9') {
+						bztype = "9分";
+					} else if (gtype == 'min13') {
+						bztype = "13分";
+					} else if (gtype == 'min15') {
+						bztype = "15分";
+					} else if (gtype == 'min30') {
+						bztype = "30分";
+					} else if (gtype == 'min60') {
+						bztype = "60分";
+					} else if (gtype == 'day') {
+						bztype = "日";
+					}
+					//$("#typeid").text(bztype);
+
+					mui.ajax({
+						url: "http://app.jfxqh.com/dpz.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: gcode,
+							type: gtype
+						},
+						type: "GET",
+						dataType: "TEXT",
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(rawData) {
+
+							var lenx;
+							var datazj = splitData_FLZJ(rawData); //分类资金
+							lenx = datazj.zijin_td.length - 1;
+
+							//设置报价
+							var v_td, v_d, v_s;
+							v_td = datazj.zijin_td[lenx];
+							v_d = datazj.zijin_d[lenx];
+							v_s = datazj.zijin_s[lenx];
+
+							if ((typeof(v_td) != 'undefined') && (v_td != null)) {
+								document.getElementById("ss_td").innerText = v_td.toFixed(2);
+								if (v_td >= 0) {
+									document.getElementById("ss_td").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_td").style.color = bj_down_Color;
+								}
+							}
+
+							if ((typeof(v_d) != 'undefined') && (v_d != null)) {
+								document.getElementById("ss_dh").innerText = v_d.toFixed(2);
+								if (v_d >= 0) {
+									document.getElementById("ss_dh").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_dh").style.color = bj_down_Color;
+								}
+							}
+
+							if ((typeof(v_s) != 'undefined') && (v_s != null)) {
+								document.getElementById("ss_sh").innerText = v_s.toFixed(2);
+								if (v_s >= 0) {
+									document.getElementById("ss_sh").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_sh").style.color = bj_down_Color;
+								}
+							}
+
+
+							//var id1 = dateManager.start();
+
+							if (page_fl == "ym1") {
+								//页面一
+								Set_Page1(rawData);
+
+							} else if (page_fl == "ym2") {
+								//页面二
+								Set_Page2(rawData);
+
+							} else if (page_fl == "ym3") {
+								//页面三
+								Set_Page3(rawData);
+
+							}
+
+
+							dom_k = document.getElementById("container");
+							myChart_k = echarts.getInstanceByDom(dom_k);
+							if (myChart_k === undefined) 
+							{  
+								myChart_k = echarts.init(dom_k);
+							}
+							
+							myChart_k.clear();
+							myChart_k.setOption(option_k, true);
+
+							//console.log(dateManager.end(id1));
+
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
+
+
+
+				}
+
+
+			}
+
+
+			//监控前台、后台  减少流量消耗
+			document.addEventListener("pause", function() {
+
+				//mui.toast('程序在后台运行');
+				if (typeof(timer_bj) != 'undefined') {
+					clearInterval(timer_bj); 
+				} 
+				Load_BJ();
+				Timer_BJ = setInterval('Load_BJ()', 12000);
+				
+				
+				if (typeof(timer_kx) != 'undefined') {
+					clearInterval(timer_kx); 
+				} 
+				Load_K(gtype);
+				timer_kx = setInterval(function() {
+					Load_K(gtype);
+				}, 12700);
+
+			}, false);
+			
+			document.addEventListener("resume", function() {
+
+
+				//mui.toast('在前台了');
+				if (typeof(timer_bj) != 'undefined') {
+					clearInterval(timer_bj); 
+				} 
+				Load_BJ();
+				Timer_BJ = setInterval('Load_BJ()', 2000);
+				
+				
+				if (typeof(timer_kx) != 'undefined') {
+					clearInterval(timer_kx); 
+				} 
+				Load_K(gtype);
+				timer_kx = setInterval(function() {
+					Load_K(gtype);
+				}, 2400);
+				
+				
+			}, false);
+
+
+			/* 设置第一页 */
+			function Set_Page1(orgdata) {
+
+				var data = splitData_YM1(orgdata); // 页面1 - 主图指标
+				var lndata = Formula_LN(data.values, data.volumes); // 量能
+				var jhdata = Formula_JHQS(data.values); // 江海趋势
+
+				var lenx;
+				lenx = data.zijin_td.length - 1;
+
+				var main_txt;
+				main_txt = "开:" + data.values[lenx][0] + "  高:" + data.values[lenx][1] +
+					"  低:" + data.values[lenx][2] + "  收:" + data.values[lenx][3];
+
+				var lay = Layout_K_1(600, 200);
+
+				option_k = {
+					animation: false,
+					legend: {
+						show: false
+					},
+					title: [
+						//主图标题
+						{
+							top: 0,
+							left: 5,
+							text: Codeto_FullName(gcode) + " " + bztype,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [2, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: 12,
+							left: 25,
+							text: "多空线",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 11,
+								fontWeight: 500,
+							},
+						},
+						{
+							top: 0,
+							left: 95,
+							text: main_txt,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							},
+							padding: [2, 5, 2, 5],
+
+						},
+						//附图1  分类资金
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 5,
+							text: "分类资金",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 60,
+							//padding: 1,
+							text: "特大户: " + data.zijin_td[lenx].toFixed(1),
+							textStyle: {
+								color: tdh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 140,
+							text: "大户: " + data.zijin_d[lenx].toFixed(1),
+							textStyle: {
+								color: dh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 220,
+							text: "散户: " + data.zijin_s[lenx].toFixed(1),
+							textStyle: {
+								color: sh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						//附图2 
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 5,
+							//padding: 1,
+							text: "量能分析",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 60,
+							//padding: 1,
+							text: "量能: " + lndata.res_vol[lenx],
+							textStyle: {
+								color: Lab_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 140,
+							//padding: 1,
+							text: "前高: " + lndata.res_qg[lenx],
+							textStyle: {
+								color: '#ff00ff',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 220,
+							//padding: 1,
+							text: "前低: " + lndata.res_qd[lenx],
+							textStyle: {
+								color: '#0055ff',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						//附图3
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 5,
+							//padding: 1,
+							text: "趋势操盘",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 60,
+							//padding: 1,
+							text: "短线: " + jhdata.DUAN[lenx].toFixed(1),
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 140,
+							//padding: 1,
+							text: "中线: " + jhdata.HUANG[lenx].toFixed(1),
+							textStyle: {
+								color: '#0055ff',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 220,
+							//padding: 1,
+							text: "长线: " + jhdata.BBB[lenx].toFixed(1),
+							textStyle: {
+								color: '#eb9d00',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+
+
+					],
+					tooltip: {
+						trigger: 'axis',
+						showContent: false,
+						show: true,
+						axisPointer: {
+							type: 'cross',
+							snap: true
+						},
+						backgroundColor: 'rgba(0, 0, 0, 0.5)',
+						padding: 10,
+						textStyle: {
+							color: '#fff',
+							fontSize: 13
+						},
+						width: 200,
+						position: function(pos, params, el, elRect, size) {
+							var obj = {
+								top: 20,
+							};
+							obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+							return obj;
+						}
+
+					},
+					axisPointer: {
+						link: {
+							xAxisIndex: 'all'
+						},
+						label: {
+							backgroundColor: '#666',
+							fontSize: 11,
+						},
+						snap: true,
+						triggerOn: "click"
+
+					},
+					toolbox: {
+						show: false
+					},
+
+					grid: [
+						//0 主图 - 0 
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//1 主图 - 1
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//2 附图1 - 0  资金特大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//3 附图1 - 1  资金大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//4 附图1 - 2  资金散户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//5 附图2 - 0 
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[2] + 3,
+							height: lay.hcc[2] - 3,
+						},
+						//6 附图3 - 0
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[3] + 4,
+							height: lay.hcc[3] - 4,
+						}
+
+					],
+					xAxis: [
+						// 0 主图0
+						{
+							type: 'category',
+							gridIndex: 0,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+							axisPointer: {
+								z: 100,
+								label: {
+									show: false
+								}
+							}
+						},
+						// 1 主图1
+						{
+							type: 'category',
+							gridIndex: 1,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 2 附图1 -0 特大户
+						{
+							type: 'category',
+							gridIndex: 2,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 3 附图1 -1 大户
+						{
+							type: 'category',
+							gridIndex: 3,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 4 附图1 -2 散户
+						{
+							type: 'category',
+							gridIndex: 4,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 5 附图2 -0  
+						{
+							type: 'category',
+							gridIndex: 5,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLine: {
+								show: true,
+								onZero: false,
+								lineStyle: {
+									color: axis_Color,
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisLabel: {
+								show: false
+							},
+							splitNumber: 5,
+							axisPointer: {
+								label: {
+									show: false
+								}
+							}
+
+						},
+						// 6 附图3 -0 
+						{
+							type: 'category',
+							gridIndex: 6,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisLabel: {
+								show: true,
+								color: '#888',
+								fontSize: 14,
+								formatter: function(value, index) {
+									if (value.length == 16) {
+										return value.substr(8, 2) + "/" + value.substr(11, 5);
+									}
+								},
+								/* fontFamily: 'Microsoft YaHei', */
+								fontSize: 12
+							},
+							splitNumber: 5,
+
+
+						}
+					],
+					yAxis: [
+						//0  - 主图
+						{
+							gridIndex: 0,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								inside: true,
+								color: Lab_Color,
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(0) + "";
+								}
+							},
+							splitLine: {
+								show: false,
+							},
+							axisPointer: {
+								z: 22,
+								zlevel: 22
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//1  - 主图
+						{
+							gridIndex: 1,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								show: false,
+							},
+							splitLine: {
+								show: false,
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							min: 0,
+							max: 100,
+							offset: 5
+						},
+						//附图1 - 0 - 特大户 	
+						{
+							gridIndex: 2,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 1 - 大户 
+						{
+							gridIndex: 3,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 2 - 散户 
+						{
+							gridIndex: 4,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						// 附图2 
+						{
+							gridIndex: 5,
+							splitNumber: 2,
+							axisLabel: {
+								show: true,
+								color: Lab_Color,
+								inside: true,
+								fontSize: 11,
+								showMinLabel: false,
+								formatter: function(value, index) {
+									return value + "";
+								}
+
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								z: 2,
+								zlevel: 20
+							},
+							splitLine: {
+								show: false,
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: '#111',
+									type: 'dotted'
+								}
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						// 附图3
+						{
+							gridIndex: 6,
+							splitNumber: 2,
+							axisLabel: {
+								show: true,
+								color: Lab_Color,
+								inside: true,
+								fontSize: 11,
+								formatter: function(value, index) {
+									if (value < 10) {
+										return value.toFixed(1);
+									} else {
+										return value.toFixed(0);
+									}
+								}
+
+							},
+
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: '#111',
+									type: 'dotted'
+								}
+							},
+							axisPointer: {
+								z: 21,
+								zlevel: 21
+							},
+							min: 0,
+							max: 100,
+							offset: 5
+						}
+
+					],
+					dataZoom: [{
+						type: 'slider',
+						xAxisIndex: [0, 1, 2, 3, 4, 5, 6],
+						start: zoomStart,
+						end: zoomEnd,
+						show: false,
+					}, ],
+					series: [
+						//主图
+						{
+							name: 'KLINE',
+							type: 'candlestick',
+							data: data.values,
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: kdownColor,
+									borderColor: kupColor,
+									borderColor0: kdownColor,
+									opacity: 1
+								}
+							},
+							
+							tooltip: {
+								show: true,
+
+							},
+							markPoint: {
+								label: {
+									show: true
+								},
+								symbol: 'pin',
+								symbolSize: 0,
+								data: [{
+										name: '最高',
+										type: 'max',
+										valueDim: 'highest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									},
+									{
+										name: '最低',
+										type: 'min',
+										valueDim: 'lowest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									}
+								]
+							},
+							z: 1,
+							zlevel: 1
+
+						},
+
+						//主图 多空线
+						{
+							name: '多空线',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.dkx, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#ff0000',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 180,
+								symbolOffset: [0, 5],
+								label: {
+									fontSize: 10,
+									offset: [0, 5],
+								},
+								data: data.mrk_d,
+								itemStyle: {
+									color: '#f00'
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//主图 多空线-负
+						{
+							name: '多空线负',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.dkxf,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#0055ff',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 0,
+								symbolOffset: [0, -5],
+								label: {
+									fontSize: 10
+								},
+								data: data.mrk_k,
+								itemStyle: {
+									color: '#009800'
+								}
+							},
+							z: 2,
+							zlevel: 2
+						},
+
+						//主图 背景多空线-多
+						{
+							name: '背景多空线-多',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							data: data.bgmrk_d,
+							smooth: false,
+							symbol: 'none',
+							/* connectNulls: true, */
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(255,0,0,0.2)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+						//主图 背景多空线-空
+						{
+							name: '背景多空线-空',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							data: data.bgmrk_k,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(0, 85, 0, 0.2)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+
+						//附图 1  - 特大户
+						{
+
+							name: '特大户资金',
+							type: 'line',
+							data: data.zijin_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							smooth: true,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: tdh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 1  - 特大户变动
+						{
+							name: '特大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+
+						//附图 1  - 大户
+						{
+
+							name: '大户资金',
+							type: 'line',
+							data: data.zijin_d,
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: dh_Color,
+									width: 1
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 1  - 大户变动
+						{
+							name: '大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_d, //calculateMA(8, data),
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 1  - 散户
+						{
+
+							name: '散户资金',
+							type: 'line',
+							data: data.zijin_s,
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: sh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 1  - 散户变动
+						{
+							name: '散户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_s, //calculateMA(8, data),
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 2  -量能1
+						{
+
+							name: '成交量能1',
+							type: 'candlestick',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: lndata.res_k1,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: bar_uColor,
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+
+								}
+							},
+
+							z: 3,
+							zlevel: 3
+						},
+						//附图 2  -量能2
+						{
+
+							name: '成交量能2',
+							type: 'candlestick',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: lndata.res_k2,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: upColor2,
+									color0: downColor2,
+									borderColor: upColor2,
+									borderColor0: downColor2,
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图 2  -前高
+						{
+
+							name: '前高',
+							type: 'line',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: lndata.res_qg,
+							symbol: 'rect',
+							showSymbol: true,
+							symbolSize: 2,
+							lineStyle: {
+								normal: {
+									width: 0
+								}
+							},
+							itemStyle: {
+								color: '#ff00ff',
+							},
+
+							z: 4,
+							zlevel: 4
+						},
+						//附图 2  -前低
+						{
+
+							name: '前低',
+							type: 'line',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: lndata.res_qd,
+							symbol: 'rect',
+							showSymbol: true,
+							symbolSize: 2,
+							lineStyle: {
+								normal: {
+									width: 0
+								}
+							},
+							itemStyle: {
+								color: '#0055ff',
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图3  BBB
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.BBB, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#ff0000',
+									width: 3
+								}
+							},
+							markLine: {
+								symbol: ['none', 'none'],
+								label: {
+									show: false
+								},
+								data: [{
+										yAxis: 100,
+										lineStyle: {
+											color: '#ccc'
+										},
+									},
+									{
+										yAxis: 50,
+										lineStyle: {
+											color: '#ccc'
+										},
+									},
+								]
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图3  BBBf
+						{
+							name: 'BBBf',
+							type: 'line',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.BBBf, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#00aa00',
+									width: 3
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图3  短线 EB
+						{
+							name: 'BBBf',
+							type: 'line',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.DUAN, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#000000',
+									width: 1
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图3  黄色线 HUANG
+						{
+							name: 'BBBf',
+							type: 'line',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.HUANG, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									type: 'dashed',
+									color: '#0055ff',
+									width: 1
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+
+						//附图 3  -顶信号
+						{
+
+							name: '成交量能1',
+							type: 'candlestick',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.ding,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: 'none',
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+						//附图 3  -顶信号
+						{
+
+							name: '成交量能1',
+							type: 'candlestick',
+							xAxisIndex: 6,
+							yAxisIndex: 6,
+							data: jhdata.di,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: 'none',
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 4,
+							zlevel: 4
+						},
+
+					]
+				};
+
+
+			}
+
+
+			/* 设置第2页 */
+			function Set_Page2(orgdata) {
+
+				//页面2    主图（斜率突破）
+				var data = splitData_YM2(orgdata); // 页面1 - 主图指标
+				var bsldata = Formula_BSL(data.values, data.categoryData); // 变色龙
+				var exdata = Formula_EXHY(data.values, data.categoryData); // 二线合一
+
+				var lenx;
+				lenx = data.zijin_td.length - 1;
+
+				var main_txt;
+				main_txt = "开:" + data.values[lenx][0] + "  高:" + data.values[lenx][1] +
+					"  低:" + data.values[lenx][2] + "  收:" + data.values[lenx][3];
+
+				var lay = Layout_K_1(600, 200);
+
+				option_k = {
+					animation: false,
+					legend: {
+						show: false
+					},
+					title: [
+						//主图标题
+						{
+							top: 0,
+							left: 5,
+							text: Codeto_FullName(gcode) + " " + bztype,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [2, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: 12,
+							left: 25,
+							text: "斜率突破",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 11,
+								fontWeight: 500,
+							},
+						},
+						{
+							top: 0,
+							left: 95,
+							text: main_txt,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							},
+							padding: [2, 5, 2, 5],
+
+						},
+						//附图1  分类资金
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 5,
+							text: "分类资金",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 60,
+							//padding: 1,
+							text: "特大户: " + data.zijin_td[lenx].toFixed(1),
+							textStyle: {
+								color: tdh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 140,
+							text: "大户: " + data.zijin_d[lenx].toFixed(1),
+							textStyle: {
+								color: dh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 220,
+							text: "散户: " + data.zijin_s[lenx].toFixed(1),
+							textStyle: {
+								color: sh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						//附图2 - 变色龙
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 5,
+							//padding: 1,
+							text: "变色龙",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 60,
+							//padding: 1,
+							text: "快线: " + bsldata.kuai[lenx].toFixed(1),
+							textStyle: {
+								color: '#ff00ff',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 140,
+							//padding: 1,
+							text: "慢线: " + bsldata.man[lenx].toFixed(1),
+							textStyle: {
+								color: '#007000',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[2] - 22, // 1
+							left: 220,
+							//padding: 1,
+							text: "差值: " + bsldata.macd[lenx].toFixed(1),
+							textStyle: {
+								color: '#626262',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						//附图3
+						//附图3 二线合一
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 5,
+							//padding: 1,
+							text: "二线合一",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 600,
+							},
+							padding: [5, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 60,
+							//padding: 1,
+							text: "主力: " + exdata.zhuli[lenx].toFixed(1),
+							textStyle: {
+								color: '0055ff',
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[3] - 21, // 1
+							left: 140,
+							//padding: 1,
+							text: "波段: " + exdata.bd[lenx].toFixed(1),
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+
+
+
+					],
+					tooltip: {
+						trigger: 'axis',
+						showContent: false,
+						show: true,
+						axisPointer: {
+							type: 'cross',
+							snap: true
+						},
+						backgroundColor: 'rgba(0, 0, 0, 0.5)',
+						padding: 10,
+						textStyle: {
+							color: '#fff',
+							fontSize: 13
+						},
+						width: 200,
+						position: function(pos, params, el, elRect, size) {
+							var obj = {
+								top: 20,
+							};
+							obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+							return obj;
+						}
+
+					},
+					axisPointer: {
+						link: {
+							xAxisIndex: 'all'
+						},
+						label: {
+							backgroundColor: '#666',
+						},
+						snap: true,
+						triggerOn: "click"
+
+					},
+					toolbox: {
+						show: false
+					},
+
+					grid: [
+						//0 主图 - 0 
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//1 主图 - 1
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//2 附图1 - 0  资金特大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//3 附图1 - 1  资金大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//4 附图1 - 2  资金散户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1],
+							height: lay.hcc[1],
+						},
+						//5 附图2 - 0  变色龙-MACD
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[2] + 3,
+							height: lay.hcc[2] - 3,
+						},
+						//6 附图2 - 1  变色龙-能量
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[2] + 3,
+							height: lay.hcc[2] - 3,
+						},
+						//7 附图3 - 0
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[3] + 4,
+							height: lay.hcc[3] - 4,
+						}
+
+					],
+					xAxis: [
+						// 0 主图0
+						{
+							type: 'category',
+							gridIndex: 0,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+							axisPointer: {
+								z: 100,
+								label: {
+									show: true
+								}
+							}
+						},
+						// 1 主图1
+						{
+							type: 'category',
+							gridIndex: 1,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 2 附图1 -0 特大户
+						{
+							type: 'category',
+							gridIndex: 2,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 3 附图1 -1 大户
+						{
+							type: 'category',
+							gridIndex: 3,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 4 附图1 -2 散户
+						{
+							type: 'category',
+							gridIndex: 4,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								label: {
+									show: false
+								}
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 5 附图2 -0  
+						{
+							type: 'category',
+							gridIndex: 5,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLine: {
+								show: true,
+								onZero: false,
+								lineStyle: {
+									color: axis_Color,
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisLabel: {
+								show: false
+							},
+							splitNumber: 5,
+							axisPointer: {
+								label: {
+									show: false
+								}
+							}
+
+						},
+						// 6 附图2 -1
+						{
+							type: 'category',
+							gridIndex: 6,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLine: {
+								show: true,
+								onZero: false,
+								lineStyle: {
+									color: axis_Color,
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisLabel: {
+								show: false
+							},
+							splitNumber: 5,
+							axisPointer: {
+								label: {
+									show: false
+								}
+							}
+
+						},
+						// 7 附图3 -0 
+						{
+							type: 'category',
+							gridIndex: 7,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisLabel: {
+								show: true,
+								color: '#aaa',
+								fontSize: 14,
+								formatter: function(value, index) {
+									if (value.length == 16) {
+										return value.substr(8, 2) + "/" + value.substr(11, 5);
+									}
+								},
+								/* fontFamily: 'Microsoft YaHei', */
+								fontSize: 12
+							},
+							splitNumber: 5,
+							axisPointer: {
+								label: {
+									show: true
+								}
+							}
+
+						}
+					],
+					yAxis: [
+						//0  - 主图
+						{
+							gridIndex: 0,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								inside: true,
+								color: Lab_Color,
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(0) + "";
+								}
+							},
+							splitLine: {
+								show: false,
+							},
+							axisPointer: {
+								z: 21,
+								zlevel: 21
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//1  - 主图
+						{
+							gridIndex: 1,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								show: false,
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 0,
+							max: 100,
+							offset: 5
+						},
+						//附图1 - 0 - 特大户 	
+						{
+							gridIndex: 2,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 1 - 大户 
+						{
+							gridIndex: 3,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 2 - 散户 
+						{
+							gridIndex: 4,
+							axisLabel: {
+								show: false,
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						// 附图2  0 - MACD
+						{
+							gridIndex: 5,
+							splitNumber: 2,
+							axisLabel: {
+								show: true,
+								color: Lab_Color,
+								inside: true,
+								fontSize: 11,
+								showMinLabel: false,
+								formatter: function(value, index) {
+									return value.toFixed(1) + "";
+								}
+
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							axisPointer: {
+								z: 22,
+								zlevel: 22
+							},
+							splitLine: {
+								show: false,
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: '#111',
+									type: 'dotted'
+								}
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						// 附图2  1 -能量
+						{
+							gridIndex: 6,
+							splitNumber: 2,
+							axisLabel: {
+								show: true,
+								color: Lab_Color,
+								inside: true,
+								fontSize: 11,
+								showMinLabel: false,
+								formatter: function(value, index) {
+									return value + "";
+								}
+
+							},
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: '#111',
+									type: 'dotted'
+								}
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						// 附图3
+						{
+							gridIndex: 7,
+							splitNumber: 2,
+							axisLabel: {
+								show: true,
+								color: Lab_Color,
+								inside: true,
+								fontSize: 11,
+								formatter: function(value, index) {
+									if (value < 10) {
+										return value.toFixed(1);
+									} else {
+										return value.toFixed(0);
+									}
+								}
+
+							},
+
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: '#111',
+									type: 'dotted'
+								}
+							},
+							min: -100,
+							max: 100,
+							offset: 5
+						}
+
+					],
+					dataZoom: [{
+						type: 'slider',
+						xAxisIndex: [0, 1, 2, 3, 4, 5, 6, 7],
+						start: zoomStart,
+						end: zoomEnd,
+						show: false,
+					}, ],
+					series: [
+
+						//主图
+						{
+							name: 'KLINE',
+							type: 'candlestick',
+							data: data.values,
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: kdownColor,
+									borderColor: kupColor,
+									borderColor0: kdownColor,
+									opacity: 1
+								}
+							},
+							tooltip: {
+								show: true,
+
+							},
+							markPoint: {
+								label: {
+									show: true
+								},
+								symbol: 'pin',
+								symbolSize: 0,
+								data: [{
+										name: '最高',
+										type: 'max',
+										valueDim: 'highest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									},
+									{
+										name: '最低',
+										type: 'min',
+										valueDim: 'lowest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									}
+								]
+							},
+							z: 1,
+							zlevel: 1
+
+						},
+						//主图 BX - 斜率快线
+						{
+							name: '斜率快线',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.bxx, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#000000',
+									width: 1
+								}
+							},
+
+							z: 1,
+							zlevel: 1
+						},
+						//主图 斜率慢线
+						{
+							name: '斜率慢线',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.sxx, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#ff0000',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 180,
+								symbolOffset: [0, 5],
+								label: {
+									fontSize: 10,
+									offset: [0, 5],
+								},
+								data: data.mrk_d,
+								itemStyle: {
+									color: '#f00'
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//主图 斜率慢线-负
+						{
+							name: '斜率慢线负',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.sxxf,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#0055ff',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 0,
+								symbolOffset: [0, -5],
+								label: {
+									fontSize: 10
+								},
+								data: data.mrk_k,
+								itemStyle: {
+									color: '#009800'
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//主图 背景多空线-多
+						{
+							name: '背景多空线-多',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							/* connectNulls: true, */
+							data: data.bgmrk_d,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(255,0,0,0.2)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+						//主图 背景多空线-空
+						{
+							name: '背景多空线-空',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							data: data.bgmrk_k,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(0, 85, 0, 0.2)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+
+						//附图 1  - 特大户
+						{
+
+							name: '特大户资金',
+							type: 'line',
+							data: data.zijin_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							smooth: true,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: tdh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 特大户变动
+						{
+							name: '特大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//附图 1  - 大户
+						{
+
+							name: '大户资金',
+							type: 'line',
+							data: data.zijin_d,
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: dh_Color,
+									width: 1
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 大户变动
+						{
+							name: '大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_d, //calculateMA(8, data),
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel:1
+						},
+						//附图 1  - 散户
+						{
+
+							name: '散户资金',
+							type: 'line',
+							data: data.zijin_s,
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: sh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 散户变动
+						{
+							name: '散户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_s, //calculateMA(8, data),
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 2  -变色龙  
+						{
+
+							name: '成交量能1',
+							type: 'bar',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: bsldata.macd,
+							barWidth: '50%',
+							itemStyle: {
+								normal: {
+									//自定义颜色数组
+									color: function(params) {
+										if (params.dataIndex > 0) {
+											if (bsldata.macd[params.dataIndex] >= 0) {
+												if (bsldata.macd[params.dataIndex] >= bsldata.macd[params.dataIndex -
+														1]) {
+													return '#f00';
+												} else {
+													return '#aa00ff';
+												}
+
+											} else {
+												if (bsldata.macd[params.dataIndex] >= bsldata.macd[params.dataIndex -
+														1]) {
+													return '#0055ff';
+												} else {
+													return '#006d00';
+												}
+
+											}
+										} else {
+											return '#f00';
+										}
+
+									}
+								}
+
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//附图2  变色龙-快线
+						{
+							name: '快线',
+							type: 'line',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: bsldata.kuai, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#000000',
+									width: 1
+								}
+							},
+							z: 2,
+							zlevel: 2
+						},
+						//附图2  变色龙-慢线
+						{
+							name: '慢线',
+							type: 'line',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: bsldata.man, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#ff5500',
+									width: 2
+								}
+							},
+							z: 2,
+							zlevel: 2
+						},
+						//附图2  变色龙-慢线 负值
+						{
+							name: '慢线',
+							type: 'line',
+							xAxisIndex: 5,
+							yAxisIndex: 5,
+							data: bsldata.manf, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#00aa7f',
+									width: 2
+								}
+							},
+							z: 2,
+							zlevel: 2
+						},
+
+						//附图3  二线合一 - 主力
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.zhuli, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#00aaff',
+									width: 1
+								}
+							},
+							areaStyle: {
+								color: 'rgba(0, 0, 127, 0.3)',
+							},
+							z: 2,
+							zlevel: 2
+						},
+						//附图3  二线合一 - 散户
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.sanhu, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#00aaff',
+									width: 1
+								}
+							},
+							areaStyle: {
+								color: 'rgba(0, 0, 127, 0.3)',
+							},
+							markLine: {
+								symbol: ['none', 'none'],
+								label: {
+									show: false
+								},
+								data: [{
+										yAxis: 0,
+										lineStyle: {
+											color: '#ccc'
+										},
+									},
+									{
+										yAxis: 15,
+										lineStyle: {
+											color: '#ccc'
+										},
+									},
+									{
+										yAxis: 85,
+										lineStyle: {
+											color: '#ccc'
+										},
+									},
+								]
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图3  二线合一 - 粉色
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.fen, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#ff00ff',
+									width: 1
+								}
+							},
+							areaStyle: {
+								color: 'rgba(255, 0, 255, 0.8)',
+							},
+
+							z: 3,
+							zlevel: 3
+						},
+						//附图3  二线合一 - 粉色负值
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.fenf, //calculateMA(8, data),
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#ff00ff',
+									width: 1
+								}
+							},
+							areaStyle: {
+								color: 'rgba(255, 0, 255, 0.8)',
+							},
+
+							z: 3,
+							zlevel: 3
+						},
+						//附图3  二线合一 - 白色虚线
+						{
+							name: 'BBB',
+							type: 'line',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.bd, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									color: '#000',
+									width: 1,
+									type: 'dashed'
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+
+						//附图 3  -底信号
+						{
+							name: '成交量能1',
+							type: 'candlestick',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.di,
+							barWidth: 2,
+							itemStyle: {
+								normal: {
+									color: bar_uColor,
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+						//附图 3  -顶信号
+						{
+							name: '成交量能1',
+							type: 'candlestick',
+							xAxisIndex: 7,
+							yAxisIndex: 7,
+							data: exdata.ding,
+							barWidth: 2,
+							itemStyle: {
+								normal: {
+									color: bar_uColor,
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 3,
+							zlevel: 3
+						},
+
+					]
+				};
+
+
+			}
+
+
+			/* 设置第3页 */
+			function Set_Page3(orgdata) {
+				var data = splitData_YM1(orgdata); // 页面1 - 主图指标
+
+				var lenx;
+				lenx = data.zijin_td.length - 1;
+
+				var main_txt;
+				main_txt = "开:" + data.values[lenx][0] + "  高:" + data.values[lenx][1] +
+					"  低:" + data.values[lenx][2] + "  收:" + data.values[lenx][3];
+
+				var lay = Layout_K_3(600, 300);
+
+				option_k = {
+					animation: false,
+					legend: {
+						show: false
+					},
+					title: [
+						//主图标题
+						{
+							top: 0,
+							left: 5,
+							text: Codeto_FullName(gcode) + " " + bztype,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							},
+							padding: [2, 5, 2, 5],
+							/* backgroundColor:'#eee' */
+						},
+						{
+							top: 12,
+							left: 25,
+							text: "多空线",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 11,
+								fontWeight: 500,
+							},
+						},
+						{
+							top: 0,
+							left: 95,
+							text: main_txt,
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							},
+							padding: [2, 5, 2, 5],
+
+						},
+						//附图1  分类资金
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 5,
+							text: "分类资金",
+							textStyle: {
+								color: txtcolor,
+								fontSize: 12,
+								fontWeight: 'normal',
+							},
+							padding: [5, 5, 2, 5],
+							//backgroundColor:'#eee'
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 60,
+							//padding: 1,
+							text: "特大户: " + data.zijin_td[lenx].toFixed(1),
+							textStyle: {
+								color: tdh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 140,
+							text: "大户: " + data.zijin_d[lenx].toFixed(1),
+							textStyle: {
+								color: dh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+						{
+							top: lay.pcc[1] - 22, // 1
+							left: 220,
+							text: "散户: " + data.zijin_s[lenx].toFixed(1),
+							textStyle: {
+								color: sh_Color,
+								fontSize: 12,
+								fontWeight: 'normal',
+							}
+						},
+
+
+
+					],
+					tooltip: {
+						trigger: 'axis',
+						showContent: false,
+						show: true,
+						axisPointer: {
+							type: 'cross',
+							snap: true
+						},
+						backgroundColor: 'rgba(0, 0, 0, 0.5)',
+						padding: 10,
+						textStyle: {
+							color: '#fff',
+							fontSize: 13
+						},
+						width: 200,
+						position: function(pos, params, el, elRect, size) {
+							var obj = {
+								top: 20,
+							};
+							obj[['left', 'right'][+(pos[0] < size.viewSize[0] / 2)]] = 30;
+							return obj;
+						}
+
+					},
+					axisPointer: {
+						link: {
+							xAxisIndex: 'all'
+						},
+						label: {
+							backgroundColor: 'auto',
+						},
+						snap: true,
+						triggerOn: "click"
+
+					},
+					toolbox: {
+						show: false
+					},
+
+					grid: [
+						//0 主图 - 0 
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//1 主图 - 1
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[0],
+							height: lay.hcc[0],
+						},
+						//2 附图1 - 0  资金特大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[1] + 3,
+							height: lay.hcc[1] - 3,
+						},
+						//3 附图1 - 1  资金大户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[2] + 3,
+							height: lay.hcc[2] - 5,
+						},
+						//4 附图1 - 2  资金散户
+						{
+							left: mar_l,
+							right: mar_r,
+							top: lay.pcc[3] + 3,
+							height: lay.hcc[3] - 3,
+						},
+
+					],
+					xAxis: [
+						// 0 主图0
+						{
+							type: 'category',
+							gridIndex: 0,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+							axisPointer: {
+								z: 100,
+								label: {
+									show: false
+								}
+							}
+						},
+						// 1 主图1
+						{
+							type: 'category',
+							gridIndex: 1,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 2 附图1 -0 特大户
+						{
+							type: 'category',
+							gridIndex: 2,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false,
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 3 附图1 -1 大户
+						{
+							type: 'category',
+							gridIndex: 3,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: false
+							},
+							axisLine: {
+								show: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+						// 4 附图1 -2 散户
+						{
+							type: 'category',
+							gridIndex: 4,
+							data: data.categoryData,
+							boundaryGap: true,
+							axisLabel: {
+								show: true,
+								color: '#aaa',
+								fontSize: 14,
+								formatter: function(value, index) {
+									if (value.length == 16) {
+										return value.substr(8, 2) + "/" + value.substr(11, 5);
+									}
+
+								},
+								/* fontFamily: 'Microsoft YaHei', */
+								fontSize: 12
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: axis_Color,
+								},
+								onZero: false
+							},
+							splitLine: {
+								show: false
+							},
+							axisTick: {
+								show: true
+							},
+							splitNumber: 1,
+							//min: 'dataMin',
+							//max: 'dataMax',
+						},
+
+					],
+					yAxis: [
+						//0  - 主图
+						{
+							gridIndex: 0,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								inside: true,
+								color: Lab_Color,
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(0) + "";
+								}
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//1  - 主图
+						{
+							gridIndex: 1,
+							axisLine: {
+								show: false
+							},
+
+							splitNumber: 3,
+							axisLabel: {
+								show: false,
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 0,
+							max: 100,
+							offset: 5
+						},
+						//附图1 - 0 - 特大户 	
+						{
+							gridIndex: 2,
+							axisLabel: {
+								inside: true,
+								color: '#f00',
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(1) + "";
+								}
+							},
+							splitNumber: 2,
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 1 - 大户 
+						{
+							gridIndex: 3,
+							axisLabel: {
+								inside: true,
+								color: '#ff00ff',
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(1) + "";
+								}
+							},
+							splitNumber: 2,
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+						//附图1 - 2 - 散户 
+						{
+							gridIndex: 4,
+							axisLabel: {
+								inside: true,
+								color: '#009300',
+								showMinLabel: false,
+								fontSize: 11,
+								formatter: function(value) {
+									return value.toFixed(1) + "";
+								}
+							},
+							splitNumber: 2,
+							axisLine: {
+								show: false
+							},
+							axisTick: {
+								show: false
+							},
+							splitLine: {
+								show: false,
+							},
+							min: 'dataMin',
+							max: 'dataMax',
+							offset: 5
+						},
+
+
+					],
+					dataZoom: [{
+						type: 'slider',
+						xAxisIndex: [0, 1, 2, 3, 4],
+						start: zoomStart,
+						end: zoomEnd,
+						show: false,
+					}, ],
+					series: [
+
+						//主图
+						{
+							name: 'KLINE',
+							type: 'candlestick',
+							data: data.values,
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							barWidth: '60%',
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: kdownColor,
+									borderColor: kupColor,
+									borderColor0: kdownColor,
+									opacity: 1
+								}
+							},
+							tooltip: {
+								show: true,
+
+							},
+							markPoint: {
+								label: {
+									show: true
+								},
+								symbol: 'pin',
+								symbolSize: 0,
+								data: [{
+										name: '最高',
+										type: 'max',
+										valueDim: 'highest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									},
+									{
+										name: '最低',
+										type: 'min',
+										valueDim: 'lowest',
+										label: {
+											backgroundColor: 'transparent',
+											color: '#f00',
+											fontSize: 11,
+											position: 'insideRight'
+										}
+									}
+								]
+							},
+							z: 1,
+							zlevel: 1
+
+						},
+
+						//主图 多空线
+						{
+							name: '多空线',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.dkx, //calculateMA(8, data),
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#ff0000',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 180,
+								symbolOffset: [0, 5],
+								label: {
+									fontSize: 10,
+									offset: [0, 5],
+								},
+								data: data.mrk_d,
+								itemStyle: {
+									color: '#f00'
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//主图 多空线-负
+						{
+							name: '多空线负',
+							type: 'line',
+							xAxisIndex: 0,
+							yAxisIndex: 0,
+							data: data.dkxf,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: '#0055ff',
+									width: 3
+								}
+							},
+							markPoint: {
+								symbol: "pin",
+								symbolSize: 24,
+								symbolRotate: 0,
+								symbolOffset: [0, -5],
+								label: {
+									fontSize: 10
+								},
+								data: data.mrk_k,
+								itemStyle: {
+									color: '#009800'
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//主图 背景多空线-多
+						{
+							name: '背景多空线-多',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							data: data.bgmrk_d,
+							smooth: false,
+							symbol: 'none',
+							/* connectNulls: true, */
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(255,0,0,0.1)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+						//主图 背景多空线-空
+						{
+							name: '背景多空线-空',
+							type: 'line',
+							xAxisIndex: 1,
+							yAxisIndex: 1,
+							data: data.bgmrk_k,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									width: 0
+								}
+							},
+							areaStyle: {
+								color: 'rgba(0, 85, 0, 0.1)',
+							},
+
+							z: 0,
+							zlevel: 0
+						},
+
+						//附图 1  - 特大户
+						{
+
+							name: '特大户资金',
+							type: 'line',
+							data: data.zijin_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							smooth: true,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: tdh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 特大户变动
+						{
+							name: '特大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_td, //calculateMA(8, data),
+							xAxisIndex: 2,
+							yAxisIndex: 2,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+						//附图 1  - 大户
+						{
+
+							name: '大户资金',
+							type: 'line',
+							data: data.zijin_d,
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: dh_Color,
+									width: 1
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 大户变动
+						{
+							name: '大户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_d, //calculateMA(8, data),
+							xAxisIndex: 3,
+							yAxisIndex: 3,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 散户
+						{
+
+							name: '散户资金',
+							type: 'line',
+							data: data.zijin_s,
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							smooth: false,
+							symbol: 'none',
+							lineStyle: {
+								normal: {
+									opacity: 1,
+									color: sh_Color,
+									width: 2
+								}
+							},
+							tooltip: {
+								show: true
+							},
+							z: 1,
+							zlevel: 1
+						},
+						//附图 1  - 散户变动
+						{
+							name: '散户资金变动',
+							type: 'candlestick',
+							data: data.zjbd_s, //calculateMA(8, data),
+							xAxisIndex: 4,
+							yAxisIndex: 4,
+							barWidth: 1,
+							itemStyle: {
+								normal: {
+									color: 'none',
+									color0: bar_dColor,
+									borderColor: bar_uColor,
+									borderColor0: bar_dColor,
+									opacity: 1
+								}
+							},
+							z: 1,
+							zlevel: 1
+						},
+
+
+					]
+				};
+
+			}
+
+
+			/* 实时报价 */
+			function Load_BJ() {
+
+				var is_self;
+				
+				if ((typeof(self) != 'undefined') && (self != null)) {	
+					if (self.isVisible()) {
+						is_self = true;
+					} else {
+						is_self = false;
+					}
+				} else {
+					is_self = false;
+				}
+
+				if ( is_self ) {
+					run_count1++;
+					var indata = "code=" + gcode + "&type=ssrep&mkey="+hex_md5("353606sh");
+					mui.ajax({
+						url: "http://app.jfxqh.com/dpz.php",
+						data: indata,
+						type: "GET",
+						dataType: "TEXT",
+						success: function(rawData) {
+							//alert(rawData);  
+							var xline = rawData.split(",");
+							var num = new Number(xline[7]);
+							var numzj = new Number(xline[12]);
+
+							/* 左侧实时报价 */
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("panel2_bj").innerText = num.toFixed(0);
+								if (num >= numzj) {
+									document.getElementById("panel2_bj").style.color = bj_up_Color;
+								} else {
+									document.getElementById("panel2_bj").style.color = bj_down_Color;
+								}
+							}
+
+
+							var left_zdf, left_zd, left_zdzf;
+							left_zd = Number(xline[7]) - Number(xline[12]);
+							left_zdf = left_zd * 100 / Number(xline[12]);
+							left_zdzf = left_zd.toFixed(0) + "/" + left_zdf.toFixed(2) + "%";
+
+							if ((typeof(left_zdzf) != 'undefined') && (left_zdzf != null)) {
+								document.getElementById("panel2_zdzf").innerText = left_zdzf;
+								if (left_zd >= 0) {
+									document.getElementById("panel2_zdzf").style.color = bj_up_Color;
+								} else {
+									document.getElementById("panel2_zdzf").style.color = bj_down_Color;
+								}
+							}
+
+							//右侧实时报价
+							/* 今开 */
+							num = Number(xline[4]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_jk").innerText = num.toFixed(0);
+								if (num >= numzj) {
+									document.getElementById("ss_jk").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_jk").style.color = bj_down_Color;
+								}
+							}
+
+
+							/* 最高 */
+							num = Number(xline[5]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_zg").innerText = num.toFixed(0);
+								if (num >= numzj) {
+									document.getElementById("ss_zg").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_zg").style.color = bj_down_Color;
+								}
+							}
+
+
+							/* 最低 */
+							num = Number(xline[6]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_zd").innerText = num.toFixed(0);
+								if (num >= numzj) {
+									document.getElementById("ss_zd").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_zd").style.color = bj_down_Color;
+								}
+							}
+
+
+							/* 昨结算 */
+							num = Number(xline[12]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_zj").innerText = num.toFixed(0);
+								if (num >= numzj) {
+									document.getElementById("ss_zj").style.color = bj_up_Color;
+								} else {
+									document.getElementById("ss_zj").style.color = bj_down_Color;
+								}
+							}
+
+
+							/* 成交量 */
+							num = Number(xline[9]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_cjl").innerText = num.toFixed(0);
+							}
+
+
+							/* 持仓 */
+							num = Number(xline[8]);
+							if ((typeof(num) != 'undefined') && (num != null)) {
+								document.getElementById("ss_cc").innerText = num.toFixed(0);
+							}
+
+
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
+
+				}
+			}
+
+
+			/* 当日持仓 */
+			function Load_CCDR() {
+				if (1) {
+
+					document.getElementById("container_bot2_cc1").style.width = window.innerWidth + 'px';
+					document.getElementById("container_bot2_cc2").style.width = window.innerWidth + 'px';
+					document.getElementById("container_bot2_cc3").style.width = window.innerWidth + 'px';
+
+					var code2 = gcode.substr(0, 2);
+					code2 = code2.replace("2","1");
+
+					mui.ajax({
+						url: "http://app.jfxqh.com/top.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: code2,
+							type: "top10_cc10_drzc"
+						},
+						type: "GET",
+						dataType: "TEXT",
+						timeout: 10000, //超时时间设置为10秒；
+						success: function(rawData) {
+							//alert(top10d.pie_cc) ;
+							var top10d = splitData_Top10_CC_New(rawData);
+							//console.log(top10d.sum_bd_k) ;
+							// alert(top10d.pie_cc[0]) ;
+							var newdat;
+							newdat = top10d.categoryData[top10d.categoryData.length-1];
+
+							option_21 = {
+								title: {
+									text: 'TOP10 - 当日总持仓 - '+newdat,
+									left: 'center',
+									textStyle: {
+										fontSize: 13,
+										color: Lab_Color,
+										fontWeight: 'normal',
+
+									},
+									top:8,
+								},
+								tooltip: {
+									trigger: 'item',
+									formatter: '{b} ({d}%)'
+								},
+
+								legend: {
+									show: false,
+								},
+								animation: false,
+								itemStyle: {
+									Color: '#fff'
+
+								},
+								series: [
+									{
+										name: '多空对比',
+										type: 'pie',
+										selectedMode: 'single',
+										radius: [0, '25%'],
+										label: {
+											position: 'inner',
+											formatter: '{b}\n{c}万',
+											fontSize: 12
+										},
+										labelLine: {
+											show: false
+										},
+										data: [{
+												value: top10d.sum_cc_d,
+												name: '总多',
+												selected: true
+											},
+											{
+												value: top10d.sum_cc_k,
+												name: '总空'
+											},
+										],
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: 'top10总持仓',
+										type: 'pie',
+										selectedOffset: 30,
+
+										radius: ['40%', '65%'],
+										labelLine: {
+											length: 6,
+											length2: 6,
+										},
+										label: {
+											formatter: function(param) {
+												var re1 = param.name;
+												return re1.replace(":", "\n");
+											},
+											color: Tit_Color
+										},
+										data: top10d.pie_cc,
+										z: 1,
+										zlevel: 1
+									}
+								]
+							};
+
+							dom_21 = document.getElementById("container_bot2_cc1");
+							 
+							myChart_21 = echarts.getInstanceByDom(dom_21);
+							if (myChart_21 === undefined) 
+							{  
+								myChart_21 = echarts.init(dom_21);
+							}
+							
+							myChart_21.clear();
+							myChart_21.setOption(option_21);
+
+							//画图 -当日变动
+							option_22 = {
+								title: {
+									text: 'TOP10 - 当日变动 - '+newdat,
+									left: 'center',
+									textStyle: {
+										fontSize: 13,
+										color: Lab_Color,
+										fontWeight: 'normal',
+
+									},
+									top:8,
+								},
+								tooltip: {
+									trigger: 'item',
+									formatter: '{b} ({d}%)'
+								},
+
+								legend: {
+									show: false,
+								},
+								animation: false,
+								itemStyle: {
+									Color: '#fff'
+
+								},
+								series: [
+									{
+										name: '多空对比',
+										type: 'pie',
+										selectedMode: 'single',
+										radius: [0, '25%'],
+										label: {
+											position: 'inner',
+											formatter: '{b}\n{c}万',
+											fontSize: 12
+										},
+										labelLine: {
+											show: false
+										},
+										data: [{
+												value: top10d.sum_bd_d,
+												name: '总多',
+												selected: true
+											},
+											{
+												value: top10d.sum_bd_k,
+												name: '总空'
+											},
+										],
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: 'top10总持仓',
+										type: 'pie',
+										selectedOffset: 30,
+										radius: ['40%', '65%'],
+										labelLine: {
+											length: 6,
+											length2: 6,
+										},
+										label: {
+											/* position: 'inner',    
+											rotate:true,*/
+											/* formatter: '{b}', */
+											formatter: function(param) {
+												var re1 = param.name;
+												return re1.replace(":", "\n");
+											},
+											color: Tit_Color
+										},
+										data: top10d.pie_bd,
+										z: 0,
+										zlevel: 0
+									}
+								]
+							};
+
+							dom_22 = document.getElementById("container_bot2_cc2");
+							 
+							myChart_22 = echarts.getInstanceByDom(dom_22);
+							if (myChart_22 === undefined) 
+							{  
+								myChart_22 = echarts.init(dom_22);
+							}
+							
+							myChart_22.clear();
+							
+							myChart_22.setOption(option_22);
+
+
+							/* 画图 - 当日变动-柱状图 */
+							option_23 = {
+								title: {
+									text: 'TOP10 - 当日变动 - '+newdat,
+									left: 'center',
+									textStyle: {
+										fontSize: 13,
+										color: Lab_Color,
+										fontWeight: 'normal',
+
+									},
+									top:3,
+								},
+								tooltip: {
+									trigger: 'item',
+									formatter: '{b} {c}'
+								},
+								xAxis: {
+									type: 'value',
+									splitLine: {
+										show: true,
+										lineStyle:{
+											color:axis_Color,
+										}
+									},
+								},
+								yAxis: [{
+									type: 'category',
+									data: top10d.cc_jg,
+									position: 'right',
+									axisLine: {
+										show: false,
+									},
+									axisLabel: {
+										rotate: -5,
+										color:Lab_Color,
+									},
+									axisTick: {
+										show: false
+									},
+									splitLine: {
+										show: true,
+										lineStyle:{
+											color:axis_Color,
+										}
+									},
+
+								}],
+
+								grid: {
+									left: '70',
+									right: '20',
+									top: '30',
+									bottom: '20',
+									containLabel: true
+								},
+								animation: false,
+
+								series: [
+									{
+										data: top10d.top10_bd,
+										type: 'bar',
+										showBackground: false,
+										itemStyle: {
+											color: function(params) {
+												if (params.data >= 0) {
+													return '#f00';
+												} else {
+													return '#55aa00';
+												}
+											}
+										},
+										label: {
+											show: true,
+											color: Lab_Color,
+
+										},
+										labelLayout(params) {
+											/* if ( parseFloat(params.text)>=0 ){ */
+											return {
+												x: 60,
+												y: params.rect.y + params.rect.height / 2,
+												verticalAlign: 'middle',
+												align: 'right'
+											}
+
+										},
+
+									},
+
+								]
+							};
+
+							dom_23 = document.getElementById("container_bot2_cc3");
+							 
+							myChart_23 = echarts.getInstanceByDom(dom_23);
+							if (myChart_23 === undefined) 
+							{  
+								myChart_23 = echarts.init(dom_23);
+							}
+							
+							myChart_23.clear();
+							myChart_23.setOption(option_23);
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
+
+
+				}
+			}
+			
+			 
+			//top10持仓曲线
+			function Load_CC_LS(){
+			    
+				document.getElementById("container_ls_cc").style.width = window.innerWidth + 'px';
+				var lay = Layout_CC(900, 170);
+				var code2 = gcode.substr(0, 2);
+					code2 = code2.replace("2","1");
+					
+				mui.ajax({
+				
+					url: "http://app.jfxqh.com/top.php",
+					data: {
+						mkey: hex_md5("353606sh"),
+						code: code2,
+						type: "mcc108_mn"
+					},
+					type: "GET",
+					dataType: "TEXT",
+					timeout: 10000, //超时时间设置为10秒；
+				
+					success: function(rawData) {
+						//alert(rawData);
+						var data = splitData_T10_CC(rawData);
+						var lab_pre = "持仓";
+						
+						if (data.cc_ccz.length>5) {
+							// alert(data.cc_ccz.length);
+							 var lb1, lb2, lb3, lb4, lb5, lb6, lb7, lb8, lb9, lb10, lbz;
+							 var last_lab = [];
+							 var last_labi = [];
+							 var last_cc = [];
+							 var last_bd = [];
+							 var titi=[];
+							 
+							 
+							 for (var i = 0; i < 10; i++) {
+							 	last_labi.push(i + 1);
+							     last_lab[i] = data.la_jg[i];
+							 	last_cc[i] = data.la_cc[i];
+							 	last_bd[i] = data.la_bd[i];
+							 	titi[i] = (i+1)+" " + data.la_jg[i] + "   " + lab_pre + ": " + data.la_cc[i] + "   变动: " + data.la_bd[i];
+							 }
+							 lbz = "Top10   总" + lab_pre + ": " + data.la_cc[10] + "   总变动: " + data.la_bd[10];
+							 var tit_main = data.la_bj[0] + "   开盘: " + data.la_bj[1]  + "   最高: " + data.la_bj[2]  +
+							 	"   最低: " + data.la_bj[3]  + "   收盘: " + data.la_bj[4] ;
+								
+							//alert(tit_main);	
+							
+							option_cc = {
+								animation: false,
+								title: [
+									{
+										top: 0, // 1
+										left: 2,
+										text: tit_main,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[1] - 18, // 1
+										left: 2,
+										text: lbz,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[2] - 18, // 1
+										left: 2,
+										text: titi[0],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[3] - 18, // 2
+										left: 2,
+										text: titi[1],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[4] - 18, // 3
+										left: 2,
+										text: titi[2],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[5] - 18, // 4
+										left: 2,
+										text: titi[3],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[6] - 18, // 5
+										left: 2,
+										text: titi[4],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[7] - 18, // 6
+										left: 2,
+										text: titi[5],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[8] - 18, // 7
+										left: 2,
+										text: titi[6],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[9] - 18, // 8
+										left: 2,
+										text: titi[7],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[10] - 18, // 9
+										left: 2,
+										text: titi[8],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, {
+										top: lay.pcc[11] - 18, // 10
+										left: 2,
+										text: titi[9],
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}
+							
+								],
+								tooltip: {
+									show: false,
+								},
+								toolbox: {
+									show: false
+								},
+								grid: [
+									{
+										left: 15,
+										right: 40,
+										top: lay.pcc[0],
+										height: lay.hcc[0],
+										containLabel: false
+									},
+									{
+										//1
+										left: 15,
+										right: 40,
+										top: lay.pcc[1],
+										height: lay.hcc[1],
+									},
+									{
+										//2
+										left: 15,
+										right: 40,
+										top: lay.pcc[2],
+										height: lay.hcc[2],
+									},
+									{
+										//3
+										left: 15,
+										right: 40,
+										top: lay.pcc[3],
+										height: lay.hcc[3],
+									},
+									{
+										//4
+										left: 15,
+										right: 40,
+										top: lay.pcc[4],
+										height: lay.hcc[4],
+									},
+									{
+										//5
+										left: 15,
+										right: 40,
+										top: lay.pcc[5],
+										height: lay.hcc[5],
+									},
+									{
+										//6
+										left: 15,
+										right: 40,
+										top: lay.pcc[6],
+										height: lay.hcc[6],
+									},
+									{
+										//7
+										left: 15,
+										right: 40,
+										top: lay.pcc[7],
+										height: lay.hcc[7],
+									},
+									{
+										//8
+										left: 15,
+										right: 40,
+										top: lay.pcc[8],
+										height: lay.hcc[8],
+									},
+									{
+										//9
+										left: 15,
+										right: 40,
+										top: lay.pcc[9],
+										height: lay.hcc[9],
+									},
+									{
+										//10
+										left: 15,
+										right: 40,
+										top: lay.pcc[10],
+										height: lay.hcc[10],
+										//height: '7%',
+									},
+									{
+										//11
+										left: 15,
+										right: 40,
+										top: lay.pcc[11],
+										height: lay.hcc[11],
+										//height: '7%',
+									}, {
+										//12
+										left: 15,
+										right: 40,
+										top: lay.pcc[0] + 25,
+										height: lay.hcc[0] - 50,
+										//containLabel: false
+									},
+							
+								],
+								xAxis: [{
+										type: 'category',
+										gridIndex: 0,
+										data: data.categoryData,
+										axisLabel: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisTick: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+										
+									},
+									{
+										//1
+										type: 'category',
+										gridIndex: 1,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+									},
+									{
+										//2
+										type: 'category',
+										gridIndex: 2,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//3
+										type: 'category',
+										gridIndex: 3,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+									},
+									{
+										//4
+										type: 'category',
+										gridIndex: 4,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//5
+										type: 'category',
+										gridIndex: 5,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//6
+										type: 'category',
+										gridIndex: 6,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//7
+										type: 'category',
+										gridIndex: 7,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//8
+										type: 'category',
+										gridIndex: 8,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+							
+									},
+									{
+										//9
+										type: 'category',
+										gridIndex: 9,
+										splitNumber: 5,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+									},
+									{
+										//10
+										type: 'category',
+										gridIndex: 10,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+							
+									},
+									{
+										//11
+										type: 'category',
+										gridIndex: 11,
+										data: data.categoryData,
+										axisTick: {
+											show: true
+										},
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: true,
+											color: '#aaa',
+											fontSize: 12,
+											showMaxLabel: true
+										},
+										splitNumber: 5,
+							
+									},
+									{
+										//12
+										type: 'category',
+										gridIndex: 12,
+										data: data.categoryData,
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false
+										},
+										axisLine: {
+											show: false,
+										},
+							
+									}
+								],
+								yAxis: [{
+										gridIndex: 0,
+										axisLine: {
+											show: false
+										},
+										position: 'right',
+										axisLabel: {
+											show: true,
+											inside: false,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value) {
+												return value + "";
+											}
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										splitNumber: 3,
+										offset: rig_off,
+							
+									},
+									{
+										//1
+										scale: true,
+										gridIndex: 1,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//2
+										scale: false,
+										gridIndex: 2,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+							
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//3
+										scale: false,
+										gridIndex: 3,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+							
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//4
+										scale: false,
+										gridIndex: 4,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//5
+										scale: false,
+										gridIndex: 5,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//6
+										scale: false,
+										gridIndex: 6,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//7
+										scale: false,
+										gridIndex: 7,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//8
+										scale: false,
+										gridIndex: 8,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//9
+										scale: false,
+										gridIndex: 9,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//10
+										scale: false,
+										gridIndex: 10,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+							
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//11
+										scale: false,
+										gridIndex: 11,
+										splitNumber: 1,
+										position: 'right',
+										axisLabel: {
+											show: true,
+											align: 'right',
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function(value, index) {
+												return (value / 10000).toFixed(2);
+											}
+										},
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: rig_off,
+									},
+									{
+										//12
+										scale: false,
+										gridIndex: 12,
+										position: 'left',
+										axisLabel: {
+											show: false,
+										},
+										axisLine: {
+											show: false,
+							
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										offset: rig_off,
+									}
+							
+								],
+								dataZoom: [{
+									type: 'slider',
+									show: false,
+									xAxisIndex: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+									start: 0,
+									end: 100,
+								}],
+							
+								series: [
+									{
+										name: 'KLINE',
+										type: 'candlestick',
+										data: data.values,
+										barWidth: '70%',
+										itemStyle: {
+											normal: {
+												color: 'none',
+												color0: cc_kdownColor,
+												borderColor: cc_kupColor,
+												borderColor0: cc_kdownColor,
+												opacity: 1
+											}
+										},
+										z: 0,
+										zlevel: 0
+							
+									},
+									{
+										name: '持仓总主图',
+										type: 'line',
+										xAxisIndex: 12,
+										yAxisIndex: 12,
+										data: data.cc_ccz,
+										//smooth: false,
+										lineStyle: {
+											normal: {
+												color: '#797979',
+												width: 1
+											}
+										},
+										symbol: 'none',
+										areaStyle: {
+											color: 'rgba(255,255,0,0.1)',	 
+										},
+										markLine: {
+											symbol: ['none', 'arrow'],
+											lineStyle: {
+												color: '#ffaa00',
+												width: 1,
+											},
+											data: [{
+												yAxis: 0
+											}]
+										},
+										z: 1,
+										zlevel: 1
+									},
+									{
+										name: '持仓总',
+										type: 'line',
+										xAxisIndex: 1,
+										yAxisIndex: 1,
+										data: data.cc_ccz,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												color: jgColor_1,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(255,255,0,0.4)'
+										},
+										z: 1,
+										zlevel: 1
+									},
+							
+									{
+										name: '持仓1',
+										type: 'line',
+										xAxisIndex: 2,
+										yAxisIndex: 2,
+										data: data.cc_cc1,
+										smooth: false,
+										symbol: 'none',
+							
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_1,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(27, 27, 27, 0.1)',	 
+										},
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+									},
+									{
+										name: '持仓2',
+										type: 'line',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										data: data.cc_cc2,
+										smooth: false,
+										symbol: 'none',
+							
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_2,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(170, 0, 255, 0.1)',	 
+										}, 
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+									},
+									{
+										name: '持仓3',
+										type: 'line',
+										xAxisIndex: 4,
+										yAxisIndex: 4,
+										data: data.cc_cc3,
+										smooth: false,
+										symbol: 'none',
+							
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_3,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(255, 170, 0, 0.1)',	 
+										}, 
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+									},
+									{
+										name: '持仓4',
+										type: 'line',
+										xAxisIndex: 5,
+										yAxisIndex: 5,
+										data: data.cc_cc4,
+										smooth: false,
+										symbol: 'none',
+							
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_4,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(0, 85, 255, 0.1)',	 
+										}, 
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓5',
+										type: 'line',
+										xAxisIndex: 6,
+										yAxisIndex: 6,
+										data: data.cc_cc5,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_5,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(85, 170, 0, 0.1)',	 
+										}, 
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓6',
+										type: 'line',
+										xAxisIndex: 7,
+										yAxisIndex: 7,
+										data: data.cc_cc6,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_1,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(27, 27, 27, 0.1)',	 
+										},
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓7',
+										type: 'line',
+										xAxisIndex: 8,
+										yAxisIndex: 8,
+										data: data.cc_cc7,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_2,
+												width: 1
+											}
+										},
+										areaStyle: {
+											color: 'rgba(170, 0, 255, 0.1)',	 
+										}, 
+										tooltip: {
+											show: true
+										},
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓8',
+										type: 'line',
+										xAxisIndex: 9,
+										yAxisIndex: 9,
+										data: data.cc_cc8,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_3,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										areaStyle: {
+											color: 'rgba(255, 170, 0, 0.1)',	 
+										}, 
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓9',
+										type: 'line',
+										xAxisIndex: 10,
+										yAxisIndex: 10,
+										data: data.cc_cc9,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_4,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										areaStyle: {
+											color: 'rgba(0, 85, 255, 0.1)',	 
+										}, 
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										name: '持仓10',
+										type: 'line',
+										xAxisIndex: 11,
+										yAxisIndex: 11,
+										data: data.cc_cc10,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: jgColor_5,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										areaStyle: {
+											color: 'rgba(85, 170, 0, 0.1)',	 
+										}, 
+										z: 2,
+										zlevel: 2
+							
+									},
+									{
+										data: data.cc_bdz,
+										name: '变动总',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 1,
+										yAxisIndex: 1,
+										itemStyle: {
+											color: function(params) {
+												if (data.cc_bdz[params.dataIndex] >= 0) {
+													return bar_uColor;
+												} else {
+													return bar_dColor;
+												}
+											},  
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd1,
+										name: '变动1',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 2,
+										yAxisIndex: 2,
+										itemStyle: {
+											color: function(params) {
+												if (data.cc_bd1[params.dataIndex] >= 0) {
+													return bar_uColor;
+												} else {
+													return bar_dColor;
+												}
+											}
+							
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd2,
+										name: '变动2',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										itemStyle: {
+											normal: {
+												//自定义颜色数组
+												color: function(params) {
+													if (data.cc_bd2[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+							
+										},
+										z: 3,
+										zlevel: 3
+							
+							
+									},
+									{
+										data: data.cc_bd3,
+										name: '变动3',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 4,
+										yAxisIndex: 4,
+										itemStyle: {
+											normal: {
+												//自定义颜色数组
+												color: function(params) {
+													if (data.cc_bd3[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+							
+										},
+										z: 3,
+										zlevel: 3
+							
+									},
+									{
+										data: data.cc_bd4,
+										name: '变动4',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 5,
+										yAxisIndex: 5,
+										itemStyle: {
+											normal: {
+												//自定义颜色数组
+												color: function(params) {
+													if (data.cc_bd4[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+							
+										},
+										z: 3,
+										zlevel: 3
+							
+									},
+									{
+										data: data.cc_bd5,
+										name: '变动5',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 6,
+										yAxisIndex: 6,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd5[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd6,
+										name: '变动6',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 7,
+										yAxisIndex: 7,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd6[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd7,
+										name: '变动7',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 8,
+										yAxisIndex: 8,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd7[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd8,
+										name: '变动8',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 9,
+										yAxisIndex: 9,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd8[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd9,
+										name: '变动9',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 10,
+										yAxisIndex: 10,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd9[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									},
+									{
+										data: data.cc_bd10,
+										name: '变动10',
+										type: 'bar',
+										barWidth: '75%',
+										xAxisIndex: 11,
+										yAxisIndex: 11,
+										itemStyle: {
+											normal: {
+												color: function(params) {
+													if (data.cc_bd10[params.dataIndex] >= 0) {
+														return bar_uColor;
+													} else {
+														return bar_dColor;
+													}
+												}
+											}
+										},
+										z: 3,
+										zlevel: 3
+									}
+							
+							
+								],
+							
+							
+							
+							}; 
+							 
+							 
+							 
+							 dom_cc = document.getElementById("container_ls_cc");
+							  
+							 myChart_cc = echarts.getInstanceByDom(dom_cc);
+							 if (myChart_cc === undefined) 
+							 {  
+							 	  myChart_cc = echarts.init(dom_cc);
+							 }
+							 myChart_cc.clear();
+							 myChart_cc.setOption(option_cc); 
+						}	 
+					
+					},
+					error: function(xhr, type, errorThrown) {
+							console.log(type);
+					}
+				});	
+				
+			}
+			 
+		    //席位曲线
+	        function Load_XW_LS(){
+				 
+			}   
+				
+				
+		
+		    //背离图 -1 - 3分钟
+			function Load_BL_1(){
+			    var is_self;
+			    
+			    if ((typeof(self) != 'undefined') && (self != null)) {	
+			    	if (self.isVisible()) {
+			    		is_self = true;
+			    	} else {
+			    		is_self = false;
+			    	}
+			    } else {
+			    	is_self = false;
+			    } 
+			    
+			     
+			    if ( ( is_self ) && (tab_i == "tab_3")) {
+					document.getElementById("container_bl1").style.width = window.innerWidth + 'px';
+					
+					mui.ajax({
+					
+						url: "http://app.jfxqh.com/dpz.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: gcode,
+							type: "qjm3"
+						},
+						type: "GET",
+						dataType: "TEXT",
+						timeout: 10000, //超时时间设置为10秒；
+					
+						success: function(rawData) {
+							//alert(rawData);
+							
+							var lay = Layout_BL(390,130);
+							
+							var data = splitData_ZJ(rawData);
+							var zbdata = Formula_DDXH(data.values);
+							var lab_fg = BL_Lab_FG(data.categoryData,'min3');
+							var lenx;
+							lenx = data.zijin_td.length - 1;
+							 //alert(lenx);
+							// alert(zbdata.d1);
+							option_bl1 = {
+								notMerge: true,
+								animation: false,
+								legend: {
+									show: false
+								},
+								tooltip: {
+									trigger: 'axis',
+									show: true,
+									axisPointer: {
+										type: 'cross',
+										snap: true
+									},
+									position: function (pos, params, el, elRect, size) {
+										var obj = {
+											top: -1200,
+										};
+										return obj;
+									}
+							
+								},
+								axisPointer: {
+									link: {
+										xAxisIndex: 'all'
+									},
+									label: {
+										backgroundColor: '#438'
+									},
+									type: 'line',
+									lineStyle: {
+										type: 'dotted'
+									}
+								},
+								toolbox: {
+									show: false,
+								},
+								brush: {
+									xAxisIndex: 'all',
+									brushLink: 'all',
+									outOfBrush: {
+										colorAlpha: 0.9
+									}
+								},
+								title:[
+				
+									{
+										show: true
+									}, {
+										top: 0, // 1
+										left: 32,
+										text: "短线(3)博弈图   "+gcode+ "   最新：" + data.spj[lenx] ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},  {
+										top: 0, // 1
+										right: 32,
+										text:  data.categoryData[lenx] ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},{
+										top: lay.pcc[1] - 20, // 1
+										left: 32,
+										text: "主力："+data.zijin_td[lenx].toFixed(1)+"   散户："+data.zijin_s[lenx].toFixed(1),
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},{
+										top: lay.pcc[3] - 20, // 1
+										left: 32,
+										text: "能量："+ zbdata.nl[lenx][1].toFixed(2) ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, 
+								
+								],
+							
+								grid: [
+									// 0  报价
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[0]+3,
+										height: lay.hcc[0]-3,
+									},
+									//1  主力资金
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[1],
+										height: lay.hcc[1],
+									},
+									//2 散户资金
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[2],
+										height: lay.hcc[2],
+									},
+									//3  顶底指标
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[3],
+										height: lay.hcc[3],
+									}
+							
+								],
+								xAxis: [
+									{
+										type: 'category',
+										gridIndex: 0,
+										data: data.categoryData,
+										axisLine: {
+											show: false
+										},
+										axisLabel: {
+											show: false,
+										},
+										axisTick: {
+											show:false
+										},
+										splitLine: {
+											show: false
+										},
+										axisPointer: {
+											z: 100,
+											label: {
+												show: false
+											}
+										}
+									},
+									{
+										type: 'category',
+										gridIndex: 1,
+										data: data.categoryData,
+										show: false,
+										axisPointer: {
+											label: {
+												show: false
+											}
+										}
+							
+							
+									},
+									{
+										type: 'category',
+										gridIndex: 2,
+										data: data.categoryData,
+										axisLine: {
+											show: false,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+										splitLine: {
+											show: false, 
+										},
+										axisTick: {
+											show:false
+										},
+										axisLabel: {
+											show: false,
+										},
+										axisPointer: {
+											label: {
+												show: false
+											}
+										}
+							
+									},
+									{
+										type: 'category',
+										gridIndex: 3,
+										data: data.categoryData,
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+
+										splitLine: {
+											show: false, 
+										},
+										axisTick: {
+											lineStyle: {
+												color: axis_Color
+											}
+										},
+										axisLabel: {
+											show: true,
+											color: Lab_Color,
+											fontSize: 11
+										},
+										splitNumber: 5,
+							
+									}
+								],
+								yAxis: [
+									//0 - 报价
+									{
+										scale: true,
+										gridIndex: 0,
+										axisLine: {
+											show: false
+										},
+										axisTick: {
+											show:false
+										},
+										axisLabel: {
+											show: true,
+											inside:false,
+											color: Lab_Color,
+											 
+											fontSize: 11,
+											formatter: function(value) {
+												return value + "";
+											}
+										},
+										splitLine: {
+											show:false
+										},
+										
+										min: 'dataMin',
+										max: 'dataMax',
+										splitNumber: 2,
+										offset: 0
+									},
+									{
+										//1 - 主力资金
+										scale: true,
+										gridIndex: 1,
+										axisLabel: {
+											show: true,
+											showMaxLabel:false,
+											showMinLabel:false,
+											inside:false,
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function (value, index) {
+													return value.toFixed(1);
+											}
+										},
+							
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitNumber: 2,
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax', 
+										
+										offset: 0
+									},
+									{
+										// 2 散户资金
+										scale: true,
+										gridIndex: 2,
+										axisLabel: {
+											show: true,
+											inside:false,
+											showMaxLabel:false,
+											showMinLabel:false,
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function (value, index) {
+													return value.toFixed(1);
+											}
+							
+										},
+							
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitNumber: 2,
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: 0
+									},
+									{
+										//顶底指标
+										scale: true,
+										gridIndex: 3,
+										axisLabel: {
+											inside:false,
+											show:true,
+											color: Lab_Color,
+											fontSize: 11,
+										},
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 0,
+										max: 100,
+										splitNumber: 2,
+										
+										offset: 0
+									}
+							
+								],
+								dataZoom: [{
+										type:'slider',
+										show: false,
+										xAxisIndex: [0,1,2,3],
+										start: zoomStart_bl1, 
+										end: zoomEnd_bl1,
+										realtime:false,
+
+									},
+								],
+								series: [
+									{
+										name: '收盘价',
+										type: 'line',
+										xAxisIndex: 0,
+										yAxisIndex: 0,
+										data: data.spj,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: spj_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										markLine: {
+											symbol: ['none', 'none'],
+											lineStyle: {
+												color: '#9f9f9f',
+												type:'dashed'
+											},
+											label: {
+												show:false
+											},
+											data: lab_fg,
+											 
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '主力资金',
+										type: 'line',
+										xAxisIndex: 1,
+										yAxisIndex: 1,
+										data: data.zijin_td,
+										smooth: true,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: tdh_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '散户资金',
+										type: 'line',
+										xAxisIndex: 2,
+										yAxisIndex: 2,
+										data: data.zijin_s,
+										smooth: true,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: sh_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '顶',
+										type: 'line',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										data: zbdata.ding,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: '#0055ff',
+												width: 1
+											}
+										},
+										tooltip: {
+											show: false
+										},
+										z: 0,
+										zlevel: 0
+										 
+									},
+									{
+										name: '底',
+										type: 'line',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										data: zbdata.di,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: '#ff0000',
+												width: 1
+											}
+										},
+										areaStyle:{
+											origin:'start',
+											color: '#ff0000',
+										},
+										tooltip: {
+											show: false
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '能量',
+										type: 'candlestick',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										barWidth: '90%',
+										data: zbdata.nl,
+										markLine: {
+											symbol: ['none', 'none'],
+											symbolSize: [6, 6],
+											lineStyle: {
+												//color: '#aaa',
+												type:'dashed'
+											},
+											label: {
+												//position: 'middle',
+												show:false,
+												//color:bzspliteColor
+											}, 
+											data: [ {
+												yAxis: 100,lineStyle: {color: '#ddd',},
+											},{
+												yAxis: 50,lineStyle: {color: '#ddd',},
+											},]
+										},
+										itemStyle: {
+											normal: {
+												color: bar_uColor,
+												color0: bar_dColor,
+												borderColor: bar_uColor,
+												borderColor0: bar_dColor,
+												opacity: 1
+											}
+										},
+										tooltip: {
+											show: false,
+							
+										},
+										z: 0,
+										zlevel: 0
+									}
+							
+							
+								]
+							};
+							
+							dom_bl1 = document.getElementById("container_bl1");
+							 
+							myChart_bl1 = echarts.getInstanceByDom(dom_bl1);
+							if (myChart_bl1 === undefined) 
+							{  
+								  myChart_bl1 = echarts.init(dom_bl1);
+							}
+							myChart_bl1.clear();
+							myChart_bl1.setOption(option_bl1); 
+							
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+						
+						
+						
+					});	//end ajax
+				}
+			}	
+			
+			//背离图 -2 - 15分钟
+			function Load_BL_2(){
+			    var is_self;
+			    
+			    if ((typeof(self) != 'undefined') && (self != null)) {	
+			    	if (self.isVisible()) {
+			    		is_self = true;
+			    	} else {
+			    		is_self = false;
+			    	}
+			    } else {
+			    	is_self = false;
+			    } 
+			    
+			    if ( ( is_self ) && (tab_i == "tab_3")) {
+					document.getElementById("container_bl2").style.width = window.innerWidth + 'px';		
+					mui.ajax({
+					
+						url: "http://app.jfxqh.com/dpz.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: gcode,
+							type: "qjm15"
+						},
+						type: "GET",
+						dataType: "TEXT",
+						timeout: 10000, //超时时间设置为10秒；
+					
+						success: function(rawData) {
+							//alert(rawData);
+							
+							var lay = Layout_BL(390,130);
+							
+							var data = splitData_ZJ(rawData);
+							 
+							
+							var zbdata = Formula_DDXH(data.values);
+							
+							 
+							var lab_fg = BL_Lab_FG(data.categoryData,'min15');
+							// alert("lenx");
+							var lenx;
+							lenx = data.zijin_td.length - 1;
+							// alert("lenx");
+							// alert(zbdata.d1);
+							option_bl2 = {
+								notMerge: true,
+								animation: false,
+								legend: {
+									show: false
+								},
+								tooltip: {
+									trigger: 'axis',
+									show: true,
+									axisPointer: {
+										type: 'cross',
+										snap: true
+									},
+									position: function (pos, params, el, elRect, size) {
+										var obj = {
+											top: -1200,
+										};
+										return obj;
+									}
+							
+								},
+								axisPointer: {
+									link: {
+										xAxisIndex: 'all'
+									},
+									label: {
+										backgroundColor: '#438'
+									},
+									type: 'line',
+									lineStyle: {
+										type: 'dotted'
+									}
+								},
+								toolbox: {
+									show: false,
+								},
+								brush: {
+									xAxisIndex: 'all',
+									brushLink: 'all',
+									outOfBrush: {
+										colorAlpha: 0.9
+									}
+								},
+								title:[
+								
+									{
+										show: true
+									}, {
+										top: 0, // 1
+										left: 32,
+										text: "波段(15)博弈图   "+gcode+ "   最新：" + data.spj[lenx] ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},  {
+										top: 0, // 1
+										right: 32,
+										text:  data.categoryData[lenx] ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},{
+										top: lay.pcc[1] - 20, // 1
+										left: 32,
+										text: "主力："+data.zijin_td[lenx].toFixed(1)+"   散户："+data.zijin_s[lenx].toFixed(1),
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									},{
+										top: lay.pcc[3] - 20, // 1
+										left: 32,
+										text: "能量："+ zbdata.nl[lenx][1].toFixed(2) ,
+										textStyle: {
+											color: Tit_Color,
+											fontWeight: 'normal',
+											fontSize: 11,
+										}
+									}, 
+								
+								],
+							
+								grid: [
+									// 0  报价
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[0]+3,
+										height: lay.hcc[0]-3,
+										
+									},
+									//1  主力资金
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[1],
+										height: lay.hcc[1],
+									},
+									//2 散户资金
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[2],
+										height: lay.hcc[2],
+									},
+									//3  顶底指标
+									{
+										left: 40,
+										right: 20,
+										top: lay.pcc[3],
+										height: lay.hcc[3],
+									}
+							
+								],
+								xAxis: [
+									{
+										type: 'category',
+										gridIndex: 0,
+										data: data.categoryData,
+										axisLine: {
+											show: false,
+										},
+										axisLabel: {
+											show: false,
+										},
+										axisTick: {
+											show:false
+										},
+										splitLine: {
+											show: false
+										},
+										axisPointer: {
+											z: 100,
+											label: {
+												show: false
+											}
+										}
+									},
+									{
+										type: 'category',
+										gridIndex: 1,
+										data: data.categoryData,
+										show: false,
+										axisPointer: {
+											label: {
+												show: false
+											}
+										},
+										splitLine: {
+											show: false
+										},
+							
+							
+									},
+									{
+										type: 'category',
+										gridIndex: 2,
+										data: data.categoryData,
+										axisLine: {
+											show: false,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+										splitLine: {
+											show: false, 
+										},
+										axisTick: {
+											show:false
+										},
+										axisLabel: {
+											show: false,
+										},
+										axisPointer: {
+											label: {
+												show: false
+											}
+										}
+							
+									},
+									{
+										type: 'category',
+										gridIndex: 3,
+										data: data.categoryData,
+										axisLine: {
+											show: true,
+											lineStyle: {
+												color: axis_Color,
+											},
+											onZero: false
+										},
+					
+										splitLine: {
+											show: false, 
+										},
+										axisTick: {
+											lineStyle: {
+												color: axis_Color
+											}
+										},
+										axisLabel: {
+											show: true,
+											color: Lab_Color,
+											fontSize: 11
+										},
+										splitNumber: 5,
+							
+									}
+								],
+								yAxis: [
+									//0 - 报价
+									{
+										scale: true,
+										gridIndex: 0,
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show:false
+										},
+										axisLabel: {
+											show: true,
+											inside:false,
+											color: Lab_Color,
+											 
+											fontSize: 11,
+											formatter: function(value) {
+												return value + "";
+											}
+										},
+										splitLine: {
+											show: false
+										},
+										
+										min: 'dataMin',
+										max: 'dataMax',
+										splitNumber: 2,
+										offset: 0
+									},
+									{
+										//1 - 主力资金
+										scale: true,
+										gridIndex: 1,
+										axisLabel: {
+											show: true,
+											showMaxLabel:false,
+											showMinLabel:false,
+											inside:false,
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function (value, index) {
+													return value.toFixed(1);
+											}
+										},
+							
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitNumber: 2,
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax', 
+										
+										offset: 0
+									},
+									{
+										// 2 散户资金
+										scale: true,
+										gridIndex: 2,
+										axisLabel: {
+											show: true,
+											inside:false,
+											showMaxLabel:false,
+											showMinLabel:false,
+											color: Lab_Color,
+											fontSize: 11,
+											formatter: function (value, index) {
+													return value.toFixed(1);
+											}
+							
+										},
+							
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitNumber: 2,
+										splitLine: {
+											show: false,
+										},
+										min: 'dataMin',
+										max: 'dataMax',
+										offset: 0
+									},
+									{
+										//顶底指标
+										scale: true,
+										gridIndex: 3,
+										axisLabel: {
+											inside:true,
+											show:false,
+											color: Lab_Color,
+											fontSize: 11,
+										},
+										axisLine: {
+											show:false
+										},
+										axisTick: {
+											show: false
+										},
+										splitLine: {
+											show: false,
+										},
+										min: 0,
+										max: 100,
+										splitNumber: 2,
+										
+										offset: 0
+									}
+							
+								],
+								dataZoom: [{
+										type:'slider',
+										show: false,
+										xAxisIndex: [0,1,2,3],
+										start: zoomStart_bl1, 
+										end: zoomEnd_bl1,
+										realtime:false,
+					
+									},
+								],
+								series: [
+									{
+										name: '收盘价',
+										type: 'line',
+										xAxisIndex: 0,
+										yAxisIndex: 0,
+										data: data.spj,
+										smooth: false,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: spj_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										markLine: {
+											symbol: ['none', 'none'],
+											lineStyle: {
+												color: '#9f9f9f',
+												type:'dashed'
+											},
+											label: {
+												show:false
+											},
+											data: lab_fg,
+											 
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '主力资金',
+										type: 'line',
+										xAxisIndex: 1,
+										yAxisIndex: 1,
+										data: data.zijin_td,
+										smooth: true,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: tdh_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '散户资金',
+										type: 'line',
+										xAxisIndex: 2,
+										yAxisIndex: 2,
+										data: data.zijin_s,
+										smooth: true,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: sh_Color,
+												width: 1
+											}
+										},
+										tooltip: {
+											show: true
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '顶',
+										type: 'line',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										data: zbdata.ding,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: '#0055ff',
+												width: 1
+											}
+										},
+										tooltip: {
+											show: false
+										},
+										z: 0,
+										zlevel: 0
+										 
+									},
+									{
+										name: '底',
+										type: 'line',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										data: zbdata.di,
+										symbol: 'none',
+										lineStyle: {
+											normal: {
+												opacity: 1,
+												color: '#ff0000',
+												width: 1
+											}
+										},
+										areaStyle:{
+											origin:'start',
+											color: '#ff0000',
+										},
+										tooltip: {
+											show: false
+										},
+										z: 0,
+										zlevel: 0
+									},
+									{
+										name: '能量',
+										type: 'candlestick',
+										xAxisIndex: 3,
+										yAxisIndex: 3,
+										barWidth: '90%',
+										data: zbdata.nl,
+										markLine: {
+											symbol: ['none', 'none'],
+											symbolSize: [6, 6],
+											lineStyle: {
+												//color: '#aaa',
+												type:'dashed'
+											},
+											label: {
+												//position: 'middle',
+												show:false,
+												//color:bzspliteColor
+											}, 
+											data: [ {
+												yAxis: 100,lineStyle: {color: '#ddd',},
+											},{
+												yAxis: 50,lineStyle: {color: '#ddd',},
+											},]
+										},
+										itemStyle: {
+											normal: {
+												color: bar_uColor,
+												color0: bar_dColor,
+												borderColor: bar_uColor,
+												borderColor0: bar_dColor,
+												opacity: 1
+											}
+										},
+										tooltip: {
+											show: false,
+							
+										},
+										z: 0,
+										zlevel: 0
+									}
+							
+							
+								]
+							};
+							
+							dom_bl2 = document.getElementById("container_bl2");
+							myChart_bl2 = echarts.getInstanceByDom(dom_bl2);
+							if (myChart_bl2 === undefined) 
+							{  
+								  myChart_bl2 = echarts.init(dom_bl2);
+							}
+							myChart_bl2.clear();
+							myChart_bl2.setOption(option_bl2); 
+							
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+						
+						
+						
+					});	//end ajax
+				}
+					
+			}
+			
+		
+		</script>
+	</body>
+
+</html>

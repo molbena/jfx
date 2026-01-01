@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>席位全景图</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/top.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/top.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+
+	</head>
+
+	<body class="body_bg">
+
+ 
+
+
+		<div id="content_m" class="mui-content body_bg_white">
+
+			<!-- 功能模块 -->
+			<div class="panel_tc_tab1"  style="margin-top: 1px;" >
+				<div id="segmentedControl_CCQJ" class="mui-segmented-control">
+					<a id="Page_1" class="mui-control-item mui-active" href="#item1">页面一</a>
+					<a id="Page_2" class="mui-control-item" href="#item2">页面二</a>
+					<a id="Page_3" class="mui-control-item" href="#item3">页面三</a>
+					<a id="XW_YD" class="mui-control-item" href="#item4">席位异动</a>
+					<!-- <a class="mui-control-item" href="#item34">对的</a> -->
+				</div>
+			</div>
+			
+			<div id="progress1" style="height: 3px;margin-top: 0px;">
+				<p class="mui-progressbar body_bg" data-progress="0" style="height: 3px;">
+					<span style="background-color: rgba(255,0,0,0.2);"></span>
+				</p>
+			</div>
+			
+			
+			<div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div class="panel_ccqj_top">
+						<div style="float: left;">
+							<button id="btn-go1" type="button" class="btn1">启动</button>
+						</div>
+					
+						<!-- <div style="float: right;">
+							 <button id="btn-set1" type="button" class="btn3">设置</button>   
+						</div> -->
+					</div>  
+					
+					<div class="panel_xwqj_hang" style="margin-top:2px;">
+						<div id="container1" class="panel_xwqj_1"></div>
+						<div id="container2" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container3" class="panel_xwqj_1"></div>
+						<div id="container4" class="panel_xwqj_2"></div>
+					</div>
+					
+					<div class="panel_xwqj_hang">	
+						<div id="container5" class="panel_xwqj_1"></div>
+						<div id="container6" class="panel_xwqj_2"></div>
+					
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container7" class="panel_xwqj_1"></div>
+						<div id="container8" class="panel_xwqj_2"></div>
+						
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container9" class="panel_xwqj_1"></div>
+						<div id="container10" class="panel_xwqj_2"></div>
+					</div>
+						
+					<div class="panel_xwqj_hang">	
+						<div id="container11" class="panel_xwqj_1"></div>
+						<div id="container12" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container13" class="panel_xwqj_1"></div>
+						<div id="container14" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container15" class="panel_xwqj_1"></div>
+						<div id="container16" class="panel_xwqj_2"></div>
+					</div>
+					
+					
+					<div class="btn_fdsx" style="top: 260px;">
+						<span id="btn-suoxiao" class="mui-icon iconfont icon-jian sp"></span>
+						<span id="btn-fangda" class="mui-icon iconfont icon-jiahao2fill sp"></span>
+					</div>
+					
+				</div>	
+				
+				
+				<div id="item2" class="mui-control-content">
+					<div class="panel_ccqj_top">
+						<div style="float: left;">
+							<button id="btn-go2" type="button" class="btn1">启动</button>
+						</div>
+					
+						<div style="float: right;">
+							 <button id="btn-set2" type="button" class="btn3">设置</button>   
+						</div>
+					</div>  
+					
+					<div class="panel_xwqj_hang" style="margin-top:2px;">
+						<div id="container17" class="panel_xwqj_1"></div>
+						<div id="container18" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container19" class="panel_xwqj_1"></div>
+						<div id="container20" class="panel_xwqj_2"></div>
+					</div>
+					
+					<div class="panel_xwqj_hang">	
+						<div id="container21" class="panel_xwqj_1"></div>
+						<div id="container22" class="panel_xwqj_2"></div>
+					
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container23" class="panel_xwqj_1"></div>
+						<div id="container24" class="panel_xwqj_2"></div>
+						
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container25" class="panel_xwqj_1"></div>
+						<div id="container26" class="panel_xwqj_2"></div>
+					</div>
+						
+					<div class="panel_xwqj_hang">	
+						<div id="container27" class="panel_xwqj_1"></div>
+						<div id="container28" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container29" class="panel_xwqj_1"></div>
+						<div id="container30" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container31" class="panel_xwqj_1"></div>
+						<div id="container32" class="panel_xwqj_2"></div>
+					</div> 
+					
+					
+					
+				</div>
+				
+				<div id="item3" class="mui-control-content">
+					<div class="panel_ccqj_top">
+						<div style="float: left;">
+							<button id="btn-go3" type="button" class="btn1">启动</button>
+						</div>
+					
+						<!-- <div style="float: right;">
+							 <button id="btn-set3" type="button" class="btn3">设置</button>   
+						</div> -->
+					</div>  
+					<div class="panel_xwqj_hang" style="margin-top:2px;">
+						<div id="container33" class="panel_xwqj_1"></div>
+						<div id="container34" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container35" class="panel_xwqj_1"></div>
+						<div id="container36" class="panel_xwqj_2"></div>
+					</div>
+					
+					<div class="panel_xwqj_hang">	
+						<div id="container37" class="panel_xwqj_1"></div>
+						<div id="container38" class="panel_xwqj_2"></div>
+					
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container39" class="panel_xwqj_1"></div>
+						<div id="container40" class="panel_xwqj_2"></div>
+						
+					</div>
+					
+					<div class="panel_xwqj_hang">
+						<div id="container41" class="panel_xwqj_1"></div>
+						<div id="container42" class="panel_xwqj_2"></div>
+					</div>
+						
+					<div class="panel_xwqj_hang">	
+						<div id="container43" class="panel_xwqj_1"></div>
+						<div id="container44" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container45" class="panel_xwqj_1"></div>
+						<div id="container46" class="panel_xwqj_2"></div>
+					</div>
+					<div class="panel_xwqj_hang">
+						<div id="container47" class="panel_xwqj_1"></div>
+						<div id="container48" class="panel_xwqj_2"></div>
+					</div>					 
+					
+				</div>
+				
+				<div id="item4" class="mui-control-content">
+					 <div id="container_TJ" style="width: 100%;height: 1200px;"></div>
+					<div class="btn_fdsx" style="top: 260px;">
+						<span id="btn-suoxiao4" class="mui-icon iconfont icon-jian sp"></span>
+						<span id="btn-fangda4" class="mui-icon iconfont icon-jiahao2fill sp"></span>
+					</div>
+				</div>
+			</div>
+			
+
+
+		</div>
+
+
+
+		<script>
+			var self = null;
+			//定义全局变量
+			var isWin;
+			var run_count = 0;
+			var zoomStart = 40;
+			var zoomEnd = 100;
+			var win_wid;
+			var iPage = 0;  //0- 第一页   1-第二页   2-第三页    3-第四页
+			var Tab_CC;
+			var P4_Wid = 1; //席位异动 默认宽度倍数
+			 
+			var new_date = "";
+			 
+			var lay;
+			var Form_loaded_flag = false;
+ 
+			var rig_off = 1;
+			var mar_r = 15;
+			var mar_l = 5;
+			var mar_r2 = 50;
+			var mar_l2 = 50;
+			
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					return false;
+				}
+
+			});
+ 
+ 
+			mui.plusReady(function() {
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+
+				//、$('#container').width(parseInt(inw));
+				//$('#container').height(parseInt(inh) -125-24); //-90
+				
+				for (var i = 0; i < 48; i++) {
+					 //document.getElementById("container"+(i+1)).addEventListener('tap',dbl_chart);
+					 document.getElementById("container"+(i+1)).style.width=window.innerWidth*0.5+"px";
+				}		 
+				
+				for (var i = 0; i < 48; i++) {
+					
+					 document.getElementById("container"+(i+1)).ondblclick = function () { 						 
+						 alert(this.id);
+						 var winw = window.innerWidth;
+						 var now_wid=this.style.width;
+						 now_wid.replace("px","");
+				
+						 if (parseInt(now_wid) < winw*0.8){
+							 this.style.width=winw+'px';
+						     this.style.height='800px'; 
+						 } else {
+							 this.style.width=winw*0.5+'px';
+							 this.style.height='400px';
+						 }  						 
+						 var domx = document.getElementById(this.id);
+						 var myChartx = echarts.init(domx);
+						 myChartx.resize();
+						  
+						 
+					 }; 
+				}
+			});
+			
+			
+			var progressbar1 = mui('#progress1');
+
+			document.getElementById("btn-go1").addEventListener("tap", function() {
+               mui.alert("非此版本功能", "提示", "关闭");
+			})
+			
+			document.getElementById("btn-go2").addEventListener("tap", function() {
+			    mui.alert("非此版本功能", "提示", "关闭");
+			})
+			
+			document.getElementById("btn-go3").addEventListener("tap", function() {
+			   mui.alert("非此版本功能", "提示", "关闭");
+			})
+			
+ 
+			//放大缩小
+			document.getElementById("btn-fangda").addEventListener("tap", function() {
+				if (zoomStart < 85) {
+					zoomStart = zoomStart + 10;
+				}
+				Load_CCQJ();
+			})
+			document.getElementById("btn-suoxiao").addEventListener("tap", function() {
+				if (zoomStart > 0) {
+					zoomStart = zoomStart - 10;
+				}
+
+				if (zoomStart < 0) zoomStart = 0;
+				Load_CCQJ();
+			})
+			
+			
+			//放大缩小
+			document.getElementById("btn-fangda4").addEventListener("tap", function() {
+				P4_Wid = 2;
+				document.getElementById("content_m").style.width =  window.innerWidth*P4_Wid + "px";
+				 
+				 document.getElementById("item4").style.width =  window.innerWidth*P4_Wid + "px";
+				Load_XW_TJ();
+				
+				var dom = document.getElementById("container_TJ");
+				var myChartx = echarts.init(dom);
+				myChartx.resize();
+			})
+			document.getElementById("btn-suoxiao4").addEventListener("tap", function() {
+				//document.getElementById("container_TJ").style.width =  window.innerWidth*1 + "px"; 
+				P4_Wid = 1;
+				
+				
+				Load_XW_TJ();
+				var dom = document.getElementById("container_TJ");
+				var myChartx = echarts.init(dom);
+				myChartx.resize();document.getElementById("content_m").style.width =  window.innerWidth*P4_Wid + "px";
+				document.getElementById("item4").style.width =  window.innerWidth*P4_Wid + "px";
+			})
+			
+			
+			mui('#segmentedControl_CCQJ').on('tap','.mui-control-item',function(){
+				 mui.alert("非此版本功能", "提示", "关闭");
+				 
+			       
+			}) 
+
+
+
+			function Load_CCQJ() {
+      
+               
+
+
+			}
+			
+ 
+			
+			function Load_XW_TJ() {
+			 
+			
+			}
+		 
+			
+			
+			
+		</script>
+	</body>
+
+</html>

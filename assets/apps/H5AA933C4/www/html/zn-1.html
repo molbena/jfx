@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>信号旗</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/zn.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/tablem.css" rel="stylesheet" />
+		<link href="../css/zn.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+
+
+	</head>
+	<body class="body_bg">
+
+		<div class="panel_zn4_top body_bg_white">
+			<div class="pleft1">
+				<div id="popsy" class="mui-switch" style="zoom:80%;">
+					<div class="mui-switch-handle"></div>
+
+				</div>
+			</div>
+			<div class="pleft2 text_gary">
+				声音
+			</div>
+
+			<div class="pright1">
+				<div id="popwin" class="mui-switch mui-active" style="zoom:80%;">
+					<div class="mui-switch-handle"></div>
+				</div>
+			</div>
+			<div class="pright2 text_gary">
+				弹窗
+			</div>
+		</div>
+
+		<div class="panel_zn1_cc body_bg_white">
+			<!-- 持仓列表 -->
+			<div class="wrap-tablex">
+				<div class="tablex">
+
+					<div class="wrap-tablex-nextcols" style="height: 215px;">
+						<div class="tablex-nextcols">
+
+							<table>
+								<thead>
+									<tr>
+										<th class="colxh1">时间</th>
+										<th class="colxh2">合约</th>
+										<th class="colxh3">方向</th>
+										<th class="colxh4">备注</th>
+										<th class="colxh5">交易法</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr id="r0">
+										<td id="r0c0" class="colxh1"></td>
+										<td id="r0c1" class="colxh2"></td>
+										<td id="r0c2" class="colxh3"></td>
+										<td id="r0c3" class="colxh4"></td>
+										<td id="r0c4" class="colxh5"></td>
+
+									</tr>
+									<tr id="r1">
+										<td id="r1c0" class="colxh1"></td>
+										<td id="r1c1" class="colxh2"></td>
+										<td id="r1c2" class="colxh3"></td>
+										<td id="r1c3" class="colxh4"></td>
+										<td id="r1c4" class="colxh5"></td>
+									</tr>
+									<tr id="r2">
+										<td id="r2c0" class="colxh1"></td>
+										<td id="r2c1" class="colxh2"></td>
+										<td id="r2c2" class="colxh3"></td>
+										<td id="r2c3" class="colxh4"></td>
+										<td id="r2c4" class="colxh5"></td>
+									</tr>
+									<tr id="r3">
+										<td id="r3c0" class="colxh1"></td>
+										<td id="r3c1" class="colxh2"></td>
+										<td id="r3c2" class="colxh3"></td>
+										<td id="r3c3" class="colxh4"></td>
+										<td id="r3c4" class="colxh5"></td>
+									</tr>
+									<tr id="r4">
+										<td id="r4c0" class="colxh1"></td>
+										<td id="r4c1" class="colxh2"></td>
+										<td id="r4c2" class="colxh3"></td>
+										<td id="r4c3" class="colxh4"></td>
+										<td id="r4c4" class="colxh5"></td>
+									</tr>
+									<tr id="r5">
+										<td id="r5c0" class="colxh1"></td>
+										<td id="r5c1" class="colxh2"></td>
+										<td id="r5c2" class="colxh3"></td>
+										<td id="r5c3" class="colxh4"></td>
+										<td id="r5c4" class="colxh5"></td>
+									</tr>
+									<tr id="r6">
+										<td id="r6c0" class="colxh1"></td>
+										<td id="r6c1" class="colxh2"></td>
+										<td id="r6c2" class="colxh3"></td>
+										<td id="r6c3" class="colxh4"></td>
+										<td id="r6c4" class="colxh5"></td>
+									</tr>
+									<tr id="r7">
+										<td id="r7c0" class="colxh1"></td>
+										<td id="r7c1" class="colxh2"></td>
+										<td id="r7c2" class="colxh3"></td>
+										<td id="r7c3" class="colxh4"></td>
+										<td id="r7c4" class="colxh5"></td>
+									</tr>
+									<tr id="r8">
+										<td id="r8c0" class="colxh1"></td>
+										<td id="r8c1" class="colxh2"></td>
+										<td id="r8c2" class="colxh3"></td>
+										<td id="r8c3" class="colxh4"></td>
+										<td id="r8c4" class="colxh5"></td>
+									</tr>
+									<tr id="r9">
+										<td id="r9c0" class="colxh1"></td>
+										<td id="r9c1" class="colxh2"></td>
+										<td id="r9c2" class="colxh3"></td>
+										<td id="r9c3" class="colxh4"></td>
+										<td id="r9c4" class="colxh5"></td>
+									</tr>
+									<tr id="r10">
+										<td id="r10c0" class="colxh1"></td>
+										<td id="r10c1" class="colxh2"></td>
+										<td id="r10c2" class="colxh3"></td>
+										<td id="r10c3" class="colxh4"></td>
+										<td id="r10c4" class="colxh5"></td>
+									</tr>
+									<tr id="r11">
+										<td id="r11c0" class="colxh1"></td>
+										<td id="r11c1" class="colxh2"></td>
+										<td id="r11c2" class="colxh3"></td>
+										<td id="r11c3" class="colxh4"></td>
+										<td id="r11c4" class="colxh5"></td>
+									</tr>
+									<tr id="r12">
+										<td id="r12c0" class="colxh1"></td>
+										<td id="r12c1" class="colxh2"></td>
+										<td id="r12c2" class="colxh3"></td>
+										<td id="r12c3" class="colxh4"></td>
+										<td id="r12c4" class="colxh5"></td>
+									</tr>
+									<tr id="r13">
+										<td id="r13c0" class="colxh1"></td>
+										<td id="r13c1" class="colxh2"></td>
+										<td id="r13c2" class="colxh3"></td>
+										<td id="r13c3" class="colxh4"></td>
+										<td id="r13c4" class="colxh5"></td>
+									</tr>
+									<tr id="r14">
+										<td id="r14c0" class="colxh1"></td>
+										<td id="r14c1" class="colxh2"></td>
+										<td id="r14c2" class="colxh3"></td>
+										<td id="r14c3" class="colxh4"></td>
+										<td id="r14c4" class="colxh5"></td>
+									</tr>
+
+
+								</tbody>
+							</table>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="panel_zn1_mid body_bg_white">
+			 
+			<div class="pleft1">
+				<span class="mui-icon iconfont icon-fengxiang"></span>
+			</div> 
+			<div id="panel_mid_pz" class="pleft2 text_gary">
+				 
+			</div> 
+			 
+		</div>
+
+
+		<div id="container1" class="panel_zn1_bot body_bg_white">
+			<!-- 图形 -->
+			<div class="mui-content body_bg_white" style="padding-top: 4px;">
+
+				<div class="panel_xhq_hang" style="margin-top:2px;">
+					<div id="container_zlt" class="panel_xhq_1"></div>
+					<div id="container_fxb" class="panel_xhq_2"></div>
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+		<script type="text/javascript">
+			var vindex = null;
+			var self = null;
+
+
+
+			var is_lx;
+			var is_sy;
+			 
+			var xhtxt=""; //信号列表
+			var now_code;
+			
+			var oldtime_xh = "";
+			var newtime_xh = "";
+
+			var myChart_zlt;
+			var option_zlt;
+			var dom_fxb;
+			
+			var myChart_fxb;
+			var option_fxb;
+			var dom_zlt;
+			var timer_zn1;
+			var timer_cc;
+			
+			var Form_loaded_flag = false;
+
+ 
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//alert('close');       //... //窗口关闭前处理其他业务详情点击 ↑ "关闭页面"链接查看
+					// main = plus.webview.getWebviewById("index");
+					//mui.fire(main, 'gohome');
+					return false;
+				}
+
+			});
+
+
+			mui.plusReady(function() {
+				
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+				vindex = plus.webview.getWebviewById("index");
+
+				//setTimeout('getCP()', 100);
+				//var timer_kx=setInterval('getCP()', 6700);
+				//监控前台、后台  减少流量消耗
+				document.addEventListener("pause", function() {
+					//clearInterval(timer_kx);
+					//timer_kx = setInterval(function () {
+					//getCP();
+					//}, 14000);
+
+				}, false);
+
+				document.addEventListener("resume", function() {
+					//clearInterval(timer_kx);
+					//timer_kx = setInterval(function () {
+					//getCP();
+					//}, 6700);
+				}, false);
+			});
+			
+			document.addEventListener('begin_i', function(event) {
+
+				if (!Form_loaded_flag){
+					if (typeof(timer_cc) != 'undefined') {
+						clearInterval(timer_cc); 
+					} 
+					
+					Load_CC();
+					timer_cc = setInterval('Load_CC()', 3400);
+					Form_loaded_flag = true;
+				}
+			});	
+
+			//获取信号器持仓
+			function Load_CC() {
+                
+			
+
+
+			}
+
+
+			mui('.tablex').on('click', 'tr', function() {
+				
+				
+
+			});
+
+
+			function Load_ZLT(scode) {
+           
+			}
+			
+			 
+ 
+		</script>
+	</body>
+</html>

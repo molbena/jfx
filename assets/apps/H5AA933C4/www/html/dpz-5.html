@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+	<title>风向标</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+	
+	<link href="../css/mui.css" rel="stylesheet" />
+	<link href="../css/dpz.css" rel="stylesheet" />
+	<link href="../css/iconfont.css" rel="stylesheet" />
+	<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+	
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/echarts.min.js"></script>
+	<script src="../js/dpz.js"></script>
+	<script src="../js/index.js"></script>
+	<script src="../js/com.js"></script>
+	<script src="../js/md5.js"></script>
+
+	<body class="body_bg">
+
+		 <!-- 标题头 - 名称 切换品种等 -->
+		 <div class="panel_1 body_bg_white" id="panel_id1">
+		 
+		 	<div id="Add_ZX" class="panel_1_left">
+		 		<span class="mui-icon iconfont icon-zengjia" style="font-size: 22px;"></span>
+		 	</div>
+		 	<div id="go_last" class="panel_1_mid1">
+		 		 <span class="mui-icon iconfont icon-zuo" style="font-size: 20px;"></span>
+		 	</div>
+		 	<div id="pz_name" class="panel_1_mid2">螺纹钢 (rb2405)</div>
+		 	<div id="go_next" class="panel_1_mid3">
+		 		 <span class="mui-icon iconfont icon-you" style="font-size: 20px;"></span>
+		 	</div>
+		 	<div id="btn_code" class="panel_1_right">
+		 		<span class="mui-icon iconfont icon-sousuo" style="font-size: 25px;"></span>
+		 	</div>
+		 
+		 </div>
+
+		<div class="panel_2_fxb body_bg_white">
+			<div class="panel_2_left">
+				<div id="bj_zx" class="panel_2_left_1">
+					0
+				</div>
+				<div id="bj_zd_f1" class="panel_2_left_2">
+					+0
+				</div>
+		 
+			</div>
+			
+		
+			<div class="panel_2_right">
+				<ul>
+					<li class="labss">开</li>
+					<li id="bj_open">0</li>
+					<li class="labss">高</li>
+					<li id="bj_zg">0</li>
+					<li class="labss">量</li>
+					<li id="bj_zs" class="labss2">0</li>
+				</ul>
+				<ul>
+					<li class="labss">昨</li>
+					<li id="bj_zj">0</li>
+					<li class="labss">低</li>
+					<li id="bj_zd">0</li>
+					<li class="labss">仓</li>
+					<li id="bj_cc" class="labss2">0</li>
+				</ul>
+				
+				<ul>
+					<li class="labss">特</li>
+					<li id="bj_td">0</li>
+					<li class="labss">大</li>
+					<li id="bj_dh">0</li>
+					<li class="labss">散</li>
+					<li id="bj_sh" style="color:#FFFF00;">0</li>
+				</ul>
+				
+				
+			</div>
+		</div> 
+
+		<div id="container_fxb" class="chart_container_fxb body_bg_white"></div>
+
+	</body>
+	<script type="text/javascript">
+		var self=null;
+		var gcode = "rb2501";
+		var run_count1=0;
+		var run_count2=0;
+		var Form_loaded_flag = false;
+		var timer_fxb;
+		var timer_bj;
+		
+		
+		var  menu, mask;
+		var showMenu = false;
+		var fwei;
+		
+		mui.init({
+			swipeBack: true, //启用右滑关闭功能
+			beforeback: function() {
+				 return false;
+			}
+		});
+ 
+		mui.plusReady(function() {
+			self = plus.webview.currentWebview();
+			//alert("extras:" + self.innerH);
+			var inh, inw;
+			inh = self.innerH;
+			document.getElementById("container_fxb").style.height=parseInt(inh) - 212;
+			
+ 
+			var codetext = localStorage.getItem("jfx9_codelist") ;
+			var clist = JHCode_To_Code(gcode,codetext);
+			if (clist.fullcode.length>0){
+				gcode = clist.fullcode;
+				document.getElementById("pz_name").innerHTML = clist.nam + "(" + clist.fullcode + ")";
+			}
+			
+			// 弹窗切换品种
+			mask = mui.createMask(_closeMenu);
+			
+			function openMenu() {
+				if (!showMenu) {
+					//侧滑菜单处于隐藏状态，则立即显示出来；显示完毕后，根据不同动画效果移动窗体；
+				    var win_w = window.innerWidth;
+					menu = plus.webview.create('mpop.html', 'mpop.html', {
+						left: (win_w - 140)+"px",
+						width: "140px",
+						height: "100%",
+						opacity:"0.85"
+					},{
+						iwin: "dpz_fxb"
+					});
+				 
+					menu.show('slide-in-left', 0, function() {}); 
+					mask.show();  //显示遮罩
+					showMenu = true;
+				}
+			}
+			
+			
+			function closeMenu () {
+				_closeMenu();
+				mask.close(); //关闭遮罩
+			}
+			
+			 
+			function _closeMenu() {
+				if (showMenu) {
+					//关闭遮罩； //等窗体动画结束后，隐藏菜单webview，节省资源；
+					setTimeout(function() {  menu.hide();  }, 200);
+					//改变标志位
+					showMenu = false;
+				}
+			}
+			
+			//点击左上角图标，打开侧滑菜单；
+			document.getElementById("btn_code").addEventListener('tap',function() {
+				openMenu();
+			} );
+			
+			
+			//主界面向左滑动，若菜单已显示，则关闭菜单；否则，不做任何操作；
+			window.addEventListener("swipeleft", closeMenu); //menu页面向左滑动，关闭菜单； 
+			window.addEventListener("menu:swipeleft", closeMenu);
+ 
+		});
+		
+		document.addEventListener('begin_i', function(event) {
+			 
+			 
+			if (!Form_loaded_flag){
+				
+				if (typeof(timer_fxb) != 'undefined') {
+					clearInterval(timer_fxb); 
+				} 
+				Load_FXB();
+				timer_fxb = setInterval('Load_FXB()', 2700);
+				
+				
+				if (typeof(timer_bj) != 'undefined') {
+					clearInterval(timer_bj); 
+				} 
+				Load_BJ();
+				timer_bj = setInterval('Load_BJ()', 1600);	
+				
+				Form_loaded_flag = true;
+			}
+		});	
+		
+ 
+		document.getElementById("Add_ZX").addEventListener("tap", function() {
+			//alert(cc_code);
+			var zxcode;
+			zxcode = gcode;
+			 
+			var savezx = localStorage.getItem("jfx9_zx");
+			var zxdata = Add_ZX(savezx ,zxcode);
+			
+			//alert(zxdata.res);
+			if (zxdata.is_con){
+				 mui.alert("提醒！自选中已存在该品种。", "金风向9提示", "关闭");
+			} else {
+				 
+				 localStorage.setItem("jfx9_zx", zxdata.res); //
+				 mui.alert("自选添加成功！", "金风向9提示", "关闭");
+			}
+		})
+		
+		document.getElementById("go_next").addEventListener("tap", function() {
+			
+			var savezx = localStorage.getItem("jfx9_codelist");
+			var data2 = Go_Next(savezx ,gcode);
+			gcode = data2.res_code;
+			document.getElementById("pz_name").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+			
+			if (typeof(timer_fxb) != 'undefined') {
+				clearInterval(timer_fxb); 
+			} 
+			Load_FXB();
+			timer_fxb = setInterval('Load_FXB()', 2700);
+			
+			
+			if (typeof(timer_bj) != 'undefined') {
+				clearInterval(timer_bj); 
+			} 
+			Load_BJ();
+			timer_bj = setInterval('Load_BJ()', 1600);
+		})
+		
+		document.getElementById("go_last").addEventListener("tap", function() {
+			
+			var savezx = localStorage.getItem("jfx9_codelist");
+			var data2 = Go_Last(savezx ,gcode);
+			gcode = data2.res_code;
+			document.getElementById("pz_name").innerHTML = data2.res_name + "(" + data2.res_code + ")";
+			
+			if (typeof(timer_fxb) != 'undefined') {
+				clearInterval(timer_fxb); 
+			} 
+			Load_FXB();
+			timer_fxb = setInterval('Load_FXB()', 2700);
+			
+			
+			if (typeof(timer_bj) != 'undefined') {
+				clearInterval(timer_bj); 
+			} 
+			Load_BJ();
+			timer_bj = setInterval('Load_BJ()', 1600);
+			 
+		})
+		
+		
+		function gohei() {
+			var dom = document.getElementById("container_fxb");
+			var myChart = echarts.init(dom);
+			myChart.resize();
+		}
+ 
+ 
+		
+		//更换代码后的返回事件
+		document.addEventListener('btn_ghcode', function (event) {
+			var gh_code = event.detail.code;
+			var gh_name = event.detail.name;
+			//alert(gh_name+' '+gh_code);
+			document.getElementById("pz_name").innerText = gh_name +"("+gh_code+")";
+			gcode=gh_code;
+			
+ 
+			var dom = document.getElementById("container_fxb");
+			var myChart = echarts.init(dom);
+			myChart.dispose();
+			document.getElementById("bj_zd_f1").innerText = "" ;
+			document.getElementById("bj_zx").innerText = "" ;		
+			document.getElementById("bj_zs").innerText = "" ;
+			document.getElementById("bj_cc").innerText = "" ;
+			document.getElementById("bj_zg").innerText = "" ;
+			document.getElementById("bj_zd").innerText = "" ;
+			document.getElementById("bj_open").innerText = "" ;
+			document.getElementById("bj_zj").innerText = "" ;
+			
+			if (typeof(timer_fxb) != 'undefined') {
+				clearInterval(timer_fxb); 
+			} 
+			Load_FXB();
+			timer_fxb = setInterval('Load_FXB()', 2700);
+			
+			
+			if (typeof(timer_bj) != 'undefined') {
+				clearInterval(timer_bj); 
+			} 
+			Load_BJ();
+			timer_bj = setInterval('Load_BJ()', 1600);
+		
+		}); 
+		
+		//自定义事件，模拟点击“其他页面转向”
+		document.addEventListener('go_other_fxb', function (event) {
+			var gh_code = event.detail.code;
+			var gh_name = event.detail.name;
+			document.getElementById("pz_name").innerText = gh_name +"("+gh_code+")";
+			gcode=gh_code;
+			var dom_x = document.getElementById("container_fxb");
+			var Chart_x = echarts.getInstanceByDom(dom_x);
+			if (Chart_x === undefined) 
+			{  
+				Chart_x = echarts.init(dom_x);
+			} 
+			Load_FXB();	 
+			Load_BJ(); 
+		
+			
+		});
+		
+		function Load_FXB() {
+		   
+		 
+		}
+		
+		
+		function Load_BJ() {
+		    
+		 
+		}
+		
+		
+		
+		
+		//监控前台、后台  减少流量消耗
+		document.addEventListener("pause", function () {
+		
+			//mui.toast('程序在后台运行');
+		    if (typeof(timer_bj) != 'undefined') {
+		         clearInterval(timer_bj);
+		    }
+			timer_bj = setInterval('Load_BJ()', 15000);
+		
+			if (typeof(timer_fxb) != 'undefined') {
+			     clearInterval(timer_fxb);
+			}
+			timer_fxb = setInterval(function () {
+				Load_FXB();
+			}, 14000); 
+		
+		}, false);
+		document.addEventListener("resume", function () {
+		
+			//mui.toast('在前台了');
+			if (typeof(timer_bj) != 'undefined') {
+			     clearInterval(timer_bj);
+			}
+			timer_bj = setInterval('Load_BJ()', 1600);
+		
+			if (typeof(timer_fxb) != 'undefined') {
+			     clearInterval(timer_fxb);
+			}
+			timer_fxb = setInterval(function () {
+				Load_FXB();
+			}, 2700);
+		}, false);
+	</script>
+</html>
+

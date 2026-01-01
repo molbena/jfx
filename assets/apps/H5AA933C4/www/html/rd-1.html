@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>rd-1全景图</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/rd.js"></script>
+		<script src="../js/md5.js"></script>
+		<script src="../js/index.js"></script>
+		<script src="../js/echarts.min.js"></script>
+		<script src="../js/com.js" id="color_js"></script>
+
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/rd.css" rel="stylesheet" />
+		<link href="../css/iconfont.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+ 
+
+	</head>
+
+	<body class="body_bg">
+
+
+		<div class="panel_qjt_top body_bg_white">
+			<div style="float: left;">
+				<button id="btn-go" type="button" class="btn1">
+					启动
+				</button>
+			</div>
+
+			<div style="float: left;">
+				<button id="btn-duan" type="button" class="btn2">
+					短
+				</button>
+			</div>
+
+			<div style="float: left;">
+				<button id="btn-bd" type="button" class="btn2">
+					中
+				</button>
+			</div>
+
+			<div style="float: left;">
+				<button id="btn-ch" type="button" class="btn2">
+					长
+				</button>
+			</div>
+			
+ 
+
+			<div style="float: right; padding-right: 10px;">
+				 <button id="btn-set" type="button" class="btn3">
+					设置
+				</button>  
+				 
+			</div>
+		</div>  
+
+
+		<div class="mui-content body_bg_white">
+ 
+			<!-- 功能模块 -->
+
+			<div class="panel_qjt_hang" style="margin-top:2px;">
+				<div id="container1" class="panel_qjt_1"></div>
+				<div id="container2" class="panel_qjt_2"></div>
+				<div id="container3" class="panel_qjt_1"></div>
+				<div id="container4" class="panel_qjt_2"></div>
+			</div>
+			<div class="panel_qjt_hang">
+				<div id="container5" class="panel_qjt_2"></div>
+				<div id="container6" class="panel_qjt_1"></div>
+				<div id="container7" class="panel_qjt_2"></div>
+				<div id="container8" class="panel_qjt_1"></div>
+			</div>
+
+			<div class="panel_qjt_hang">
+				<div id="container9" class="panel_qjt_1"></div>
+				<div id="container10" class="panel_qjt_2"></div>
+				<div id="container11" class="panel_qjt_1"></div>
+				<div id="container12" class="panel_qjt_2"></div>
+			</div>
+			<div class="panel_qjt_hang">
+				<div id="container13" class="panel_qjt_2"></div>
+				<div id="container14" class="panel_qjt_1"></div>
+				<div id="container15" class="panel_qjt_2"></div>
+				<div id="container16" class="panel_qjt_1"></div>
+			</div>
+			<div class="panel_qjt_hang">
+				<div id="container17" class="panel_qjt_1"></div>
+				<div id="container18" class="panel_qjt_2"></div>
+				<div id="container19" class="panel_qjt_1"></div>
+				<div id="container20" class="panel_qjt_2"></div>
+			</div>
+			<div class="panel_qjt_hang">
+				<div id="container21" class="panel_qjt_2"></div>
+				<div id="container22" class="panel_qjt_1"></div>
+				<div id="container23" class="panel_qjt_2"></div>
+				<div id="container24" class="panel_qjt_1"></div>
+			</div>
+			<div class="panel_qjt_hang">
+				<div id="container25" class="panel_qjt_1"></div>
+				<div id="container26" class="panel_qjt_2"></div>
+				<div id="container27" class="panel_qjt_1"></div>
+				<div id="container28" class="panel_qjt_2"></div>
+			</div>
+			
+			
+			
+			<div class="btn_fdsx">
+				<span id="btn_sx" class="mui-icon iconfont icon-minus-circle sp"></span>
+				<span id="btn_fd" class="mui-icon iconfont icon-plus-circle sp"></span>
+			</div>
+
+ 
+		</div>
+
+
+
+		<script>
+			var self = null;
+			//定义全局变量
+			var isWin;
+			var run_count;
+			run_count = 0;
+			var zoomStart = 20;
+			var zoomEnd = 100;
+			
+			var qjt_type="pho3";
+			var Form_loaded_flag = false;
+			var timer_qjt;
+			var code_all = "";
+ 
+
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					return false;
+				}
+
+			});
+
+
+			mui.plusReady(function() {
+				self = plus.webview.currentWebview();
+				inh = self.innerH;
+				inw = self.innerW;
+				
+				
+				var fxbpz = localStorage.getItem("jfx9_qjt_pz");
+				if (  fxbpz !=null  ){
+					code_all =  fxbpz;
+				}
+				
+ 
+				for (var i = 0; i < 28; i++) {
+					 //document.getElementById("container"+(i+1)).addEventListener('tap',dbl_chart);
+					 document.getElementById("container"+(i+1)).style.width=window.innerWidth*0.25+"px";
+				}		 
+				
+				for (var i = 0; i < 28; i++) {
+					 document.getElementById("container"+(i+1)).ondblclick = function () { 						 
+						 // alert(this.style.width);
+						 var winw = window.innerWidth;
+						 var now_wid=this.style.width;
+						 now_wid.replace("px","");
+				
+						 if (parseInt(now_wid) < winw*0.8){
+							 this.style.width=winw+'px';
+						     this.style.height='300px'; 
+						 } else {
+							 this.style.width=winw*0.25+'px';
+							 this.style.height='110px';
+						 }  						 
+						 var domx = document.getElementById(this.id);
+						 var myChartx = echarts.init(domx);
+						 myChartx.resize();
+						  
+						 
+					 }; 
+				}
+				
+				
+				document.getElementById("btn-set").addEventListener("tap",function(){
+					
+					
+					//localStorage.setItem("jfx9_qjt_pz", code_all);
+					var wc;	
+					wc = plus.webview.create("set.html", "side", {
+									left:0,
+									top:0,
+									bottom: 0,
+									width: "100%",
+									popGesture: "none", 			 
+					},{iwin: "qjt",ipara:""});
+					wc.show("zoom-out", 50);
+				})
+				
+				
+			});
+			
+
+			function BC_QJT() {
+				mui.ajax({
+					url: "http://app.jfxqh.com/rd.php",
+					data: {
+						mkey: hex_md5("353606sh"),
+						code: 'rb',
+						type: "bc_"+qjt_type 
+					},
+					type: "GET",
+					dataType: "TEXT",
+					timeout: 10000, //超时时间设置为10秒；
+					success: function(rawData) {
+						var qjdata = splitData_QJT_BC(rawData);
+						//console.log(qjdata.clos);
+						localStorage.setItem("qjt_"+qjt_type+"_clos", JSON.stringify(qjdata.clos)); //保存 收盘价
+						localStorage.setItem("qjt_"+qjt_type+"_lab", JSON.stringify(qjdata.lab)); //保存lab
+						localStorage.setItem("qjt_"+qjt_type+"_td", JSON.stringify(qjdata.zijin_td)); //保存特大户资金
+						localStorage.setItem("qjt_"+qjt_type+"_s", JSON.stringify(qjdata.zijin_s)); //保护价格
+						localStorage.setItem("qjt_"+qjt_type+"_code", JSON.stringify(qjdata.code)); //保护价格
+						
+						Load_QJT();
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+					}
+				});
+
+			}
+
+			document.getElementById("btn-go").addEventListener("tap", function() {
+				try
+				{
+					var fxbpz = localStorage.getItem("jfx9_qjt_pz");  
+					if (  fxbpz !=null  ){
+						code_all =  fxbpz;
+					}
+					
+					if (typeof(timer_qjt) != 'undefined') {
+						clearInterval(timer_qjt); 
+					} 
+
+					BC_QJT();
+ 
+					    timer_qjt = setInterval('Load_QJT()', 3700);
+ 
+					
+				} catch(e) {
+					console.log(e);
+				}
+				
+			})
+ 
+			
+			//短线 中线  长线
+			document.getElementById("btn-duan").addEventListener("tap", function() {
+				try
+				{
+					var fxbpz = localStorage.getItem("jfx9_qjt_pz");
+					if (  fxbpz !=null  ){
+						code_all =  fxbpz;
+					}
+					
+					qjt_type="pho3";
+					if (typeof(timer_qjt) != 'undefined') {
+						clearInterval(timer_qjt); 
+					} 
+					BC_QJT();
+ 
+					timer_qjt = setInterval('Load_QJT()', 3700);
+ 
+				} catch(e) {
+					console.log(e);
+				}
+			 
+				/* var oHead = document.getElementsByTagName('HEAD').item(0);  
+				var oScript = document.createElement( "script" );  
+				oScript.type = "text/javascript"; 
+				oScript.src="../js/comx.js"; 
+				oHead.appendChild(oScript); 
+				oScript.src="../js/com.js"; 
+				oHead.removeChild(oScript); */
+					
+				/* document.getElementById("indexcss").setAttribute("href", "../css/index2.css"); */
+
+			})
+			
+			document.getElementById("btn-bd").addEventListener("tap", function() {
+				mui.alert("非此版本功能", "提示", "关闭");
+			})
+			
+			document.getElementById("btn-ch").addEventListener("tap", function() {
+				mui.alert("非此版本功能", "提示", "关闭");
+			})
+			
+			//放大缩小
+			document.getElementById("btn_fd").addEventListener("tap", function() {
+				 if (zoomStart<85){
+					 zoomStart=zoomStart+10;
+				 }
+				 Load_QJT();
+			})
+			document.getElementById("btn_sx").addEventListener("tap", function() {
+				 if (zoomStart>0){
+					 zoomStart=zoomStart-10;
+				 }
+				 
+				 if (zoomStart<0)   zoomStart=0; 
+				 Load_QJT();
+			})
+
+
+			function Load_QJT() {
+                
+				
+				var dom = [];
+				var myChart = [];
+				var option = [];
+
+				var is_self;
+				
+				if ((typeof(self) != 'undefined') && (self != null)) {	
+					if (self.isVisible()) {
+						is_self = true;
+					} else {
+						is_self = false;
+					}
+				} else {
+					is_self = false;
+				}
+ 
+				if ( 1 ) {
+					//run_count++;
+					mui.ajax({
+						url: "http://app.jfxqh.com/rd.php",
+						data: {
+							mkey: hex_md5("353606sh"),
+							code: 'rb',
+							type: "new_"+qjt_type
+						},
+						type: "GET",
+						dataType: "TEXT",
+						timeout: 20000, //超时时间设置为10秒；
+						success: function(rawData) {
+							//   alert(rawData);
+
+
+							//获取旧的
+							var ls_code = JSON.parse(localStorage.getItem("qjt_"+qjt_type+"_code"));
+							var ls_clos = JSON.parse(localStorage.getItem("qjt_"+qjt_type+"_clos"));
+							var ls_lab = JSON.parse(localStorage.getItem("qjt_"+qjt_type+"_lab"));
+							var ls_td = JSON.parse(localStorage.getItem("qjt_"+qjt_type+"_td"));
+							var ls_s = JSON.parse(localStorage.getItem("qjt_"+qjt_type+"_s"));
+
+							var newdata = splitData_QJT_NEW(rawData, ls_code);
+
+							//合成新的
+							//生成新的  res_clos[][]  res_lab[][]  res_td[][]  res_s[][]
+
+							var res_clos = [];
+							var res_lab = [];
+							var res_td = [];
+							var res_s = [];
+
+							for (var i = 0; i < ls_code.length; i++) {
+								var tmp_clos = [];
+								var tmp_lab = [];
+								var tmp_td = [];
+								var tmp_s = [];
+								var lent;
+								lent = ls_clos[i].length;
+
+								for (var j = 0; j < lent - 1; j++) {
+									tmp_clos.push(ls_clos[i][j]);
+									tmp_lab.push(ls_lab[i][j]);
+									tmp_td.push(ls_td[i][j]);
+									tmp_s.push(ls_s[i][j]);
+
+								}
+
+
+								var old_labi = ls_lab[i][lent - 1].trim(); //旧的时间
+								var new_labi = newdata.newlab[i].trim(); //新的时间
+
+
+								if (new_labi > old_labi) {
+									//增加最新一行  增加新获取的
+									tmp_clos.push(ls_clos[i][lent - 1]);
+									tmp_lab.push(ls_lab[i][lent - 1]);
+									tmp_td.push(ls_td[i][lent - 1]);
+									tmp_s.push(ls_s[i][lent - 1]);
+
+									tmp_clos.push(newdata.newclos[i]);
+									tmp_lab.push(newdata.newlab[i]);
+									tmp_td.push(newdata.newzijin_td[i]);
+									tmp_s.push(newdata.newzijin_s[i]);
+								} else {
+									//替换新的
+									tmp_clos.push(newdata.newclos[i]);
+									tmp_lab.push(newdata.newlab[i]);
+									tmp_td.push(newdata.newzijin_td[i]);
+									tmp_s.push(newdata.newzijin_s[i]);
+								}
+
+
+								res_clos[i] = (tmp_clos);
+								res_lab[i] = (tmp_lab);
+								res_td[i] = (tmp_td);
+								res_s[i] = (tmp_s);
+
+							}
+
+							// console.log(res_s[0]); 
+
+							//保存新的
+							localStorage.setItem("qjt_"+qjt_type+"_clos", JSON.stringify(res_clos));
+							localStorage.setItem("qjt_"+qjt_type+"_lab", JSON.stringify(res_lab));
+							localStorage.setItem("qjt_"+qjt_type+"_td", JSON.stringify(res_td));
+							localStorage.setItem("qjt_"+qjt_type+"_s", JSON.stringify(res_s));
+							localStorage.setItem("qjt_"+qjt_type+"_code", JSON.stringify(ls_code));
+
+                            if ( is_self ){  
+								//获取28个品种的数据
+								var vcode = code_all.split(",");
+
+								for (var i = 0; i < 28; i++) {
+
+									var ipos = 100;
+									for (var j = 0; j < ls_code.length; j++) {
+										var tmpcode = ls_code[j];
+										tmpcode = tmpcode.substr(0, 2);
+										tmpcode = tmpcode.replace("2", "");
+										if (tmpcode == vcode[i]) {
+											ipos = j;
+											break;
+										}
+									}
+									var len;
+									len = res_clos[ipos].length;
+									var zf = (calculate_Max(res_clos[ipos]) - calculate_Min(res_clos[ipos])) /
+										calculate_Min(res_clos[ipos]) * 100;
+									//alert(ipos); 
+									
+									var lastlab;
+									lastlab = res_lab[ipos][len - 1];
+									lastlab = lastlab.substr(3,5);
+									
+									//if (i<2)  console.log("lab_fg");
+									var lab_fg = QJT_Lab_FG_3(res_lab[ipos] , qjt_type);
+									
+									var res_tdx = Fun_EMA(7, res_td[ipos]);
+									var res_sx = Fun_EMA(7, res_s[ipos]);
+
+
+									option[i] = {
+										animation: false,
+										title: [
+											{
+												top: '2',
+												left: '2',
+												text: Codeto_Name(ls_code[ipos])+ " " +Codeto_Dat(ls_code[ipos]),
+												textStyle: {
+													color: text_bt,
+													fontSize: 11,
+													fontWeight: 'normal',
+													fontWeight:'bold'
+												},
+												padding:[2,2,2,2],
+		 
+											}, {
+												top: '2',
+												left: '63%',
+												text: lastlab,   //
+												textStyle: {
+													color: text_bt2,
+													fontSize: 11,
+													fontWeight: 'normal'
+												},
+												padding:[2,0,2,6],
+												
+											}, {
+												top: '30%',
+												left: '1%',
+												text: res_clos[ipos][len - 1],
+												textStyle: {
+													color: text_bt,
+													fontSize: 11,
+													fontWeight: 'normal'
+												},
+												padding:0,
+												backgroundColor :bg_Color2
+											}, {
+												top: '70%',
+												left: '1%',
+												text: zf.toFixed(2) + "%",
+												textStyle: {
+													color: text_bt,
+													fontSize: 11,
+													fontWeight: 'normal'
+												}
+											}, 
+										],
+										grid: [{
+												x: '4%', //0
+												y: '16',
+												width: '92%',
+												height: '40%'
+											},
+											{
+												x: '4%', //1
+												y: '56%',
+												width: '92%',
+												height: '20%'
+											},
+											{
+												x: '4%', //2
+												y: '76%',
+												width: '92%',
+												height: '20%'
+											}
+
+										],
+										xAxis: [{
+												//0
+												axisLabel: {
+													show: false,
+												},
+												data: res_lab[ipos],
+												axisTick: {
+													show: false
+												},
+												axisLine: {
+													show: false
+												},
+												gridIndex: 0,
+											},
+											{
+												//1
+												axisLabel: {
+													show: false,
+												},
+												data: res_lab[ipos],
+												axisTick: {
+													show: false
+												},
+												axisLine: {
+													show: false
+												},
+												gridIndex: 1,
+											},
+											{
+												//2
+												axisLabel: {
+													show: false,
+												},
+												data: res_lab[ipos],
+												axisTick: {
+													show: false
+												},
+												axisLine: {
+													show: false
+												},
+												gridIndex: 2,
+											},
+										],
+										yAxis: [{
+												type: 'value', //0
+												axisLabel: {
+													show: true,
+												},
+												min: 'dataMin',
+												max: 'dataMax',
+												gridIndex: 0,
+												splitLine: {
+													show: false,
+												},
+											},
+											{
+												type: 'value', //1
+												axisLabel: {
+													show: true,
+												},
+												min: 'dataMin',
+												max: 'dataMax',
+												gridIndex: 1,
+												splitLine: {
+													show: false,
+												},
+											},
+											{
+												type: 'value', //2
+												axisLabel: {
+													show: true,
+												},
+												min: 'dataMin',
+												max: 'dataMax',
+												gridIndex: 2,
+												splitLine: {
+													show: false,
+												},
+											}
+
+										],
+										dataZoom: [{
+											type: 'slider',
+											show: false,
+											xAxisIndex: [0, 1, 2],
+											start: zoomStart,
+											end: zoomEnd,
+											realtime: false,
+
+										}],
+										series: [
+											{
+												data: res_clos[ipos],
+												type: 'line',
+												symbol: 'none',
+												xAxisIndex: 0,
+												yAxisIndex: 0,
+												lineStyle: {
+													normal: {
+														opacity: 1,
+														color: qjt_spj_Color,
+														width: 1
+													}
+												},
+												areaStyle:{
+													color:qjt_spj_Color,
+													opacity:0.1
+												}, 
+												markLine: {
+													symbol: ['none', 'none'],
+													lineStyle: {
+														color: '#9f9f9f',
+														type:'dashed'
+													},
+													label: {
+														show:false
+													},
+													data: [{
+														xAxis: lab_fg,
+													}]
+												},
+												z: 0,
+												zlevel: 0
+											},
+											{
+												data:  res_tdx,
+												type: 'line',
+												symbol: 'none',
+												xAxisIndex: 1,
+												yAxisIndex: 1,
+												lineStyle: {
+													normal: {
+														opacity: 1,
+														color: bz_tdColor,
+														width: 1
+													}
+												},
+												z: 0,
+												zlevel: 0
+											}, {
+												data: res_sx,
+												type: 'line',
+												symbol: 'none',
+												xAxisIndex: 2,
+												yAxisIndex: 2,
+												lineStyle: {
+													normal: {
+														opacity: 1,
+														color: bz_sColor,
+														width: 1
+													}
+												},
+												z: 0,
+												zlevel: 0
+												
+											}
+										]
+									}; //option 结束
+
+
+
+								}
+
+
+								
+								for (var i = 0; i < 28; i++) {
+									dom[i] = document.getElementById("container" + (i + 1));
+									
+									
+									myChart[i] = echarts.getInstanceByDom(dom[i]);
+									if (myChart[i] === undefined) 
+									{  
+										myChart[i] = echarts.init(dom[i]);
+									}
+																
+									myChart[i].clear();
+									myChart[i].setOption(option[i], true);
+								}
+							
+							} 
+
+
+
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
+
+				}
+
+
+
+			}
+		</script>
+	</body>
+
+</html>

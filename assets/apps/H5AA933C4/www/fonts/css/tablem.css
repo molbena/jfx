@@ -1,0 +1,269 @@
+
+ 
+.wrap-tablex {
+	width: 100%;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+.tablex {
+	/* background-color: #fff; */
+}
+
+table {
+	width: 100%;
+}
+
+th {
+	font-weight: bold;
+	text-align: left;
+	padding-right: 0px;
+}
+
+td {
+	font-weight: unset;
+	padding-right: 0px;
+}
+
+.col1 {
+	width: 100px;
+	padding-left: 10px;
+}
+
+.col2 {
+	width: 70px; 
+}
+
+.col3 {
+	width: 50px;
+	/* text-align: right; */
+}
+
+.col4 {
+	width: 50px;
+	/* text-align: right; */
+}
+
+.col5 {
+	width: 70px;
+	/* text-align: right; */
+}
+
+.col6 {
+	width: 80px;
+	 
+}
+
+.col7 {
+	width: 80px;
+	 
+}
+.col8 {
+	width: 100px;
+}
+.col9 {
+	width: 100px;
+}
+.col10 {
+	width: 100px;
+}
+.col11 {
+	width: 100px;
+}
+.col12 {
+	width: 100px;
+}
+
+.col13 {
+	width: 100px;
+}
+
+
+.tablex {
+	width: 100%;
+	position: relative;
+}
+
+.tablex th {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.tablex td {
+	/* padding-top: 8px;
+	padding-bottom: 8px; */
+}
+.tablex th {
+	/* font-family:microsoft yahei; */
+	font-size: 14px;
+	color: #222;
+	/* line-height: 1.2; */
+	text-transform: uppercase;
+}
+
+.tablex tr {
+	/* border-bottom: 1px solid #e5e5e5; */
+	height: 36px;
+}
+
+.tablex td {
+	/* font-family:microsoft yahei; */
+	font-size: 14px;
+	/* line-height: 30px; */
+}
+
+
+.colx1 {
+	width: 100px;
+	padding-left: 10px;
+}
+
+.colx2 {
+	width: 50px; 
+}
+
+.colx3 {
+	width: 50px;
+	/* text-align: right; */
+}
+
+.colx4 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+.colx5 {
+	width: 180px;
+	/* text-align: right; */
+}
+
+.colx6 {
+	width: 80px;
+	 
+}
+
+.colx7 {
+	width: 80px;
+	 
+}
+.colx8 {
+	width: 250px;
+}
+
+/*==================================================================
+[ Fix col ]*/
+.wrap-tablex-nextcols {
+	width: 100%;
+	overflow: auto;
+	padding-left: 2px;
+	padding-bottom: 10px;
+	/* background-color: #fff; */
+}
+
+.tablex-nextcols table {
+	table-layout: fixed;
+}
+
+/*==================================================================
+[ Ver1 ]*/
+
+.tablex .tablex-nextcols td {
+	color: #333;
+}
+
+
+.tablex-nextcols thead span
+{
+     font-size: 13px;
+	 padding-left: 1px;
+}
+
+.tablex-nextcols tbody td:active{
+	background-color: #ffaa00;
+} 
+
+/* .tablex-nextcols tbody tr:active{
+	background-color: #ffaa00;
+} */
+
+/* 信号旗  zn-1.html */
+
+.colxh1 {
+	width: 130px;
+	padding-left: 10px;
+}
+
+.colxh2 {
+	width: 50px; 
+}
+
+.colxh3 {
+	width: 50px;
+	/* text-align: right; */
+}
+
+.colxh4 {
+	width: 120px;
+	/* text-align: right; */
+}
+
+.colxh5 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+
+/* 首页 自选  home.html */
+ 
+
+
+.colh1 {
+	width: 120px;
+	padding-left: 10px;
+}
+
+.colh2 {
+	width: 80px; 
+}
+
+.colh3 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+.colh4 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+.colh5 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+.colh6 {
+	width: 80px;
+	/* text-align: right; */
+}
+
+
+/* dpz-1.html */
+#popdiv{
+	position: fixed;
+	width: 0px;
+	height: 0px; 
+	/* background: red; */
+	z-index: 101; 
+	top: 400px;
+	left: 220px;
+	
+}
+
+/*移除底部或顶部三角,需要在删除此代码*/
+.mui-popover .mui-popover-arrow:after {
+	width: 0px;
+	 
+}
+
+ 
+

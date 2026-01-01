@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>dpz</title>
+		<meta charset="utf-8">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+
+		<script src="../js/mui.min.js"></script>
+		<link href="../css/mui.css" rel="stylesheet" />
+		<link href="../css/index.css" rel="stylesheet" id="indexcss"/>
+		<link href="../css/page.css" rel="stylesheet" />
+	</head>
+	<body id="main_bg" class="body_bg">
+		<div class="dpz_head">
+			<div class="mui-segmented-control" id="segmentedControl">
+				<a id="tab1" class="mui-control-item mui-active" data-wid="dpz-1.html">行情</a>
+				<a id="tab2" class="mui-control-item" data-wid="dpz-2.html">统计</a>
+				<a id="tab3" class="mui-control-item" data-wid="dpz-3.html">K线</a>
+				<a id="tab4" class="mui-control-item" data-wid="dpz-4.html">主力图</a>
+				<a id="tab5" class="mui-control-item" data-wid="dpz-5.html">风向标</a>
+		 
+			</div>
+
+		</div>
+		
+		<script>
+		 
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				keyEventBind: {
+					backbutton: true, //Boolean(默认true)关闭back按键监听
+					swipe: true //默认为true
+					//menubutton: false //Boolean(默认true)关闭menu按键监听
+				}
+			});
+	
+
+			var subwin = ['dpz-1.html', 'dpz-2.html', 'dpz-3.html', 'dpz-4.html', 'dpz-5.html'];//, 'dpz-5.html'
+			var activeTab = subwin[0];
+
+			mui.plusReady(function() {
+				//plus.navigator.setStatusBarBackground('#ff0000');
+				//plus.navigator.setStatusBarStyle('light');
+
+				var _self = plus.webview.currentWebview();
+				inh = _self.innerH;
+				inw = _self.innerW;
+				//alert(inh);
+				//alert(inh); 			
+				var winhh = (window.innerHeight-44).toString();	
+				 
+				for (var i = 0; i < 5; i++) {
+					var sub = plus.webview.create(subwin[i], subwin[i], {
+						top: "33px",
+						width: "100%",
+						//height: winhh+"px", 
+						bottom: "51px",
+						popGesture: "none"
+					},{
+						innerH: winhh,
+						innerW: inw
+					});
+					//wc.show("fade-in", 200);
+					if (i > 0) {
+						sub.hide();
+					}
+				}
+				
+
+				mui(".mui-segmented-control").on("tap", ".mui-control-item", function(e) {
+
+					var targetTab = this.getAttribute("data-wid");
+					if (targetTab == activeTab) {
+						return;
+					} else {
+						
+						if ( targetTab == "dpz-5.html" ){
+							//风向标  专业版  至尊版
+							mui.alert("非此版本功能", "提示", "关闭");
+							
+						} else if ( targetTab == "dpz-4.html" ){
+							//主力图   乾坤版  专业版  至尊版
+							mui.alert("非此版本功能", "提示", "关闭");
+						} else if ( targetTab == "dpz-3.html" ){
+							plus.webview.hide(activeTab);
+							plus.webview.show(targetTab, "fade-in", 300);
+							activeTab = targetTab;
+							
+							var ac_page = plus.webview.getWebviewById(targetTab);
+							mui.fire(ac_page, 'begin_i');
+							
+						} else if ( targetTab == "dpz-2.html" ){
+							plus.webview.hide(activeTab);
+							plus.webview.show(targetTab, "fade-in", 300);
+							activeTab = targetTab;
+							
+							var ac_page = plus.webview.getWebviewById(targetTab);
+							mui.fire(ac_page, 'begin_i');
+							
+						} else if ( targetTab == "dpz-1.html" ){
+							plus.webview.hide(activeTab);
+							plus.webview.show(targetTab, "fade-in", 300);
+							activeTab = targetTab;
+							
+							var ac_page = plus.webview.getWebviewById(targetTab);
+							mui.fire(ac_page, 'begin_i');
+							
+						}  
+						
+						
+						 
+					}
+
+				 
+				});
+				
+				document.addEventListener('set_status', function(event) {
+					 
+					plus.navigator.setStatusBarBackground('#ffffff');
+					plus.navigator.setStatusBarStyle('dark');
+				
+				});
+				
+				document.addEventListener('setcolor', function(event) {
+					 
+					Set_Color();
+				});	
+
+				document.addEventListener('showactive', function(event) {
+					// alert("2");
+					plus.webview.show(activeTab, "fade-in", 100);
+					//if ( (activeTab == "dpz-1.html") || (activeTab == "dpz-2.html")  
+					//   || (activeTab == "dpz-3.html") ){
+					var ac_page = plus.webview.getWebviewById(activeTab); 
+					mui.fire(ac_page, 'begin_i');
+					//}
+
+				});
+				document.addEventListener('hideactive', function(event) {
+					// alert("2");
+					plus.webview.hide(activeTab);
+				});
+				
+				document.addEventListener('showactive_i', function(event) {
+					 
+					var newTab; 
+					var current = document.querySelector(".mui-segmented-control>.mui-control-item.mui-active");
+					
+					var x_i = event.detail.ii;
+					if (x_i=="1"){
+						activeTab="dpz-1.html";
+						newTab=document.getElementById("tab1");
+					} else if (x_i=="2"){
+						activeTab="dpz-2.html";
+						newTab=document.getElementById("tab2");
+					} else if (x_i=="3"){
+						activeTab="dpz-3.html";
+						newTab=document.getElementById("tab3");
+					} else if (x_i=="4"){
+						activeTab="dpz-4.html";
+						newTab=document.getElementById("tab4");
+					}  else if (x_i=="5"){
+						activeTab="dpz-5.html";
+						newTab=document.getElementById("tab5");
+					}
+					if (newTab !== current) {
+						current.classList.remove('mui-active');
+						newTab.classList.add('mui-active');
+					}
+					 plus.webview.show(activeTab, "fade-in", 100);
+					// if ( (activeTab == "dpz-1.html") || (activeTab == "dpz-2.html") 
+					 //  || (activeTab == "dpz-3.html") ){
+					//if ( (activeTab == "dpz-1.html") ){	 
+						 var ac_page = plus.webview.getWebviewById(activeTab); 
+						 mui.fire(ac_page, 'begin_i');
+					// }
+				
+				});
+
+			});
+			
+			
+			function Set_Color(){
+				  
+				   
+			}
+			
+
+			
+		</script>
+	</body>
+</html>
