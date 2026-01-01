@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title></title>
+	<link href="../css/mui.min.css" rel="stylesheet" />
+	<link href="../css/style.css" rel="stylesheet" />
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/app.js"></script>
+	<script src="../js/md5.js"></script>
+	<style>
+		.area {
+			margin: 20px auto 0px auto;
+		}
+
+		.mui-input-group:first-child {
+			margin-top: 20px;
+		}
+
+		.mui-input-group label {
+			width: 26%;
+		}
+
+		.mui-input-row label~input,
+		.mui-input-row label~select,
+		.mui-input-row label~textarea {
+			width: 74%;
+		}
+
+		.mui-checkbox input[type=checkbox],
+		.mui-radio input[type=radio] {
+			top: 6px;
+		}
+
+		.mui-content-padded {
+			margin-top: 10px;
+		}
+
+		.mui-btn {
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body style="background-color: #fff;">
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		<h1 class="mui-title">免费注册</h1>
+	</header>
+	
+	<div class="mui-content" style="background-color: #fff;">
+
+		<form class="mui-input-group">
+			<div class="mui-input-row">
+				<label>手机号*</label>
+				<input id='account' type="text" class="mui-input-clear mui-input" placeholder="必填项,请输入手机号">
+			</div>
+
+
+		</form>
+		<div style="padding-top: 12px;padding-left: 15px;">
+			<span class="mui-icon mui-icon-info"></span>
+			<label style="width: 300px;font-size: 14px;color: #aaa;">
+				手机号将作为您的登陆凭证，请准确输入
+			</label>
+		</div>
+
+
+		<form class="mui-input-group" style="padding-top: 10px;">
+
+			<div class="mui-input-row">
+				<label>邀请码</label>
+				<input id='qqhao' type="text" class="mui-input-clear mui-input" placeholder="选填项,没有的话可不填">
+			</div>
+
+
+		</form>
+		<form class="mui-content-padded" style="padding-left: 0px;margin-top: 10px;">
+			<div class="mui-input-row mui-checkbox mui-left" style="margin-left: 10px;">
+				<input name="ck_mz" id='mzsm' type="checkbox" checked>
+				<label id='agreeit' style="padding-top: 14px; color: #007AFF;font-size: 14px;">我已阅读并同意软件许可协议</label>
+			</div>
+
+		</form>
+		<div class="mui-content-padded">
+			<button id='reg' class="mui-btn mui-btn-block mui-btn-danger" style="width: 90%;left:5%;border-radius: 23px;">注册</button>
+		</div>
+		 
+
+		 
+	</div>
+
+ 
+
+	<script>
+		mui.init({
+			swipeBack: true //启用右滑关闭功能
+		});
+		
+		var x_uiid="";
+
+		mui.plusReady(function () {
+			// 获取设备信息
+			plus.device.getInfo({
+				 success:function(e){
+					 var vdata=JSON.stringify(e);
+					 x_uiid = e.uuid;
+					 //alert( e.uuid);
+				 },
+				 fail:function(e){
+					 console.log (JSON.stringify(e));
+				 }
+			});
+			
+			
+			document.getElementById('reg').addEventListener('tap', function (event) {
+				 
+				var chxy = document.getElementById('mzsm').checked ? "true" : "false";
+				 	
+				if (chxy == "true") {
+					
+					var xaccount = accountBox.value;
+					var xqqhao = qqhaoBox.value;
+			
+					var re = /^1[3456789]\d{9}$/; //验证是不是11位数字
+					var ispho = false;
+					ispho = re.test(xaccount);
+					if (!ispho) {
+						mui.alert("手机号码格式错误", "金风向9提示", "关闭");
+						return;
+					}
+			
+			
+					if (ispho) {
+						//ajax 数据库调用检查
+			 
+						mui.ajax({
+							url: "http://app.jfxqh.com/jfx9_zc/jfx9_reg.php",
+							data: {
+								mkey: hex_md5("353606sh"),
+								account: xaccount,
+								jqm: x_uiid,
+								yqm: xqqhao,
+							},
+							type: "GET",
+							dataType: "TEXT",
+							success: function (data) {
+								//alert(data);
+								if (data == "0") {
+									mui.alert("提交成功，稍后将用户名和密码发送到您的手机上（短信可能有延迟）。" , "金风向9提示", "关闭");
+									
+									var self = plus.webview.currentWebview();
+									plus.webview.close(self);
+									
+								} else if (data == "-1") {
+									mui.alert("该账号/手机号已经注册，请修改", "金风向9提示", "关闭");
+								} else if (data == "-2") {
+									mui.alert("网络问题，提交不成功，请重新提交", "金风向9提示", "关闭");
+								} else if (data == "-3") {
+									mui.alert("网络问题，提交不成功，请重新提交", "金风向9提示", "关闭");
+								}
+			
+							}
+						});
+			
+					}
+				} else {
+					mui.alert("请阅读并同意金风向软件许可使用协议", "金风向9提示", "关闭");
+				} 
+			
+			
+			});
+			
+			//同意
+			document.getElementById("agreeit").addEventListener('tap', function () {
+					plus.runtime.openURL(encodeURI("http://x9.jfxqh.com/doc/xy.html"));
+				
+			});
+			
+			
+		});
+		
+		 
+		var accountBox = document.getElementById('account');
+		var qqhaoBox = document.getElementById('qqhao');
+		
+		document.getElementById('account').addEventListener('blur', function (event) {
+		    var uid;
+			uid = document.getElementById("account").value;
+ 
+			var islen = false;
+			var re = /^1[3456789]\d{9}$/; //验证是不是11位数字
+			if (re.test(uid)) {
+				islen = true;
+			}
+		
+			if (!islen) {
+				mui.toast('手机号码格式错误', {
+					duration: 'short',
+					type: 'div'
+				});
+				document.getElementById("account").focus();
+				 
+			} else {
+				//alert(uid);
+				//ajax 数据库调用检查
+				mui.ajax({
+					url: "http://app.jfxqh.com/jfx9_zc/jfx9_regck.php",
+					data: {
+						mkey: hex_md5("353606sh"),
+						account: uid,
+					},
+					type: "GET",
+					dataType: "TEXT",
+					success: function (data) {
+						//alert(data);
+						if (data == "0") {
+							mui.toast('恭喜，该用户名可用', {
+								duration: 'short',
+								type: 'div'
+							});
+						} else if (data == "-1") {
+							mui.toast('用户名被占用，请更换！', {
+								duration: 'short',
+								type: 'div'
+							});
+							document.getElementById("account").focus();
+						}
+					}
+				});
+		
+			} 
+		
+		});
+		
+
+		
+		
+		 
+		/* function getip(){
+			var res="";
+			mui.ajax({
+				url: "http://api.ip138.com/ip/?ip=&datatype=jsonp&token=70a23365c59b8f13e3fcc7f61223ec40",
+				data: {
+					 
+				},
+				type: "GET",
+				dataType: "TEXT",
+				success: function(rawData) {
+					var vdata =  eval('(' + rawData + ')') ;
+					res = (vdata.ip+" "+vdata.data[1]+" "+vdata.data[2]);	 
+					if (res.length>0)  ip=res;
+					return res;
+				},
+				error: function(xhr, type, errorThrown) {
+					console.log(type);
+				}
+			});	
+			
+			
+			 
+		}
+		 */
+
+		 
+	</script>
+</body>
+
+</html>

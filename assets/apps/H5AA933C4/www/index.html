@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>主页</title>
+
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/index.css" rel="stylesheet" id="indexcss"/>
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/app.js"></script>
+
+	</head>
+
+
+	<body id="main_bg" class="body_bg">
+
+		<nav id="tab_bg" class="mui-bar mui-bar-tab">
+			<a id="dpzTab" class="mui-tab-item" href="html/dpz.html">
+				<span class="mui-icon iconfont icon--nav-hangqing"></span>
+				
+				<span class="mui-tab-label" style="font-size: 12px;">行情</span>
+			</a>
+  
+			<a id="topTab" class="mui-tab-item" href="html/top.html">
+				<span class="mui-icon iconfont icon-si-glyph-network"></span>
+				<span class="mui-tab-label" style="font-size: 12px;">大数据</span>
+			</a>
+			<a id="homeTab" class="mui-tab-item mui-active" href="html/home.html">
+				<span class="mui-icon iconfont icon-zhuye"></span>
+				<span class="mui-tab-label" style="font-size: 12px;">首页</span> 
+			</a>
+			
+			<a id="rdTab" class="mui-tab-item" href="html/rd.html">
+				<span class="mui-icon iconfont icon-rementuijian"></span>
+				<span class="mui-tab-label" style="font-size: 12px;">热点</span>
+			</a>
+			<a id="znTab" class="mui-tab-item" href="html/zn.html">
+				<span class="mui-icon iconfont icon-AI">
+				</span>
+				<span class="mui-tab-label" style="font-size: 12px;">智能</span>
+			</a>
+		</nav>
+                                                 
+
+		<script type="text/javascript">
+			var gnlist;
+
+			var subpages = ['html/home.html', 'html/top.html', 'html/dpz.html', 'html/rd.html',
+				'html/zn.html'
+			]; 
+			var subpage_style = {
+				top: '0px',
+				bottom: '51px'
+			};
+			var aniShow = {};
+			
+			
+			mui.init({
+				swipeBack: false, //启用右滑关闭功能
+				gestureConfig: {
+					tap: true, //默认为true
+					doubletap: true, //默认为false
+					longtap: true, //默认为false
+					drag: true, //默认为true
+					hold: false, //默认为false，不监听
+					release: false //默认为false，不监听
+				},
+				beforeback: function() {
+					//窗口关闭前处理其他业务详情点击 ↑ "关闭页面"链接查看
+					var main = plus.webview.currentWebview();
+					mui.fire(main, 'gohome');
+					return false;
+				}
+			});
+			
+			mui.plusReady(function() {
+				//plus.storage.clear();
+				localStorage.setItem('innh', window.innerHeight.toString());
+				localStorage.setItem('innw', window.innerWidth.toString());
+
+				var viewW = window.innerWidth.toString();
+				var viewH = (window.innerHeight).toString();
+				var self = plus.webview.currentWebview();
+				for (var i = 0; i < 5; i++) {
+					var temp = {};
+					var sub = plus.webview.create(subpages[i], subpages[i], subpage_style, {
+						innerH: viewH,
+						innerW: viewW
+					});
+					if (i > 0) {
+						sub.hide();
+					} else {
+						temp[subpages[i]] = "true";
+						mui.extend(aniShow, temp);
+					}
+					self.append(sub);
+				}
+
+				//版本升级
+	 
+				plus.runtime.getProperty(plus.runtime.appid, function(inf) {
+				 
+
+				});
+
+
+				//设置唤醒
+				var tjx_wakelock = localStorage.getItem('jfx9_wake');
+				 
+				if ((typeof(tjx_wakelock) != 'undefined') && (tjx_wakelock != null) && (tjx_wakelock != "")) {
+					if (tjx_wakelock == "true") {
+						plus.device.setWakelock(true);
+					} else {
+						plus.device.setWakelock(false);
+					}
+				} else {
+					plus.device.setWakelock(true);
+				}
+
+			    var homePage = plus.webview.getWebviewById("html/home.html");
+				var dpzPage = plus.webview.getWebviewById("html/dpz.html");
+				var topPage = plus.webview.getWebviewById("html/top.html");
+				var rdPage = plus.webview.getWebviewById("html/rd.html");
+				var znPage = plus.webview.getWebviewById("html/zn.html");
+
+				//当前激活选项
+				var activeTab = subpages[0]; //home 页面
+
+				//选项卡点击事件
+				mui('.mui-bar-tab').on('tap', 'a', function(e) {
+
+					var targetTab = this.getAttribute('href');
+					//alert(activeTab+"  "+targetTab);
+					if (targetTab == activeTab) {
+						return;
+					}
+
+
+					if (mui.os.ios || aniShow[targetTab]) {
+						plus.webview.show(targetTab);
+					} else {
+						//否则，使用fade-in动画，且保存变量
+						var temp = {};
+						temp[targetTab] = "true";
+						mui.extend(aniShow, temp);
+						plus.webview.show(targetTab, "fade-in", 300);
+					}
+					//隐藏当前;
+
+					plus.webview.hide(activeTab);
+
+					//更改当前活跃的选项卡
+					activeTab = targetTab;
+
+					//切换到home页面
+					if (targetTab == "html/home.html") {
+						mui.fire(topPage, 'hideactive');
+						mui.fire(rdPage, 'hideactive');
+						mui.fire(znPage, 'hideactive');
+						mui.fire(dpzPage, 'hideactive');
+						//mui.fire(homePage, 'showhome1');
+					}
+
+					//切换到单品种
+					if (targetTab == "html/dpz.html") {
+						mui.fire(topPage, 'hideactive');
+						mui.fire(rdPage, 'hideactive');
+						mui.fire(znPage, 'hideactive');					
+						//mui.fire(dpzPage, 'setcolor');
+						mui.fire(dpzPage, 'showactive');
+						
+					}
+
+					//切换到top
+					if (targetTab == "html/top.html") {
+						mui.fire(dpzPage, 'hideactive');
+						mui.fire(rdPage, 'hideactive');
+						mui.fire(znPage, 'hideactive');
+						mui.fire(topPage, 'showactive');
+					}
+
+					//切换到热点
+					if (targetTab == "html/rd.html") {
+						mui.fire(topPage, 'hideactive');
+						mui.fire(dpzPage, 'hideactive');
+						mui.fire(znPage, 'hideactive');
+						mui.fire(rdPage, 'showactive');
+					}
+
+					//切换到智能品种
+					if (targetTab == "html/zn.html") {
+						mui.fire(topPage, 'hideactive');
+						mui.fire(rdPage, 'hideactive');
+						mui.fire(dpzPage, 'hideactive');
+						mui.fire(znPage, 'showactive');
+					}
+
+
+				});
+
+
+				//自定义事件，模拟点击“home选项卡”
+				document.addEventListener('gohome', function() {
+					var defaultTab = document.getElementById("homeTab");
+					//模拟首页点击
+					mui.trigger(defaultTab, 'tap');
+					//切换选项卡高亮
+					var current = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+					if (defaultTab !== current) {
+						current.classList.remove('mui-active');
+						defaultTab.classList.add('mui-active');
+					}
+
+				});
+				
+				//设置黑色样式
+				document.addEventListener('set_theme', function(event) {
+					//设置黑色样式 
+					//plus.navigator.setStatusBarBackground('#000000');
+					//plus.navigator.setStatusBarStyle('light');
+					Set_Color();
+					mui.fire(homePage, 'set_theme');
+				
+				});
+				
+				document.addEventListener('set_home', function(event) {
+					//设置版本号等等
+					var bb_name = localStorage.getItem('jfx9_bb_name');	
+					mui.fire(homePage, 'set_banben', {
+						bb: bb_name
+					});	 
+					mui.fire(homePage, 'begin_timer');
+					
+				});
+				
+
+				//自定义事件，模拟点击“单品种选项卡”
+				document.addEventListener('dpztab', function(event) {
+					var iix = event.detail.ii;
+					activeTab = "html/dpz.html";				 
+					plus.webview.show("html/dpz.html", "fade-in", 300);
+					mui.fire(topPage, 'hideactive');
+					mui.fire(rdPage, 'hideactive');
+					mui.fire(znPage, 'hideactive');
+	
+					mui.fire(dpzPage, 'showactive_i', {
+						ii: iix
+					});
+
+					var mbTab = document.getElementById("dpzTab");
+					var curTab = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+					if (curTab !== mbTab) {
+						curTab.classList.remove('mui-active');
+						mbTab.classList.add('mui-active');
+					}
+
+				});
+
+				//自定义事件，模拟点击“TOP选项卡”
+				document.addEventListener('toptab', function(event) {
+					var iix = event.detail.ii;
+					activeTab = "html/top.html";
+					plus.webview.show(activeTab, "fade-in", 300);
+					mui.fire(dpzPage, 'hideactive');
+					mui.fire(rdPage, 'hideactive');
+					mui.fire(znPage, 'hideactive');
+					mui.fire(topPage, 'showactive_i', {
+						ii: iix
+					});
+					var mbTab = document.getElementById("topTab");
+					var curTab = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+					if (curTab !== mbTab) {
+						curTab.classList.remove('mui-active');
+						mbTab.classList.add('mui-active');
+					}
+				});
+
+				//自定义事件，模拟点击“热点选项卡”
+				document.addEventListener('rdtab', function(event) {
+					var iix = event.detail.ii;
+					activeTab = "html/rd.html";
+					plus.webview.show(activeTab, "fade-in", 300);
+					mui.fire(dpzPage, 'hideactive');
+					mui.fire(topPage, 'hideactive');
+					mui.fire(znPage, 'hideactive');
+					mui.fire(rdPage, 'showactive_i', {
+						ii: iix
+					});
+
+					var mbTab = document.getElementById("rdTab");
+					var curTab = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+					if (curTab !== mbTab) {
+						curTab.classList.remove('mui-active');
+						mbTab.classList.add('mui-active');
+					}
+				});
+
+				//自定义事件，模拟点击“智能选项卡”
+				document.addEventListener('zntab', function(event) {
+					var iix = event.detail.ii;
+					activeTab = "html/zn.html";
+					plus.webview.show(activeTab, "fade-in", 300);
+					mui.fire(dpzPage, 'hideactive');
+					mui.fire(topPage, 'hideactive');
+					mui.fire(rdPage, 'hideactive');
+					mui.fire(znPage, 'showactive_i', {
+						ii: iix
+					});
+
+					var mbTab = document.getElementById("znTab");
+					var curTab = document.querySelector(".mui-bar-tab>.mui-tab-item.mui-active");
+					if (curTab !== mbTab) {
+						curTab.classList.remove('mui-active');
+						mbTab.classList.add('mui-active');
+					}
+				});
+
+		 
+				//调用主页弹窗显示 - 智能展示功能
+				document.addEventListener('pop_sypop', function(event) {
+					var x_pop = event.detail.xpop;
+					var x_sy = event.detail.xsy;
+					var x_nr = event.detail.xcon;
+					var x_tit = event.detail.xtit;
+
+					if (x_sy == "1") {
+						plus.device.vibrate(1000);
+						plus.device.beep(2);
+					}
+
+					if (x_pop == "1") {
+						mui.alert(x_nr, x_tit+ " - 提醒", "关闭");
+					}
+				});
+				
+				//调用主页弹窗显示 - 资讯
+				document.addEventListener('pop_zx', function(event) {
+					var x_nr = event.detail.xcon;
+					var x_tit = event.detail.xtit;
+ 
+					mui.alert(x_nr, x_tit+ " - 新消息", "关闭");
+					
+				});
+
+				document.addEventListener('show_index', function(event) {
+					var xuanme = event.detail.uname;
+					var xpass = hex_md5(event.detail.upw);
+					var xgn = event.detail.ugn;
+					gnlist = xgn;
+
+					setInterval(function() {
+						gxOnline(xuanme ,xpass);
+					}, 7000);
+
+
+				});
+				
+
+			});
+					
+		 
+			function Set_Color(){
+
+				 var obj = document.getElementById("indexcss");
+			     obj.setAttribute("href","css/index2.css");
+  
+			}
+
+			setTimeout('GX_DM()', 500);
+			setInterval('GX_DM()', 300000); // 每隔5分钟
+
+			//更新在线时间  1分钟更新一次最新在线时间 
+			function gxOnline(uname, pw) {
+
+				mui.ajax({
+					url: "http://app.jfxqh.com/jfx9_gx_sy.php",
+					data: {
+						mkey: hex_md5("353606sh"),
+						account: uname,
+						password: pw,
+					},
+					type: "GET",
+					dataType: "TEXT",
+					success: function(rawData) {
+						if (rawData == "-5") {
+							alert("金风向9软件已经到期");
+							plus.runtime.quit();
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+					}
+				});	
+				
+			}
+
+
+			function GX_DM() {
+				
+				mui.ajax({
+					url: "http://app.jfxqh.com/index.php",
+					data: {
+						mkey: hex_md5("353606sh"),
+						code: "scode",
+						type: "codelist"
+					},
+					type: "GET",
+					dataType: "TEXT",
+					success: function(rawData) {
+						if (rawData != "") {
+						    localStorage.setItem("jfx9_codelist", rawData);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+					}
+				});	
+			};
+
+	
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		
+		<script src="js/mui.min.js"></script>
+		<script src="js/md5.js"></script>
+		<script src="js/app.js"></script>
+
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav" style="background-color: #F23038;height: 60px;padding-top: 12px;">
+			<h1 class="mui-title" style="text-align: left;padding-left: 0px;font-size:24px;color: #ffffff;">登录</h1>
+			<h1 class="mui-title" style="text-align: right;margin-right: 45px;font-size:14px;color: #ffaaae;">免费体验版</h1>
+			<div class="mui-title" style="text-align: right;font-size:14px; color: #ffaaae;">9.1.36</div>
+		</header>
+		<div class="mui-content"
+			style="background-color: #FFFFFF;padding-left: 6px;padding-right: 6px;padding-top: 40px;">
+
+			<div class="mui-slider-item"
+				style="padding-left: 50%;margin-left:-78px;padding-top: 48px;padding-bottom:25px ;">
+				<img src="images/login_icon.png" />
+			</div>
+			<!-- 输入用户名 密码   -->
+			<div id="login-form" class="mui-input-group">
+				<div class="mui-input-row" style="font-size: 16px;height: 40px;margin-left: 5px;margin-right: 10px;">
+					<label>账号</label>
+					<input id="account" type="text" class="mui-input-clear mui-input" placeholder="请输入手机号">
+				</div>
+				<div class="mui-input-row"
+					style="font-size: 16px;padding-top: 8px;height: 50px;margin-left: 5px;margin-right: 10px;">
+
+					<label>密码</label>
+					<input id="password" type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
+				</div>
+			</div>
+
+			<!-- 自动登陆按钮  -->
+			<form class="mui-input-group" style="height: 40px;">
+
+				<div class="mui-table-view-cell" style="font-size: 14px;padding-top: 12px;width: 50%;float: right;">
+					记住密码
+					<div id="autoLogin" class="mui-switch" style="zoom:85%;float: left;">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</div>
+
+				<!-- <div class="mui-table-view-cell" style="font-size: 14px;padding-top: 12px;width: 50%;float: right;">
+					夜间模式
+					<div id="theme_ye" class="mui-switch" style="zoom:85%;">
+						<div class="mui-switch-handle"></div>
+					</div>
+				</div> -->
+
+			</form>
+
+
+			<div class="mui-content-padded">
+				<button id="login" type="submit" class="mui-btn mui-btn-block"
+					style="width: 90%;left:5%; height: 50px; font-size: 17px;background-color:#F23038;color: #FFFFFF;border-radius: 33px;padding-bottom: 10px;">
+					登录</button>
+					
+				<button id="btn_reg" type="submit" class="mui-btn mui-btn-block"
+					style="width: 90%;left:5%; height: 36px; font-size: 16px;border-radius: 23px;padding-top: 7px;margin-top: 20px;">
+					免费注册</button>	
+			</div>		
+			
+			
+            <div class="mui-content-padded" style="position: relative; bottom: 4px;">
+				<div class="mui-input-row mui-checkbox mui-left">
+					<div>
+						<input name="checkbox" id="check_xy" value="false" style="zoom:80%;" type="checkbox" unchecked>
+					</div>
+					<div>
+						<label style="font-size: 14px;color: #aaa;padding-top: 11px;">
+							阅读并接受 <a id="web_fx" style="color: #33f;">风险提示</a>
+
+							<a id="web_xy" style="color: #33f;">软件协议</a> 和
+							<a id="web_ys" style="color: #33f;">隐私政策</a></label>
+					</div>
+
+
+				</div>
+			</div>
+
+			<!-- 提醒   -->
+
+			<!-- <div class="mui-bar-footer" style="position: fixed;">
+				<label style="font-size: 12px;color: #c3c3c3;padding-left: 0px;">
+					<span class="mui-icon"></span>
+					非投资咨询类软件，不提供投资咨询服务
+				</label>
+			</div> -->
+
+		</div>
+
+		<script>
+ 
+			var banben,banben_name;
+			var backButtonPress = 0;
+			 
+			mui.init({
+				statusBarBackground: '#f7f7f7',
+				beforeback: function() {
+					return false;
+				}
+			});
+			mui.plusReady(function() {
+					
+				mui.back = function(event) {
+					backButtonPress++;
+					if (backButtonPress > 1) {
+						plus.runtime.quit();
+					} else {
+						plus.nativeUI.toast('再按一次退出应用');
+					}
+					setTimeout(function() {
+						backButtonPress = 0;
+					}, 1000);
+					return false;
+				};	
+					
+					//plus.navigator.setStatusBarBackground('#ffffff');
+					//plus.navigator.setStatusBarStyle('dark');
+					plus.navigator.setStatusBarBackground('#F23038');
+					plus.navigator.setStatusBarStyle('light');
+					plus.screen.lockOrientation("portrait-primary");
+					localStorage.setItem('is_login', 'false'); //未登录
+
+					//读取 自动登陆(settings  和 state  tokens)
+					// var state = app.getState();
+					// alert(JSON.stringify(settings));
+					var settings = localStorage.getItem('settings');
+					if (settings == null) {
+						settings = false;
+					} else if (settings == "false") {
+						settings = false;
+					} else if (settings == "true") {
+						settings = true;
+					} else if (settings == "") {
+						settings = false;
+					}
+					
+					
+					
+					//读取主题   黑色-就选中  白色 - 默认不选
+					/* if (localStorage.getItem('theme')=="hei"){
+					      mui("#theme_ye").switch().toggle(); //选中黑色
+						 
+					} */
+
+					//默认应该是 wake  true
+					var tlx_wakelock = localStorage.getItem('jfx9_wake');
+					if ((typeof(tlx_wakelock) == 'undefined') || (tlx_wakelock == null) || (tlx_wakelock == "")) {
+						localStorage.setItem("jfx9_wake", "true");
+					}
+
+
+					var mainPage = plus.webview.getWebviewById("index");
+ 
+					var main_loaded_flag = false;
+					if (!mainPage) {
+						mainPage = mui.preload({
+							"id": 'index',
+							"url": 'index.html'
+						});
+					} else {
+						main_loaded_flag = true;
+					}
+					
+					var local_account = localStorage.getItem('jfx9_account');
+					var local_password = localStorage.getItem('jfx9_password');
+				 
+					document.getElementById('account').value = local_account;
+					document.getElementById('password').value = local_password;
+
+
+					//mainpage 加载完毕后  main_loaded_flag设置为 true
+					mainPage.addEventListener("loaded", function() {
+						main_loaded_flag = true;
+					});
+
+					var toMain = function() {
+						//使用定时器的原因：
+						//可能执行太快，main页面loaded事件尚未触发就执行自定义事件，此时必然会失败
+						var xacc;
+						var xpass;
+						var xgn;
+						xacc = document.getElementById('account').value;
+						xpass = document.getElementById('password').value;
+						
+						xgn = localStorage.getItem('jfx9_gn');
+						
+						var id = setInterval(function() {
+							if (main_loaded_flag) {
+								clearInterval(id);
+								//更新在线时间
+								mui.fire(mainPage, 'show_index', {
+									uname: xacc,
+									upw: xpass,
+									ugn: xgn
+								});
+								
+								mainPage.show("pop-in");
+
+							}
+						}, 20);
+						
+						
+					};
+
+					var loginButton = document.getElementById('login'); //登陆按钮
+					var accountBox = document.getElementById('account'); //账号输入框
+					var passwordBox = document.getElementById('password'); //密码输入框
+					var autoLoginButton = document.getElementById('autoLogin'); //自动登陆
+					var CheckxyButton = document.getElementById('check_xy'); //是否选中 阅读并接受协议
+					
+
+					var fxButton = document.getElementById('web_fx'); // 风险
+					var xyButton = document.getElementById('web_xy'); //  协议
+					var ysButton = document.getElementById('web_ys'); //   隐私
+
+					//检查是否阅读协议等
+					var ischeck_xy = localStorage.getItem('check_xy');
+					if (ischeck_xy == "true") {
+						CheckxyButton.checked = true;
+					} else {
+						CheckxyButton.checked = false;
+					}
+
+					//检查 "登录状态/锁屏状态" 结束
+
+					setTimeout(function() {
+						//关闭 splash
+						plus.navigator.closeSplashscreen();
+					}, 600);
+					
+
+
+					//登陆按钮 检测登陆
+					loginButton.addEventListener('tap', function(event) {
+						//document.getElementById("theme_ye").checked=true;
+						 //alert(document.getElementById("theme_ye").classList.contains("mui-active"));
+                        //alert(localStorage.getItem('is_login'))  ;
+						var res=",null,0,nullrb,nulrb,"
+						 
+						  
+						var chxy = CheckxyButton.checked ? "true" : "false";
+						if (chxy == "true") {
+							//如果已经阅读并确认协议等 
+							localStorage.setItem('check_xy', chxy);
+							
+							/* if ( document.getElementById("theme_ye").classList.contains("mui-active") )	{
+								 mui.fire(mainPage, 'set_theme');
+							}
+ */
+							var wd = plus.nativeUI.showWaiting();
+							// 构造要传递的json数据 
+							//输入  字符串 &&&& 连接     输出  字符串
+							var indata = "account=" + accountBox.value + "&" + "password=" + hex_md5(
+								passwordBox.value) +"&mkey="+hex_md5("353606sh");
+							// 调用ajax  										
+							postData("http://app.jfxqh.com/jfx9_log_sy.php", //服务端的URL  
+								indata, // json 数据  
+								function(data) {
+									//alert(data);
+									wd.close(); // 调用成功，先关闭等待的对话框 
+									var tmp = data.toString();
+									tmp = tmp.replace(/"/g, '');
+									tmp = tmp.replace('[', '');
+									tmp = tmp.replace(']', '');
+									var res = tmp.split(',');
+									// alert(res[0]); //0-验证结果, 1- 到期时间, 2-功能列表
+									//0-返回状态    1-到期时间  2-功能   3-在线时间  4-现在时间
+									var zxtim, newtim;
+									zxtim = time_to_count(res[3]); //在线时间
+									newtim = time_to_count(res[4]); //  最新时间
+									banben = "tyb";
+									banben_name = "金风向9 体验版";
+
+									localStorage.setItem('jfx9_bb', banben);
+									localStorage.setItem('jfx9_bb_name', banben_name);
+
+
+									if (res[0] != "0") {
+										// 如果密码错误，提示一下信息 
+										if (res[0] == "-5") {
+											mui.alert("软件已经到期", "金风向9提示", "关闭");
+										} else {
+											mui.alert("用户名或密码错误", "金风向9提示", "关闭");
+										}
+										return;
+									} else {
+										//账号有效性没问题,下面判断是否唯一登陆
+										
+										if ((newtim - zxtim) >= 16) {
+											// 保存token，以便于下次自动登录  
+											
+											//设置home页面
+											mui.fire(mainPage, 'set_home'); 
+
+											localStorage.setItem('jfx9_account', accountBox.value);
+											localStorage.setItem('jfx9_todate', res[1]);
+											localStorage.setItem('jfx9_gn', res[2]);
+											if (settings) {
+												localStorage.setItem('jfx9_password', passwordBox.value);
+											} else {
+												localStorage.setItem('jfx9_password', '');
+											}
+
+											//下载代码表
+											Load_CodeList();
+											
+                                            Set_LocalStroe();  
+                                            //转向主页
+											toMain();
+											localStorage.setItem('is_login', 'true'); //已经登录
+											
+											 
+										} else {
+											mui.alert("账户已登陆，请过16秒后重新登陆软件", "金风向9提示", "关闭");
+											winclose(16);
+											return;
+										}
+									}
+								},
+								wd //传递给postData的最后一个参数，失败的时候关闭等待对话框  
+							);
+						} else {
+							mui.alert("请先阅读并确认风险提示、软件协议和隐私政策", "金风向9提示", "关闭");
+						}
+
+					});
+					
+					
+					//倒计时 
+
+					function winclose(n) {
+
+						if (n > 0) {
+
+							loginButton.innerText = n + "秒后登陆";
+							loginButton.style.backgroundColor = "#aaa";
+							loginButton.style.borderColor = "#aaa";
+							setTimeout(function() {
+								winclose(n - 1);
+							}, 1000);
+						} else {
+							loginButton.innerText = "登陆";
+							loginButton.style.backgroundColor = "#EE5700";
+							loginButton.style.borderColor = "#EE5700";
+
+						}
+					}
+					 
+					 //Set_LocalStroe();
+					 //var tmp = "rb,sc,l,p,hc,fu,v,y,i,pg,pp,OI,j,bu,SA,ni,jm,MA,FG,m,SF,eg,TA,RM,SM,eb,ru,cu";
+					 //localStorage.setItem("jfx9_qjt_pz", tmp);
+ 
+					
+					/* document.getElementById("theme_ye").addEventListener('toggle', function(event) {
+					       var isActive = event.detail.isActive;
+						   var res;
+						   if (isActive) {
+						      	res = 'hei';
+						   } else {
+						     	res = 'bai';
+						   }
+						   localStorage.setItem('theme', res);
+						   
+						
+					}) */
+
+ 
+					//检查是否自动登陆
+					autoLoginButton.classList[settings ? 'add' : 'remove']('mui-active')
+					autoLoginButton.addEventListener('toggle', function(event) {
+						setTimeout(function() {
+							var isActive = event.detail.isActive;
+							//settings.autoLogin = isActive;
+							//app.setSettings(settings);
+							var res;
+							if (isActive) {
+								res = 'true';
+								settings = true;
+							} else {
+								res = 'false';
+								settings = false;
+							}
+							//alert(res);
+
+							localStorage.setItem('settings', res);
+						}, 50);
+
+					}, false);
+
+					//风险
+					fxButton.addEventListener('tap', function(event) {
+						plus.runtime.openURL(encodeURI("http://x9.jfxqh.com/doc/fx_jfx.html"));
+
+					}, false);
+
+					//协议
+					xyButton.addEventListener('tap', function(event) {
+						plus.runtime.openURL(encodeURI("http://x9.jfxqh.com/doc/xy_jfx.html"));
+					}, false);
+
+					//隐私
+					ysButton.addEventListener('tap', function(event) {
+						plus.runtime.openURL(encodeURI("http://x9.jfxqh.com/doc/ys_jfx.html"));
+					}, false);
+
+					
+					
+
+			}); //end ready
+			// var tmp = "rb,j,sc,l,pp,p,m,hc,jm,fu,v,TA,y,RM,i,ru,pg,MA,FG,OI,cu,SM,SF,bu,eg,eb,ni,al";
+			// localStorage.setItem("jfx9_qjt_pz", tmp);
+			   //localStorage.removeItem("jfx9_zx");
+			    //获取代码列表
+				Load_CodeList();
+			    function Load_CodeList(){
+			    	 
+			    	mui.ajax({
+			    		url: "http://app.jfxqh.com/index.php",
+			    		data: {
+			    			mkey: hex_md5("353606sh"),
+			    			code: "scode",
+			    			type: "codelist"
+			    		},
+			    		type: "GET",
+			    		dataType: "TEXT",
+			    		success: function(rawData) {
+			    			if (rawData != "") {
+							    localStorage.setItem("jfx9_codelist", rawData);
+							}
+			    		},
+			    		error: function(xhr, type, errorThrown) {
+			    			console.log(type);
+			    		}
+			    	});	
+			    }
+				
+				
+				//document.getElementById('account').value=hex_md5("353606sh");
+				//Set_LocalStroe();
+				function Set_LocalStroe(){
+					
+					//检查设置全景图 代码
+					if (  localStorage.getItem("jfx9_qjt_pz")==null  ){
+						var tmp = "rb,sc,l,p,hc,fu,v,y,i,pg,pp,OI,j,bu,SA,ni,jm,MA,FG,m,SF,eg,TA,RM,SM,eb,ru,cu";
+						localStorage.setItem("jfx9_qjt_pz", tmp);
+					}
+					
+					//检查设置 短线王代码
+					if (  localStorage.getItem("jfx9_dxw_pz")==null  ){
+						var tmp = "rb,sc,FG,hc,fu,SA,i,pg,l,j,bu,v,jm,MA,p,SF,eg,y,SM,eb,OI,ru,TA,m,ni,pp,RM";
+						localStorage.setItem("jfx9_dxw_pz", tmp);
+					}
+					
+					//检查设置 波段王代码
+					if (  localStorage.getItem("jfx9_bdw_pz")==null  ){
+						var tmp = "rb,sc,FG,hc,fu,SA,i,pg,l,j,bu,v,jm,MA,p,SF,eg,y,SM,eb,OI,ru,TA,m,ni,pp,RM";
+						localStorage.setItem("jfx9_bdw_pz", tmp);
+					}
+					
+					//波段王
+					localStorage.setItem("bdw_bdw9_clos", "");
+					localStorage.setItem("bdw_bdw9_ope", "");
+					localStorage.setItem("bdw_bdw9_hig", "");
+					localStorage.setItem("bdw_bdw9_lo", "");
+					localStorage.setItem("bdw_bdw9_lab", "");
+					localStorage.setItem("bdw_bdw9_td", "");
+					localStorage.setItem("bdw_bdw9_s", "");
+					localStorage.setItem("bdw_bdw9_code", "");
+					
+					//全景图
+					localStorage.setItem("qjt_pho3_clos", "");
+					localStorage.setItem("qjt_pho3_lab", "");
+					localStorage.setItem("qjt_pho3_td", "");
+					localStorage.setItem("qjt_pho3_s", "");
+					localStorage.setItem("qjt_pho3_code", "");
+					
+					localStorage.setItem("qjt_pho9_clos", "");
+					localStorage.setItem("qjt_pho9_lab", "");
+					localStorage.setItem("qjt_pho9_td", "");
+					localStorage.setItem("qjt_pho9_s", "");
+					localStorage.setItem("qjt_pho9_code", "");
+					
+					localStorage.setItem("qjt_pho15_clos", "");
+					localStorage.setItem("qjt_pho15_lab", "");
+					localStorage.setItem("qjt_pho15_td", "");
+					localStorage.setItem("qjt_pho15_s", "");
+					localStorage.setItem("qjt_pho15_code", "");
+					
+					localStorage.setItem("ai_code", "");
+					localStorage.setItem("ai_clos", "");
+					localStorage.setItem("ai_ope", "");
+					localStorage.setItem("ai_hig", "");
+					localStorage.setItem("ai_lo", "");
+					localStorage.setItem("ai_lab", "");
+						
+				} 
+		 
+				document.getElementById("btn_reg").addEventListener('tap', function(event) {
+					 mui.openWindow({
+						url: 'other/reg.html',
+						id: 'reg',
+						preload: true,
+						show: {
+							aniShow: 'pop-in'
+						},
+						styles: {
+							popGesture: 'hide'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});  	 
+
+				}, false);
+				
+		</script>
+	</body>
+
+</html>
